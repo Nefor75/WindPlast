@@ -10,13 +10,15 @@
         android:scaleType="centerCrop"
         android:contentDescription="@null" />
 
-    <ImageView
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp"
-        android:src="@drawable/main_logo"
-        android:contentDescription="@null"/>
+    <TextView
+        android:id="@+id/windplast"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="WindPlast"
+        android:textSize="50sp"
+        android:textColor="@android:color/white"
+        android:visibility="gone"/>
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -26,21 +28,16 @@
         android:gravity="center"
         android:orientation="vertical">
 
-        <ProgressBar
-            android:id="@+id/progressBar"
-            style="?android:attr/progressBarStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/spacing_large" />
-
         <TextView
+            android:id="@+id/tv_as_bottom_line"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/spacing_xxlarge"
             android:gravity="center"
-            android:text="@string/app_tag_line"
+            android:text="@string/tv_as_bottom_line"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-            android:textColor="@android:color/white" />
+            android:textColor="@android:color/white"
+            android:visibility="gone"/>
 
     </LinearLayout>
 

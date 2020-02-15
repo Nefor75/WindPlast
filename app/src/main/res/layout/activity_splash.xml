@@ -10,15 +10,13 @@
         android:scaleType="centerCrop"
         android:contentDescription="@null" />
 
-    <TextView
-        android:id="@+id/windplast"
+    <TextSwitcher
+        android:id="@+id/txt_switcher"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="WindPlast"
-        android:textSize="50sp"
-        android:textColor="@android:color/white"
-        android:visibility="gone"/>
+        android:layout_centerInParent="true">
+
+    </TextSwitcher>
 
     <LinearLayout
         android:layout_width="wrap_content"

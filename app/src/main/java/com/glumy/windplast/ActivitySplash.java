@@ -1,11 +1,16 @@
 package com.glumy.windplast;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.TextSwitcher;
 import android.widget.TextView;
+import android.widget.ViewSwitcher;
 import androidx.appcompat.app.AppCompatActivity;
 import java.util.concurrent.TimeUnit;
 
@@ -13,20 +18,17 @@ public class ActivitySplash extends AppCompatActivity {
 
     private Animation anim;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        initComponent();
         startActivityMainDelay();
     }
 
-    private void initComponent(){
-        anim = AnimationUtils.loadAnimation(this,R.anim.tv_animation);
-    }
-
-    private void startActivityMainDelay() {
+        private void startActivityMainDelay() {
+            anim = AnimationUtils.loadAnimation(this, R.anim.tv_animation);
 
         Thread t = new Thread(new Runnable() {
             public void run() {
@@ -47,7 +49,7 @@ public class ActivitySplash extends AppCompatActivity {
 
     Runnable run_tv_bottom = new Runnable() {
         public void run() {
-            TextView tv_bottom = findViewById(R.id.tv_as_bottom_line);
+           TextView tv_bottom = findViewById(R.id.tv_as_bottom_line);
             tv_bottom.setVisibility(View.VISIBLE);
             tv_bottom.startAnimation(anim);
         }
@@ -55,9 +57,7 @@ public class ActivitySplash extends AppCompatActivity {
 
     Runnable run_tv_center = new Runnable() {
         public void run() {
-            TextView tv_center = findViewById(R.id.windplast);
-            tv_center.setVisibility(View.VISIBLE);
-            tv_center.startAnimation(anim);
+            makeTextSwitcher();
         }
     };
 
@@ -68,6 +68,29 @@ public class ActivitySplash extends AppCompatActivity {
                 finish();// kill current activity
         }
     };
+
+    private void makeTextSwitcher(){
+        Animation slideInLeftAnimation = AnimationUtils.loadAnimation(this,
+                android.R.anim.slide_in_left);
+
+        TextSwitcher mTextSwitcher = findViewById(R.id.txt_switcher);
+        mTextSwitcher.setInAnimation(slideInLeftAnimation);
+
+        mTextSwitcher.setFactory(new ViewSwitcher.ViewFactory() {
+            @Override
+            public View makeView() {
+                TextView textView = new TextView(ActivitySplash.this);
+                textView.setTextSize(60);
+                textView.setTextColor(Color.RED);
+                textView.setGravity(Gravity.CENTER_HORIZONTAL);
+                textView.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD_ITALIC));
+                textView.setShadowLayer(10, 10, 10, Color.BLACK);
+                return textView;
+            }
+        });
+        mTextSwitcher.setText(getText(R.string.app_name));
+    }
+
 }
 
 

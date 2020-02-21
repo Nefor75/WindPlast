@@ -80,7 +80,7 @@ public class ActivitySplash extends AppCompatActivity {
             @Override
             public View makeView() {
                 TextView textView = new TextView(ActivitySplash.this);
-                textView.setTextSize(60);
+                textView.setTextSize(80);
                 textView.setTextColor(Color.RED);
                 textView.setGravity(Gravity.CENTER_HORIZONTAL);
                 textView.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD_ITALIC));

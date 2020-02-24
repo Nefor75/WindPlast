@@ -1,14 +1,14 @@
 <resources>
     <!--ActivitySplash -->
     <string name="app_name">WindPlast</string>
-    <string name="tv_as_bottom_line">Developed by ...</string>
+    <string name="tv_as_bottom_line">Developed by GluMy</string>
 
     <!--Activity_product_details -->
     <string name="button1">Добавить в заказ</string>
 
 
-    <!--Window configuration -->
-    <string name="ЛГППО">ЛГППО</string>
+    <!--Toolbar -->
+    <string name="settings">Настройки</string>
 
     <!--Size three array below must be same -->
     <string-array name="about_title_array">

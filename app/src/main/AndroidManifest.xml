@@ -22,7 +22,7 @@
         <activity
             android:name=".ActivityMain"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:theme="@style/SplashTheme" />
+            android:theme="@style/Main" />
         <activity android:name=".ActivityProductDetails"/>
     </application>
 

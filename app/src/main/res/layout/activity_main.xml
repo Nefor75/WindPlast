@@ -1,60 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:theme="@style/Main">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/Toolbar" />
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar" />
 
     <View
         android:layout_width="match_parent"
         android:layout_height="3dp"
-        android:background="@color/view"/>
+        android:background="@color/view" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:orientation="horizontal"
-        android:theme="@style/Toolbar">
+        android:background="@color/colorPrimary"
+        android:orientation="horizontal">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="111111111"
-        android:textColor="@android:color/white"
-        android:layout_weight="1"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="2222222"
-            android:textColor="@android:color/white"
-            android:layout_weight="1"/>
+        <ImageView
+            android:id="@+id/image_left"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:srcCompat="@android:drawable/btn_star_big_on"
+            android:contentDescription="@null" />
 
         <TextView
+            android:id="@+id/text_left"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="3333333"
-            android:textColor="@android:color/white"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:text="Text Left"
+            android:textColor="@android:color/white" />
+
+        <ImageView
+            android:id="@+id/image_center"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:srcCompat="@android:drawable/btn_star_big_on"
+            android:contentDescription="@null"/>
+        <TextView
+            android:id="@+id/text_center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Text Center"
+            android:textColor="@android:color/white" />
+
+        <ImageView
+            android:id="@+id/image_right"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:srcCompat="@android:drawable/btn_star_big_on"
+            android:contentDescription="@null"/>
+        <TextView
+            android:id="@+id/text_right"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Text Right"
+            android:textColor="@android:color/white" />
+
     </LinearLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="3dp"
-        android:background="@color/view"/>
+        android:background="@color/view" />
 
     <LinearLayout
+        android:id="@+id/ll_settings"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/blu">
+        android:background="@color/blu"
+        android:orientation="vertical">
 
-        <include layout="@layout/include_main_settings_1" />
+       <include
+            android:id="@+id/spinner_settings"
+            layout="@layout/settings_1" />
 
     </LinearLayout>
 </LinearLayout>

@@ -8,7 +8,7 @@
     android:layout_marginStart="@dimen/margin"
     android:layout_marginTop="@dimen/margin"
     android:layout_marginEnd="@dimen/margin"
-    android:layout_marginBottom="32dp"
+    android:layout_marginBottom="@dimen/spacing_xlarge"
     android:orientation="horizontal"
     android:background="@android:color/holo_orange_dark">
 

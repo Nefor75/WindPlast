@@ -1,33 +1,45 @@
 package com.glumy.windplast;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.FragmentTransaction;
 
+import com.glumy.windplast.fragment.FragmentSettingsOne;
+import com.glumy.windplast.fragment.FragmentSettingsThree;
+import com.glumy.windplast.fragment.FragmentSettingsTwo;
 
 
 public class ActivityMain extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     private ActionBar actionBar;
     private Toolbar toolbar;
-
+    private FragmentSettingsOne frag1;
+    private FragmentSettingsTwo frag2;
+    private FragmentSettingsThree frag3;
+    private FragmentTransaction trans;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        frag1 = new FragmentSettingsOne();
+        frag2 = new FragmentSettingsTwo();
+        frag3 = new FragmentSettingsThree();
 
         initToolbar();
-      //  initFragment();
+
 //        // launch instruction when first launch
 //        if (sharedPref.isFirstLaunch()) {
 //            startActivity(new Intent(this, ActivityInstruction.class));
@@ -58,13 +70,20 @@ public class ActivityMain extends AppCompatActivity implements AdapterView.OnIte
     //Методы Спиннера
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+             trans = getSupportFragmentManager().beginTransaction();
 
-            switch (position){
-                case 0:
-                    String text = parent.getItemAtPosition(position).toString();
-                    Toast.makeText(parent.getContext(),text, Toast.LENGTH_SHORT).show();
-                    break;
-            }
+        switch (position) {
+            case 0:
+                trans.replace(R.id.ll_settings, frag1);
+                break;
+            case 1:
+                trans.replace(R.id.ll_settings, frag2);
+                break;
+            case 2:
+                trans.replace(R.id.ll_settings, frag3);
+                break;
+        }
+        trans.commit();
     }
 
     @Override
@@ -87,7 +106,34 @@ public class ActivityMain extends AppCompatActivity implements AdapterView.OnIte
         getMenuInflater().inflate(R.menu.menu_activity_main, menu);
         return true;
     }
+    //onClick
+    public void onClick(View view){
+        Intent i;
+        int resource = 0;
+
+        switch (view.getId()){
+
+            case R.id.iv_1_1:
+                ImageView mImageView = findViewById(R.id.iv_1_1);
+               // mImageView.setImageResource(R.drawable.icon_toolbar100);
+                resource = R.drawable.icon_toolbar100;
+                i = new Intent(this, ActivityProductDetails.class);
+                i.putExtra("image", resource);
+                startActivity(i);
+                break;
+
+            case R.id.iv_1_2:
+                ImageView mImageView_1_2 = findViewById(R.id.iv_1_2);
+              //  mImageView_1_2.setImageResource(R.drawable.icon_toolbar100);
+                resource = R.drawable.my_rectangle;
+                i = new Intent(this, ActivityProductDetails.class);
+                i.putExtra("image", resource);
+                startActivity(i);
+                break;
+        }
+
 
     }
+}
 
 

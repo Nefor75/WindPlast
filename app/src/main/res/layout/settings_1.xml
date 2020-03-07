@@ -8,10 +8,9 @@
     android:layout_marginStart="@dimen/margin"
     android:layout_marginTop="@dimen/margin"
     android:layout_marginEnd="@dimen/margin"
-    android:layout_marginBottom="32dp"
+    android:layout_marginBottom="@dimen/spacing_xlarge"
     android:orientation="horizontal"
-    android:background="@color/colorPrimary"
-    >
+    android:background="@color/colorPrimary">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -29,10 +28,11 @@
             android:id="@+id/iv_1_1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:srcCompat="@android:drawable/ic_menu_gallery"
+            android:src="@drawable/icon_toolbar100"
             android:layout_weight="1"
             android:contentDescription="@null"
-            tools:ignore="NestedWeights" />
+            tools:ignore="NestedWeights"
+            android:onClick="onClick"/>
 
         <View
             android:layout_width="match_parent"
@@ -97,7 +97,8 @@
             android:layout_height="wrap_content"
             app:srcCompat="@android:drawable/ic_menu_gallery"
             android:layout_weight="1"
-            android:contentDescription="@null"/>
+            android:contentDescription="@null"
+            android:onClick="onClick"/>
 
         <View
             android:layout_width="match_parent"

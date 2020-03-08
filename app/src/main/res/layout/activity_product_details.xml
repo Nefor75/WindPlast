@@ -7,6 +7,15 @@
     android:layout_height="match_parent"
     android:background="@android:color/holo_blue_light">
 
+    <TextView
+        android:id="@+id/textView_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        android:background="@color/colorPrimary"/>
+
     <ImageView
         android:id="@+id/iv_product_details"
         android:layout_width="match_parent"
@@ -85,6 +94,17 @@
         android:textColor="@android:color/white"
         android:background="@color/grey_60"/>
 
+    <TextView
+        android:id="@+id/tv_list_7"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="2"
+        android:text="Цена"
+        android:textSize="24sp"
+        android:gravity="end"
+        android:textColor="@android:color/white"
+        android:background="@color/grey_60"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -94,38 +114,40 @@
             android:id="@+id/btn_1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Еще посчитать"
+            android:text="@string/button1"
             android:textColor="@android:color/white"
             android:background="@android:color/holo_green_dark"
             android:layout_gravity="bottom"
+            android:layout_marginEnd="@dimen/margin"
             android:layout_weight="1"
-            android:textSize="12sp"
-            android:onClick="onClick"/>
-
-        <Button
-            android:id="@+id/btn_2"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Редактировать"
-            android:textColor="@android:color/white"
-            android:background="@android:color/holo_green_dark"
-            android:layout_gravity="bottom"
-            android:layout_weight="1"
-            android:layout_marginHorizontal="@dimen/spacing_small"
             android:textSize="12sp"
             android:onClick="onClick"/>
 
     <Button
         android:id="@+id/btn_3"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/button1"
+        android:layout_height="match_parent"
+        android:text="@string/button2"
         android:textColor="@android:color/white"
         android:background="@android:color/holo_green_dark"
         android:layout_gravity="bottom"
+        android:layout_marginHorizontal="@dimen/margin"
         android:layout_weight="1"
         android:textSize="12sp"
         android:onClick="onClick"/>
+
+        <Button
+            android:id="@+id/btn_4"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/button3"
+            android:textColor="@android:color/white"
+            android:background="@android:color/holo_green_dark"
+            android:layout_gravity="bottom"
+            android:layout_marginStart="@dimen/margin"
+            android:layout_weight="1"
+            android:textSize="12sp"
+            android:onClick="onClick"/>
 
      </LinearLayout>
     </LinearLayout>

@@ -7,11 +7,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class ActivityProductDetails extends AppCompatActivity {
 
     private ImageView mainImage;
+    private TextView textView_main;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,30 +22,37 @@ public class ActivityProductDetails extends AppCompatActivity {
 
         initComponent();
 
-        Bundle recivedImg = getIntent().getExtras();
-        assert recivedImg != null;
-        int m_id = recivedImg.getInt("image");
-        mainImage.setImageResource(m_id);
-
     }
+
     public void onClick(View view){
         Intent i;
         switch (view.getId()){
             case R.id.btn_1:
                 super.onBackPressed();
                 break;
-            case R.id.btn_2:
-                Toast.makeText(this, "Включается редактирование всех размеров", Toast.LENGTH_LONG).show();
-                break;
             case R.id.btn_3:
-                Toast.makeText(this, "Добавлен в заказ", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "Добавлен в заказ", Toast.LENGTH_SHORT).show();
                 break;
-
+            case R.id.btn_4:
+                Toast.makeText(this, "Переход", Toast.LENGTH_SHORT).show();
+                break;
         }
     }
 
     private void initComponent(){
         mainImage = findViewById(R.id.iv_product_details);
+        textView_main = findViewById(R.id.textView_main);
+
+        Bundle recivedImg = getIntent().getExtras();
+        Bundle recivedTxt = getIntent().getExtras();
+        assert recivedImg != null;
+        assert recivedTxt != null;
+        int m_id = recivedImg.getInt("image");
+        String str = recivedTxt.getString("txt");
+
+        mainImage.setImageResource(m_id);
+        textView_main.setText(str);
+
     }
 
 //    @Override

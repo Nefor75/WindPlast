@@ -4,7 +4,9 @@
     <string name="tv_as_bottom_line">Developed by GlooMy</string>
 
     <!--Activity_product_details -->
-    <string name="button1">Добавить в заказ</string>
+    <string name="button1">Назад</string>
+    <string name="button2">Сохранить</string>
+    <string name="button3">В заказ</string>
 
     <!--Toolbar -->
     <string name="settings">Настройки</string>
@@ -13,7 +15,7 @@
     <string-array name="spinner_menu">
         <item>Панельный дом</item>
         <item>Кирпичный дом</item>
-        <item>Свои размеры</item>
+
     </string-array>
 
     <!--    <integer-array name="about_images_array">-->
@@ -31,10 +33,17 @@
     </string>
     <string name="version_unknown">Unknown</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
     <string name="width">Ширина</string>
     <string name="height">Высота</string>
     <string name="glasses">Стеклопакет</string>
+
+    <!-- String resourse for settings_1 -->
+    <string name="name_settings1_up_left">Двухсекционное с левой поворотно-откидной створкой</string>
+    <string name="name_settings1_mid_left">Глухое</string>
+    <string name="name_settings1_bottom_left">Балконный блок</string>
+    <string name="name_settings1_up_right">up_right</string>
+    <string name="name_settings1_mid_right">mid_right</string>
+    <string name="name_settings1_bottom_right">bottom_right</string>
 
 </resources>

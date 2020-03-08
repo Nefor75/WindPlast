@@ -10,7 +10,7 @@
     android:layout_marginEnd="@dimen/margin"
     android:layout_marginBottom="@dimen/spacing_xlarge"
     android:orientation="horizontal"
-    android:background="@android:color/holo_green_dark">
+    android:background="@color/grey_90">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -19,19 +19,23 @@
         android:layout_weight="1">
 
         <TextView
-            android:id="@+id/tv_1_1"
+            android:id="@+id/set2_tv_up_left"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:text="@string/name_settings1_up_left"
+            android:textColor="@android:color/white"/>
 
         <ImageView
-            android:id="@+id/iv_1_1"
+            android:id="@+id/set2_iv_up_left"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:srcCompat="@android:drawable/ic_menu_gallery"
+            android:layout_marginHorizontal="@dimen/margin"
+            android:src="@drawable/img_200x130"
+            android:tag="@string/name_settings1_up_left"
             android:layout_weight="1"
             android:contentDescription="@null"
-            tools:ignore="NestedWeights" />
+            tools:ignore="NestedWeights"
+            android:onClick="onClick"  />
 
         <View
             android:layout_width="match_parent"
@@ -39,18 +43,21 @@
             android:background="@color/view" />
 
         <TextView
-            android:id="@+id/tv_2_1"
+            android:id="@+id/set2_tv_mid_left"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:text="@string/name_settings1_mid_left" />
 
         <ImageView
-            android:id="@+id/iv_2_1"
+            android:id="@+id/set2_iv_mid_left"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:srcCompat="@android:drawable/ic_menu_gallery"
+            android:layout_marginHorizontal="@dimen/margin"
+            android:src="@drawable/img_200x130"
+            android:tag="@string/name_settings1_mid_left"
             android:layout_weight="1"
-            android:contentDescription="@null"/>
+            android:contentDescription="@null"
+            android:onClick="onClick"/>
 
         <View
             android:layout_width="match_parent"
@@ -58,18 +65,21 @@
             android:background="@color/view" />
 
         <TextView
-            android:id="@+id/tv_1_3"
+            android:id="@+id/set2_tv_bottom_left"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:text="@string/name_settings1_bottom_left" />
 
         <ImageView
-            android:id="@+id/iv_1_3"
+            android:id="@+id/set2_iv_bottom_left"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:srcCompat="@android:drawable/ic_menu_gallery"
+            android:layout_marginHorizontal="@dimen/margin"
+            android:tag="@string/name_settings1_bottom_left"
+            android:src="@drawable/img_200x130"
             android:layout_weight="1"
-            android:contentDescription="@null"/>
+            android:contentDescription="@null"
+            android:onClick="onClick"/>
 
     </LinearLayout>
 
@@ -85,18 +95,21 @@
         android:layout_weight="1">
 
         <TextView
-            android:id="@+id/tv_1_2"
+            android:id="@+id/set2_tv_up_right"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="TextView" />
 
         <ImageView
-            android:id="@+id/iv_1_2"
+            android:id="@+id/set2_iv_up_right"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:srcCompat="@android:drawable/ic_menu_gallery"
+            android:layout_marginHorizontal="@dimen/margin"
+            android:src="@drawable/img_200x130"
             android:layout_weight="1"
-            android:contentDescription="@null"/>
+            android:tag="@string/name_settings1_up_right"
+            android:contentDescription="@null"
+            android:onClick="onClick"/>
 
         <View
             android:layout_width="match_parent"
@@ -104,18 +117,21 @@
             android:background="@color/view" />
 
         <TextView
-            android:id="@+id/tv_2_2"
+            android:id="@+id/set2_tv_mid_right"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="TextView" />
 
         <ImageView
-            android:id="@+id/iv_2_2"
+            android:id="@+id/set2_iv_mid_right"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:srcCompat="@android:drawable/ic_menu_gallery"
+            android:layout_marginHorizontal="@dimen/margin"
+            android:src="@drawable/img_200x130"
+            android:tag="@string/name_settings1_mid_right"
             android:layout_weight="1"
-            android:contentDescription="@null"/>
+            android:contentDescription="@null"
+            android:onClick="onClick"/>
 
         <View
             android:layout_width="match_parent"
@@ -123,18 +139,21 @@
             android:background="@color/view" />
 
         <TextView
-            android:id="@+id/tv_2_3"
+            android:id="@+id/set2_tv_bottom_right"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="TextView" />
 
         <ImageView
-            android:id="@+id/iv_2_3"
+            android:id="@+id/set2_iv_bottom_right"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:srcCompat="@android:drawable/ic_menu_gallery"
+            android:layout_marginHorizontal="@dimen/margin"
+            android:src="@drawable/img_200x130"
+            android:tag="@string/name_settings1_bottom_right"
             android:layout_weight="1"
-            android:contentDescription="@null" />
+            android:contentDescription="@null"
+            android:onClick="onClick"/>
 
     </LinearLayout>
 </LinearLayout>

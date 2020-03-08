@@ -9,6 +9,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,7 +17,6 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.glumy.windplast.fragment.FragmentSettingsOne;
-import com.glumy.windplast.fragment.FragmentSettingsThree;
 import com.glumy.windplast.fragment.FragmentSettingsTwo;
 
 
@@ -26,8 +26,9 @@ public class ActivityMain extends AppCompatActivity implements AdapterView.OnIte
     private Toolbar toolbar;
     private FragmentSettingsOne frag1;
     private FragmentSettingsTwo frag2;
-    private FragmentSettingsThree frag3;
     private FragmentTransaction trans;
+    private TextView tvProductDetails;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +37,6 @@ public class ActivityMain extends AppCompatActivity implements AdapterView.OnIte
 
         frag1 = new FragmentSettingsOne();
         frag2 = new FragmentSettingsTwo();
-        frag3 = new FragmentSettingsThree();
 
         initToolbar();
 
@@ -52,7 +52,7 @@ public class ActivityMain extends AppCompatActivity implements AdapterView.OnIte
         setSupportActionBar(toolbar);
         actionBar = getSupportActionBar();
         actionBar.setDisplayShowTitleEnabled(false);//не отображается title слева
-        toolbar.setNavigationIcon(R.drawable.icon_toolbar100);
+        toolbar.setNavigationIcon(R.drawable.icon_toolbar100);//иконка слева в тулбаре
         initSpinner();
 
     }
@@ -79,9 +79,6 @@ public class ActivityMain extends AppCompatActivity implements AdapterView.OnIte
             case 1:
                 trans.replace(R.id.ll_settings, frag2);
                 break;
-            case 2:
-                trans.replace(R.id.ll_settings, frag3);
-                break;
         }
         trans.commit();
     }
@@ -90,7 +87,6 @@ public class ActivityMain extends AppCompatActivity implements AdapterView.OnIte
     public void onNothingSelected(AdapterView<?> parent) {
 
     }
-
     //Методы меню
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -109,31 +105,104 @@ public class ActivityMain extends AppCompatActivity implements AdapterView.OnIte
     //onClick
     public void onClick(View view){
         Intent i;
-        int resource = 0;
+        int resource_img = 0;
+        String resource_txt = "";
 
         switch (view.getId()){
 
-            case R.id.iv_1_1:
-                ImageView mImageView = findViewById(R.id.iv_1_1);
-               // mImageView.setImageResource(R.drawable.icon_toolbar100);
-                resource = R.drawable.icon_toolbar100;
+            case R.id.set1_iv_up_left :
+                ImageView set1_iv_up_left = findViewById(R.id.set1_iv_up_left);
+                resource_img = R.drawable.img_200x130;
+                resource_txt = set1_iv_up_left.getTag().toString();
                 i = new Intent(this, ActivityProductDetails.class);
-                i.putExtra("image", resource);
-                startActivity(i);
                 break;
 
-            case R.id.iv_1_2:
-                ImageView mImageView_1_2 = findViewById(R.id.iv_1_2);
-              //  mImageView_1_2.setImageResource(R.drawable.icon_toolbar100);
-                resource = R.drawable.my_rectangle;
+            case R.id.set1_iv_mid_left:
+                ImageView set1_iv_mid_left = findViewById(R.id.set1_iv_mid_left);
+                resource_img = R.drawable.img_200x130;
+                resource_txt = set1_iv_mid_left.getTag().toString();
                 i = new Intent(this, ActivityProductDetails.class);
-                i.putExtra("image", resource);
-                startActivity(i);
                 break;
+
+            case R.id.set1_iv_bottom_left:
+                ImageView set1_iv_bottom_left = findViewById(R.id.set1_iv_bottom_left);
+                resource_img = R.drawable.img_200x130;
+                resource_txt = set1_iv_bottom_left.getTag().toString();
+                i = new Intent(this, ActivityProductDetails.class);
+                break;
+
+            case R.id.set1_iv_up_right:
+                ImageView set1_iv_up_right = findViewById(R.id.set1_iv_up_right);
+                resource_img = R.drawable.img_200x130;
+                resource_txt = set1_iv_up_right.getTag().toString();
+                i = new Intent(this, ActivityProductDetails.class);
+                break;
+
+            case R.id.set1_iv_mid_right:
+                ImageView set1_iv_mid_right = findViewById(R.id.set1_iv_mid_right);
+                resource_img = R.drawable.img_200x130;
+                resource_txt = set1_iv_mid_right.getTag().toString();
+                i = new Intent(this, ActivityProductDetails.class);
+                break;
+
+            case R.id.set1_iv_bottom_right:
+                ImageView set1_iv_bottom_right = findViewById(R.id.set1_iv_bottom_right);
+                resource_img = R.drawable.img_200x130;
+                resource_txt = set1_iv_bottom_right.getTag().toString();
+                i = new Intent(this, ActivityProductDetails.class);
+                break;
+
+            case R.id.set2_iv_up_left :
+                ImageView set2_iv_up_left = findViewById(R.id.set2_iv_up_left);
+                resource_img = R.drawable.img_200x130;
+                resource_txt = set2_iv_up_left.getTag().toString();
+                i = new Intent(this, ActivityProductDetails.class);
+                break;
+
+            case R.id.set2_iv_mid_left:
+                ImageView set2_iv_mid_left = findViewById(R.id.set2_iv_mid_left);
+                resource_img = R.drawable.img_200x130;
+                resource_txt = set2_iv_mid_left.getTag().toString();
+                i = new Intent(this, ActivityProductDetails.class);
+                break;
+
+            case R.id.set2_iv_bottom_left:
+                ImageView set2_iv_bottom_left = findViewById(R.id.set2_iv_bottom_left);
+                resource_img = R.drawable.img_200x130;
+                resource_txt = set2_iv_bottom_left.getTag().toString();
+                i = new Intent(this, ActivityProductDetails.class);
+                break;
+
+            case R.id.set2_iv_up_right:
+                ImageView set2_iv_up_right = findViewById(R.id.set2_iv_up_right);
+                resource_img = R.drawable.img_200x130;
+                resource_txt = set2_iv_up_right.getTag().toString();
+                i = new Intent(this, ActivityProductDetails.class);
+                break;
+
+            case R.id.set2_iv_mid_right:
+                ImageView set2_iv_mid_right = findViewById(R.id.set2_iv_mid_right);
+                resource_img = R.drawable.img_200x130;
+                resource_txt = set2_iv_mid_right.getTag().toString();
+                i = new Intent(this, ActivityProductDetails.class);
+                break;
+
+            case R.id.set2_iv_bottom_right:
+                ImageView set2_iv_bottom_right = findViewById(R.id.set2_iv_bottom_right);
+                resource_img = R.drawable.img_200x130;
+                resource_txt = set2_iv_bottom_right.getTag().toString();
+                i = new Intent(this, ActivityProductDetails.class);
+                break;
+
+            default:
+                throw new IllegalStateException("Unexpected value: " + view.getId());
         }
-
-
+        i.putExtra("image", resource_img);
+        i.putExtra("txt", resource_txt);
+        startActivity(i);
     }
+
 }
+
 
 

@@ -34,7 +34,8 @@ public class ActivityProductDetails extends AppCompatActivity {
                 Toast.makeText(this, "Добавлен в заказ", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.btn_4:
-                Toast.makeText(this, "Переход", Toast.LENGTH_SHORT).show();
+                i = new Intent(this, ActivityShoppingCart.class);
+                startActivity(i);
                 break;
         }
     }

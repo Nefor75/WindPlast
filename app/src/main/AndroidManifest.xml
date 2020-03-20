@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.glumy.windplast">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -24,6 +26,8 @@
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:theme="@style/Main"/>
         <activity android:name=".ActivityProductDetails"
+            android:theme="@style/Main"/>
+        <activity android:name=".ActivityShoppingCart"
             android:theme="@style/Main"/>
     </application>
 

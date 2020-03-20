@@ -4,9 +4,13 @@
     <string name="tv_as_bottom_line">Developed by GlooMy</string>
 
     <!--Activity_product_details -->
+    <string name="width">Ширина</string>
+    <string name="height">Высота</string>
+    <string name="glasses">Стеклопакет</string>
+    <string name="quantity">Количество</string>
     <string name="button1">Назад</string>
-    <string name="button2">Сохранить</string>
-    <string name="button3">В заказ</string>
+    <string name="button2">Добавить в корзину</string>
+    <string name="button3">Перейти в корзину</string>
 
     <!--Toolbar -->
     <string name="settings">Настройки</string>
@@ -32,11 +36,6 @@
         \n\nVivamus aliquam nisl rutrum orci volutpat porta in ornare est. Quisque ligula ipsum, vulputate id aliquam vitae, semper vitae orci. Nam non pulvinar ligula, eget tincidunt ante. Quisque sapien massa, varius tempus pretium id, vehicula at magna. Ut ut ultrices augue. Nam nec ullamcorper tellus, at finibus lectus. Fusce vel iaculis mauris, id porta nulla. Aenean ac mollis sapien. Morbi imperdiet augue tempus nulla luctus, sit amet feugiat purus elementum.
     </string>
     <string name="version_unknown">Unknown</string>
-
-
-    <string name="width">Ширина</string>
-    <string name="height">Высота</string>
-    <string name="glasses">Стеклопакет</string>
 
     <!-- String resourse for settings_1 -->
     <string name="name_settings1_up_left">Двухсекционное с левой поворотно-откидной створкой</string>

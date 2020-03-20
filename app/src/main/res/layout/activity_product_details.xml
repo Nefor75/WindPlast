@@ -85,17 +85,27 @@
         android:background="@color/grey_60"/>
 
     <TextView
-        android:id="@+id/tv_list_6"
+    android:id="@+id/tv_list_6"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_weight="2"
+    android:text="Отлив"
+    android:textSize="24sp"
+    android:textColor="@android:color/white"
+    android:background="@color/grey_60"/>
+
+    <TextView
+        android:id="@+id/tv_list_7"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="2"
-        android:text="Отлив"
+        android:text="@string/quantity"
         android:textSize="24sp"
         android:textColor="@android:color/white"
         android:background="@color/grey_60"/>
 
     <TextView
-        android:id="@+id/tv_list_7"
+        android:id="@+id/tv_list_8"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="2"

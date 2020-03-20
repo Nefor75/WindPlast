@@ -39,7 +39,7 @@ public class ActivityMain extends AppCompatActivity implements AdapterView.OnIte
         frag2 = new FragmentSettingsTwo();
 
         initToolbar();
-
+        initComponents();
 //        // launch instruction when first launch
 //        if (sharedPref.isFirstLaunch()) {
 //            startActivity(new Intent(this, ActivityInstruction.class));
@@ -200,6 +200,10 @@ public class ActivityMain extends AppCompatActivity implements AdapterView.OnIte
         i.putExtra("image", resource_img);
         i.putExtra("txt", resource_txt);
         startActivity(i);
+    }
+
+    public void initComponents(){
+
     }
 
 }

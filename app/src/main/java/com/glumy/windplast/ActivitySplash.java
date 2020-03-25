@@ -1,22 +1,19 @@
 package com.glumy.windplast;
 
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.Typeface;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.TextSwitcher;
+import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.ViewSwitcher;
 import androidx.appcompat.app.AppCompatActivity;
 import java.util.concurrent.TimeUnit;
 
 public class ActivitySplash extends AppCompatActivity {
 
     private Animation anim;
+    private Animation slideInLeftAnimation;
 
 
     @Override
@@ -29,6 +26,7 @@ public class ActivitySplash extends AppCompatActivity {
 
         private void startActivityMainDelay() {
             anim = AnimationUtils.loadAnimation(this, R.anim.tv_animation);
+            slideInLeftAnimation = AnimationUtils.loadAnimation(this, android.R.anim.slide_in_left);
 
         Thread t = new Thread(new Runnable() {
             public void run() {
@@ -36,7 +34,7 @@ public class ActivitySplash extends AppCompatActivity {
                     TimeUnit.SECONDS.sleep(1);
                     runOnUiThread(run_tv_bottom);
                     TimeUnit.SECONDS.sleep(3);
-                    runOnUiThread(run_tv_center);
+                    runOnUiThread(run_iv_center);
                     TimeUnit.SECONDS.sleep(3);
                     runOnUiThread(run_activity_main);
                 } catch (InterruptedException e) {
@@ -50,14 +48,21 @@ public class ActivitySplash extends AppCompatActivity {
     Runnable run_tv_bottom = new Runnable() {
         public void run() {
            TextView tv_bottom = findViewById(R.id.tv_as_bottom_line);
+            ImageView imageView = findViewById(R.id.image_top);
             tv_bottom.setVisibility(View.VISIBLE);
             tv_bottom.startAnimation(anim);
+            imageView.setImageResource(R.drawable.image_top);
+            imageView.setVisibility(View.VISIBLE);
+            imageView.startAnimation(anim);
         }
     };
 
-    Runnable run_tv_center = new Runnable() {
+    Runnable run_iv_center = new Runnable() {
         public void run() {
-            makeTextSwitcher();
+            ImageView imageView = findViewById(R.id.image_slide_center);
+            imageView.setImageResource(R.drawable.image_splash);
+            imageView.startAnimation(slideInLeftAnimation);
+
         }
     };
 
@@ -69,28 +74,6 @@ public class ActivitySplash extends AppCompatActivity {
         }
     };
 
-    private void makeTextSwitcher(){
-        Animation slideInLeftAnimation = AnimationUtils.loadAnimation(this,
-                android.R.anim.slide_in_left);
-
-        TextSwitcher mTextSwitcher = findViewById(R.id.txt_switcher);
-        mTextSwitcher.setInAnimation(slideInLeftAnimation);
-
-        mTextSwitcher.setFactory(new ViewSwitcher.ViewFactory() {
-            @Override
-            public View makeView() {
-                TextView textView = new TextView(ActivitySplash.this);
-                textView.setTextSize(80);
-                textView.setTextColor(Color.RED);
-                textView.setGravity(Gravity.CENTER_HORIZONTAL);
-                textView.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD_ITALIC));
-                textView.setShadowLayer(10, 10, 10, Color.BLACK);
-                return textView;
-            }
-        });
-        mTextSwitcher.setText(getText(R.string.app_name));
-    }
-
-}
+ }
 
 

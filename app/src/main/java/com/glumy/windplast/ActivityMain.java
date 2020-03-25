@@ -7,7 +7,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -15,9 +14,10 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentTransaction;
-
+import com.glumy.windplast.Cart.Cart;
 import com.glumy.windplast.fragment.FragmentSettingsOne;
 import com.glumy.windplast.fragment.FragmentSettingsTwo;
+import java.util.ArrayList;
 
 
 public class ActivityMain extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
@@ -35,11 +35,9 @@ public class ActivityMain extends AppCompatActivity implements AdapterView.OnIte
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        frag1 = new FragmentSettingsOne();
-        frag2 = new FragmentSettingsTwo();
-
         initToolbar();
-        initComponents();
+        initFragments();
+
 //        // launch instruction when first launch
 //        if (sharedPref.isFirstLaunch()) {
 //            startActivity(new Intent(this, ActivityInstruction.class));
@@ -64,7 +62,7 @@ public class ActivityMain extends AppCompatActivity implements AdapterView.OnIte
         adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
-        //spinner.setSelection(0);//выбор позиции загрузки
+        //spinner.setSelection(0);//выбор позиции загрузки item
     }
 
     //Методы Спиннера
@@ -105,104 +103,86 @@ public class ActivityMain extends AppCompatActivity implements AdapterView.OnIte
     //onClick
     public void onClick(View view){
         Intent i;
-        int resource_img = 0;
-        String resource_txt = "";
+        Cart recived = new Cart();
 
         switch (view.getId()){
 
             case R.id.set1_iv_up_left :
-                ImageView set1_iv_up_left = findViewById(R.id.set1_iv_up_left);
-                resource_img = R.drawable.img_200x130;
-                resource_txt = set1_iv_up_left.getTag().toString();
-                i = new Intent(this, ActivityProductDetails.class);
-                break;
+            Cart set1UpLeft = new Cart(view.getId(), R.drawable.icon_toolbar100, R.string.name_settings1_up_left,
+                1350, 1400, 1, 1000);
+            recived = set1UpLeft;
+                  break;
 
             case R.id.set1_iv_mid_left:
-                ImageView set1_iv_mid_left = findViewById(R.id.set1_iv_mid_left);
-                resource_img = R.drawable.img_200x130;
-                resource_txt = set1_iv_mid_left.getTag().toString();
-                i = new Intent(this, ActivityProductDetails.class);
+
                 break;
 
             case R.id.set1_iv_bottom_left:
-                ImageView set1_iv_bottom_left = findViewById(R.id.set1_iv_bottom_left);
-                resource_img = R.drawable.img_200x130;
-                resource_txt = set1_iv_bottom_left.getTag().toString();
-                i = new Intent(this, ActivityProductDetails.class);
+
+
                 break;
 
             case R.id.set1_iv_up_right:
-                ImageView set1_iv_up_right = findViewById(R.id.set1_iv_up_right);
-                resource_img = R.drawable.img_200x130;
-                resource_txt = set1_iv_up_right.getTag().toString();
-                i = new Intent(this, ActivityProductDetails.class);
+
+
                 break;
 
             case R.id.set1_iv_mid_right:
-                ImageView set1_iv_mid_right = findViewById(R.id.set1_iv_mid_right);
-                resource_img = R.drawable.img_200x130;
-                resource_txt = set1_iv_mid_right.getTag().toString();
-                i = new Intent(this, ActivityProductDetails.class);
+
+
                 break;
 
             case R.id.set1_iv_bottom_right:
-                ImageView set1_iv_bottom_right = findViewById(R.id.set1_iv_bottom_right);
-                resource_img = R.drawable.img_200x130;
-                resource_txt = set1_iv_bottom_right.getTag().toString();
-                i = new Intent(this, ActivityProductDetails.class);
+
+
                 break;
 
             case R.id.set2_iv_up_left :
-                ImageView set2_iv_up_left = findViewById(R.id.set2_iv_up_left);
-                resource_img = R.drawable.img_200x130;
-                resource_txt = set2_iv_up_left.getTag().toString();
-                i = new Intent(this, ActivityProductDetails.class);
+
+
                 break;
 
             case R.id.set2_iv_mid_left:
-                ImageView set2_iv_mid_left = findViewById(R.id.set2_iv_mid_left);
-                resource_img = R.drawable.img_200x130;
-                resource_txt = set2_iv_mid_left.getTag().toString();
-                i = new Intent(this, ActivityProductDetails.class);
+
+
                 break;
 
             case R.id.set2_iv_bottom_left:
-                ImageView set2_iv_bottom_left = findViewById(R.id.set2_iv_bottom_left);
-                resource_img = R.drawable.img_200x130;
-                resource_txt = set2_iv_bottom_left.getTag().toString();
-                i = new Intent(this, ActivityProductDetails.class);
+
+
                 break;
 
             case R.id.set2_iv_up_right:
-                ImageView set2_iv_up_right = findViewById(R.id.set2_iv_up_right);
-                resource_img = R.drawable.img_200x130;
-                resource_txt = set2_iv_up_right.getTag().toString();
-                i = new Intent(this, ActivityProductDetails.class);
+
+
                 break;
 
             case R.id.set2_iv_mid_right:
-                ImageView set2_iv_mid_right = findViewById(R.id.set2_iv_mid_right);
-                resource_img = R.drawable.img_200x130;
-                resource_txt = set2_iv_mid_right.getTag().toString();
-                i = new Intent(this, ActivityProductDetails.class);
+
+
                 break;
 
             case R.id.set2_iv_bottom_right:
-                ImageView set2_iv_bottom_right = findViewById(R.id.set2_iv_bottom_right);
-                resource_img = R.drawable.img_200x130;
-                resource_txt = set2_iv_bottom_right.getTag().toString();
-                i = new Intent(this, ActivityProductDetails.class);
+
+
                 break;
 
             default:
                 throw new IllegalStateException("Unexpected value: " + view.getId());
         }
-        i.putExtra("image", resource_img);
-        i.putExtra("txt", resource_txt);
+        i = new Intent(this, ActivityProductDetails.class);
+        i.putExtra(Cart.class.getSimpleName(), recived);
         startActivity(i);
     }
 
-    public void initComponents(){
+    public void initFragments(){
+        frag1 = new FragmentSettingsOne();
+        frag2 = new FragmentSettingsTwo();
+
+//        ArrayList<Cart> winSet1 = new ArrayList<Cart>();
+//        winSet1.add(new Cart(R.id.set1_iv_up_left, R.drawable.img_200x130, R.string.name_settings1_up_left,
+//                1350, 1400, 1, 1000));
+
 
     }
 

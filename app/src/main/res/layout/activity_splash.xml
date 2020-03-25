@@ -1,42 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/blu">
 
-    <ImageView
+    <View
+        android:id="@+id/view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/splashbackground"
-        android:scaleType="centerCrop"
-        android:contentDescription="@null" />
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="@color/colorPrimary"
+        android:layout_marginBottom="@dimen/spacing_xlarge"
+        android:layout_marginLeft="@dimen/margin"
+        android:layout_marginRight="@dimen/margin"
+        android:layout_marginTop="@dimen/margin"/>
 
-    <TextSwitcher
-        android:id="@+id/txt_switcher"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true">
+    <ImageView
+        android:id="@+id/image_top"
+        android:layout_width="80dp"
+        android:layout_height="200dp"
+        android:layout_alignTop="@+id/view"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:contentDescription="@null"
+        android:src="@drawable/image_top"
+        android:visibility="gone"/>
 
-    </TextSwitcher>
+    <ImageView
+        android:id="@+id/image_slide_center"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:layout_centerInParent="true"
+        android:contentDescription="@null"/>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
+      <TextView
+        android:id="@+id/tv_as_bottom_line"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:gravity="center"
-        android:orientation="vertical">
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="50dp"
+        android:gravity="bottom|center_horizontal"
+        android:text="@string/tv_as_bottom_line"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+        android:textColor="@android:color/white"
+        android:visibility="gone" />
 
-        <TextView
-            android:id="@+id/tv_as_bottom_line"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/spacing_xxlarge"
-            android:gravity="center"
-            android:text="@string/tv_as_bottom_line"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-            android:textColor="@android:color/white"
-            android:visibility="gone"/>
-
-    </LinearLayout>
-
-</RelativeLayout>
+    </RelativeLayout>

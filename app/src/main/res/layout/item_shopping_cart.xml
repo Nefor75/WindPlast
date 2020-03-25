@@ -7,18 +7,30 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="100dp"
         android:background="@android:color/white"
-        android:minHeight="100dp"
         android:orientation="horizontal"
         android:padding="@dimen/spacing_middle">
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical|start"/>
+            android:id="@+id/iv_shopping_cart"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_gravity="center_vertical|start"
+            android:contentDescription="@null"
+            android:background="@color/grey_40"/>
 
-
+        <TextView
+            android:id="@+id/tv_shopping_cart"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_gravity="center_vertical|end"
+            android:text="Глухое"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/spacing_xlarge"
+            android:gravity="center"/>
 
     </LinearLayout>
 </com.balysv.materialripple.MaterialRippleLayout>

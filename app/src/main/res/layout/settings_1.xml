@@ -31,11 +31,11 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/margin"
             android:src="@drawable/img_200x130"
-            android:tag="@string/name_settings1_up_left"
             android:layout_weight="1"
             android:contentDescription="@null"
             tools:ignore="NestedWeights"
             android:onClick="onClick"
+            android:adjustViewBounds="true"
             />
 
         <View

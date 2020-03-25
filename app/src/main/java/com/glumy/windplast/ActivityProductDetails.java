@@ -9,11 +9,13 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.glumy.windplast.Cart.Cart;
+
 
 public class ActivityProductDetails extends AppCompatActivity {
 
     private ImageView mainImage;
-    private TextView textView_main;
+    private TextView textView_main,text1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +23,7 @@ public class ActivityProductDetails extends AppCompatActivity {
         setContentView(R.layout.activity_product_details);
 
         initComponent();
+
 
     }
 
@@ -43,16 +46,28 @@ public class ActivityProductDetails extends AppCompatActivity {
     private void initComponent(){
         mainImage = findViewById(R.id.iv_product_details);
         textView_main = findViewById(R.id.textView_main);
+        text1 = findViewById(R.id.tv_list_1);
 
-        Bundle recivedImg = getIntent().getExtras();
-        Bundle recivedTxt = getIntent().getExtras();
-        assert recivedImg != null;
-        assert recivedTxt != null;
-        int m_id = recivedImg.getInt("image");
-        String str = recivedTxt.getString("txt");
+//Передался экземпляр класса
+        Bundle recivedData = getIntent().getExtras();
+        final Cart setActivity;
+        if (recivedData!=null){
+            setActivity = (Cart) recivedData.getSerializable(Cart.class.getSimpleName());
+            textView_main.setText("Хуйня"+setActivity.getWidth());
+            mainImage.setImageResource(setActivity.getImage());
+            text1.setText("Высота"+setActivity.getHeight());
+        }
 
-        mainImage.setImageResource(m_id);
-        textView_main.setText(str);
+
+//        Bundle recivedImg = getIntent().getExtras();
+//        Bundle recivedTxt = getIntent().getExtras();
+//        assert recivedImg != null;
+//        assert recivedTxt != null;
+//        int m_id = recivedImg.getInt("image");
+//        String str = recivedTxt.getString("txt");
+//
+//        mainImage.setImageResource(m_id);
+//        textView_main.setText(str);
 
     }
 

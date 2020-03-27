@@ -46,7 +46,8 @@
             android:id="@+id/set2_tv_mid_left"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/name_settings1_mid_left" />
+            android:text="@string/name_settings1_mid_left"
+            android:textColor="@android:color/white"/>
 
         <ImageView
             android:id="@+id/set2_iv_mid_left"
@@ -68,14 +69,14 @@
             android:id="@+id/set2_tv_bottom_left"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/name_settings1_bottom_left" />
+            android:text="Текст"
+            android:textColor="@android:color/white"/>
 
         <ImageView
             android:id="@+id/set2_iv_bottom_left"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/margin"
-            android:tag="@string/name_settings1_bottom_left"
             android:src="@drawable/img_200x130"
             android:layout_weight="1"
             android:contentDescription="@null"
@@ -98,7 +99,8 @@
             android:id="@+id/set2_tv_up_right"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:text="TextView"
+            android:textColor="@android:color/white"/>
 
         <ImageView
             android:id="@+id/set2_iv_up_right"
@@ -120,7 +122,8 @@
             android:id="@+id/set2_tv_mid_right"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:text="TextView"
+            android:textColor="@android:color/white"/>
 
         <ImageView
             android:id="@+id/set2_iv_mid_right"
@@ -142,7 +145,8 @@
             android:id="@+id/set2_tv_bottom_right"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:text="TextView"
+            android:textColor="@android:color/white"/>
 
         <ImageView
             android:id="@+id/set2_iv_bottom_right"

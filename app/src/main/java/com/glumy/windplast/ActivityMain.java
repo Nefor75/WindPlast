@@ -17,7 +17,6 @@ import androidx.fragment.app.FragmentTransaction;
 import com.glumy.windplast.Cart.Cart;
 import com.glumy.windplast.fragment.FragmentSettingsOne;
 import com.glumy.windplast.fragment.FragmentSettingsTwo;
-import java.util.ArrayList;
 
 
 public class ActivityMain extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
@@ -108,28 +107,27 @@ public class ActivityMain extends AppCompatActivity implements AdapterView.OnIte
         switch (view.getId()){
 
             case R.id.set1_iv_up_left :
-            Cart set1UpLeft = new Cart(view.getId(), R.drawable.icon_toolbar100, R.string.name_settings1_up_left,
+            Cart set1UpLeft = new Cart(view.getId(), R.drawable.img_200x130, R.string.name_settings1_up_left,
                 1350, 1400, 1, 1000);
-            recived = set1UpLeft;
+                        recived = set1UpLeft;
                   break;
 
-            case R.id.set1_iv_mid_left:
-
-                break;
-
-            case R.id.set1_iv_bottom_left:
-
-
-                break;
-
             case R.id.set1_iv_up_right:
+                Cart set1UpRight = new Cart(view.getId(), R.drawable.bb, R.string.name_settings1_up_right,
+                        2100, 2100, 1, 3000);
+                        recived = set1UpRight;
+                break;
 
-
+            case R.id.set1_iv_mid_left:
+                Cart set1MidLeft = new Cart(view.getId(), R.drawable.triple, R.string.name_settings1_mid_left,
+                        2100, 1400, 1, 2000);
+                        recived = set1MidLeft;
                 break;
 
             case R.id.set1_iv_mid_right:
-
-
+                Cart set1MidRight = new Cart(view.getId(), R.drawable.deaf, R.string.name_settings1_mid_right,
+                        1000, 1000, 1, 500);
+                recived = set1MidRight;
                 break;
 
             case R.id.set1_iv_bottom_right:

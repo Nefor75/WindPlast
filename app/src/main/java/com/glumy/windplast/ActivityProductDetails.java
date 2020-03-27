@@ -30,32 +30,32 @@ public class ActivityProductDetails extends AppCompatActivity {
     public void onClick(View view){
         Intent i;
         switch (view.getId()){
-            case R.id.btn_1:
-                super.onBackPressed();
-                break;
-            case R.id.btn_3:
-                Toast.makeText(this, "Добавлен в заказ", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.btn_4:
-                i = new Intent(this, ActivityShoppingCart.class);
-                startActivity(i);
-                break;
+//            case R.id.btn_1:
+//                super.onBackPressed();
+//                break;
+//            case R.id.btn_3:
+//                Toast.makeText(this, "Добавлен в заказ", Toast.LENGTH_SHORT).show();
+//                break;
+//            case R.id.btn_4:
+//                i = new Intent(this, ActivityShoppingCart.class);
+//                startActivity(i);
+//                break;
         }
     }
 
     private void initComponent(){
-        mainImage = findViewById(R.id.iv_product_details);
-        textView_main = findViewById(R.id.textView_main);
-        text1 = findViewById(R.id.tv_list_1);
+        mainImage = findViewById(R.id.imageView);
+        textView_main = findViewById(R.id.textView);
 
 //Передался экземпляр класса
         Bundle recivedData = getIntent().getExtras();
         final Cart setActivity;
         if (recivedData!=null){
             setActivity = (Cart) recivedData.getSerializable(Cart.class.getSimpleName());
-            textView_main.setText("Хуйня"+setActivity.getWidth());
+            assert setActivity != null;
+            textView_main.setText(setActivity.getName());
             mainImage.setImageResource(setActivity.getImage());
-            text1.setText("Высота"+setActivity.getHeight());
+
         }
 
 

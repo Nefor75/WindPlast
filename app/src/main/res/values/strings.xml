@@ -39,10 +39,9 @@
 
     <!-- String resourse for settings_1 -->
     <string name="name_settings1_up_left">Двухсекционное с левой поворотно-откидной створкой</string>
-    <string name="name_settings1_mid_left">Глухое</string>
-    <string name="name_settings1_bottom_left">Балконный блок</string>
-    <string name="name_settings1_up_right">up_right</string>
-    <string name="name_settings1_mid_right">mid_right</string>
+    <string name="name_settings1_up_right">Балконный блок</string>
+    <string name="name_settings1_mid_left">Трехсекционное со средней поворотно-откидной створкой</string>
+    <string name="name_settings1_mid_right">Глухое</string>
     <string name="name_settings1_bottom_right">bottom_right</string>
 
 </resources>

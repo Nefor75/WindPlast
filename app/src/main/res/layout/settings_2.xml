@@ -22,7 +22,7 @@
             android:id="@+id/set2_tv_up_left"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/name_settings1_up_left"
+            android:text="@string/two"
             android:textColor="@android:color/white"/>
 
         <ImageView
@@ -31,7 +31,6 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/margin"
             android:src="@drawable/img_200x130"
-            android:tag="@string/name_settings1_up_left"
             android:layout_weight="1"
             android:contentDescription="@null"
             tools:ignore="NestedWeights"
@@ -46,7 +45,7 @@
             android:id="@+id/set2_tv_mid_left"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/name_settings1_mid_left"
+            android:text="@string/two"
             android:textColor="@android:color/white"/>
 
         <ImageView
@@ -55,7 +54,6 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/margin"
             android:src="@drawable/img_200x130"
-            android:tag="@string/name_settings1_mid_left"
             android:layout_weight="1"
             android:contentDescription="@null"
             android:onClick="onClick"/>
@@ -109,7 +107,6 @@
             android:layout_marginHorizontal="@dimen/margin"
             android:src="@drawable/img_200x130"
             android:layout_weight="1"
-            android:tag="@string/name_settings1_up_right"
             android:contentDescription="@null"
             android:onClick="onClick"/>
 
@@ -131,7 +128,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/margin"
             android:src="@drawable/img_200x130"
-            android:tag="@string/name_settings1_mid_right"
+
             android:layout_weight="1"
             android:contentDescription="@null"
             android:onClick="onClick"/>

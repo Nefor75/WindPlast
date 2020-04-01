@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -15,7 +16,10 @@ import com.glumy.windplast.Cart.Cart;
 public class ActivityProductDetails extends AppCompatActivity {
 
     private ImageView mainImage;
-    private TextView textView_main,text1;
+    private TextView textView_main;
+    private TextView price;
+    private EditText width;
+    private EditText height;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,25 +31,12 @@ public class ActivityProductDetails extends AppCompatActivity {
 
     }
 
-    public void onClick(View view){
-        Intent i;
-        switch (view.getId()){
-//            case R.id.btn_1:
-//                super.onBackPressed();
-//                break;
-//            case R.id.btn_3:
-//                Toast.makeText(this, "Добавлен в заказ", Toast.LENGTH_SHORT).show();
-//                break;
-//            case R.id.btn_4:
-//                i = new Intent(this, ActivityShoppingCart.class);
-//                startActivity(i);
-//                break;
-        }
-    }
-
     private void initComponent(){
         mainImage = findViewById(R.id.imageView);
         textView_main = findViewById(R.id.textView);
+        price = findViewById(R.id.price);
+        width = findViewById(R.id.edit_width);
+        height = findViewById(R.id.edit_height);
 
 //Передался экземпляр класса
         Bundle recivedData = getIntent().getExtras();
@@ -55,7 +46,9 @@ public class ActivityProductDetails extends AppCompatActivity {
             assert setActivity != null;
             textView_main.setText(setActivity.getName());
             mainImage.setImageResource(setActivity.getImage());
-
+            price.setText(setActivity.getPrice() + " грн");
+            width.setText(setActivity.getWidth()+"");
+            height.setText(setActivity.getHeight()+"");
         }
 
 

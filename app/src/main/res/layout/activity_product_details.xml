@@ -17,20 +17,12 @@
         <TextView
             android:id="@+id/textView"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="TextView"
             android:padding="@dimen/margin"/>
 
         <View
-            android:layout_marginTop="@dimen/spacing_xlarge"
-            android:layout_width="3dp"
-            android:layout_height="match_parent"
-            android:background="@color/view"
-            android:layout_marginBottom="@dimen/spacing_xlarge"/>
-
-        <View
-
             android:layout_width="1dp"
             android:layout_height="match_parent"
             android:background="@color/view"   />
@@ -38,7 +30,7 @@
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:contentDescription="@null"
             android:padding="@dimen/margin"/>
@@ -46,115 +38,210 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/ll_width_height"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        android:background="@color/grey_10"
+        android:layout_marginHorizontal="@dimen/margin">
+
+        <TextView
+            android:id="@+id/textView_width"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="@string/width"
+            android:textColor="@android:color/black" />
+
+        <EditText
+            android:id="@+id/edit_width"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_margin="@dimen/spacing_xmedium"
+            android:gravity="center_horizontal|center_vertical"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:background="@drawable/my_rectangle"/>
+
+        <TextView
+            android:id="@+id/textView_height"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@string/height"
+            android:gravity="center_horizontal|center_vertical"
+            android:layout_marginStart="@dimen/margin"
+            android:textColor="@android:color/black"/>
+
+        <EditText
+            android:id="@+id/edit_height"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_margin="@dimen/spacing_xmedium"
+            android:gravity="center_horizontal|center_vertical"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:background="@drawable/my_rectangle"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_profil"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginStart="@dimen/margin"
+        android:layout_marginEnd="@dimen/margin"
+        android:background="@color/grey_20"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textView_profil"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/margin"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="@string/profil"
+            android:textColor="@android:color/black" />
+
+        <RadioGroup
+            android:id="@+id/radio_group_profil"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/margin"
+            android:gravity="center_vertical"
+            android:layout_weight="1"
+            android:theme="@style/MyRadioButton">
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="60 серия"
+                android:textColor="@android:color/black" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="70 серия"
+                android:textColor="@android:color/black" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="80 серия"
+                android:textColor="@android:color/black" />
+
+        </RadioGroup>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_furnit"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:orientation="horizontal"
+        android:background="@color/grey_10"
+        android:layout_marginStart="@dimen/margin"
+        android:layout_marginEnd="@dimen/margin">
+
+        <TextView
+            android:id="@+id/textView_furnit"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@string/fittings"
+            android:gravity="center_vertical"
+            android:layout_marginStart="@dimen/margin"
+            android:textColor="@android:color/black"/>
+
+        <RadioGroup
+            android:id="@+id/radio_group_furnit"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:layout_marginHorizontal="@dimen/margin"
+            android:theme="@style/MyRadioButton">
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Roto"
+                android:textColor="@android:color/black"/>
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Axor"
+                android:textColor="@android:color/black"/>
+
+        </RadioGroup>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
         android:orientation="horizontal"
         android:background="@color/grey_20"
-        android:layout_marginStart="@dimen/margin"
-        android:layout_marginEnd="@dimen/margin">
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_weight="1"
-            android:text="TextView"  />
-
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_weight="1"
-            android:contentDescription="@null" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:orientation="horizontal"
-        android:background="@color/grey_40"
-        android:layout_marginStart="@dimen/margin"
-        android:layout_marginEnd="@dimen/margin">
-
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_weight="1"
-            android:text="TextView"  />
-
-        <ImageView
-            android:id="@+id/imageView3"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_weight="1"
-            android:contentDescription="@null" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:orientation="horizontal"
-        android:background="@color/grey_20"
-        android:layout_marginStart="@dimen/margin"
-        android:layout_marginEnd="@dimen/margin">
-
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_weight="1"
-            android:text="TextView"  />
-
-        <ImageView
-            android:id="@+id/imageView4"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_weight="1"
-            android:contentDescription="@null" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:orientation="horizontal"
-        android:background="@color/grey_40"
         android:layout_marginStart="@dimen/margin"
         android:layout_marginEnd="@dimen/margin">
 
         <TextView
             android:id="@+id/textView5"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/margin"
             android:layout_weight="1"
-            android:text="TextView"  />
+            android:gravity="center_vertical"
+            android:text="@string/glasses"
+            android:textColor="@android:color/black" />
 
-        <ImageView
-            android:id="@+id/imageView5"
+        <RadioGroup
+            android:id="@+id/radio_group_glasses"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:contentDescription="@null" />
+            android:gravity="center_vertical"
+            android:layout_marginHorizontal="@dimen/margin"
+            android:theme="@style/MyRadioButton">
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1 камерный"
+                android:textColor="@android:color/black"/>
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2 камерный"
+                android:textColor="@android:color/black"/>
+
+        </RadioGroup>
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="70dp"
         android:orientation="horizontal"
-        android:background="@color/grey_20"
+        android:background="@color/grey_10"
         android:layout_marginStart="@dimen/margin"
         android:layout_marginEnd="@dimen/margin">
 
         <TextView
             android:id="@+id/textView7"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/margin"
+            android:layout_marginTop="@dimen/margin"
             android:layout_weight="1"
-            android:text="TextView"  />
+            android:text="@string/sill"
+            android:textColor="@android:color/black" />
 
         <ImageView
             android:id="@+id/imageView7"
@@ -167,8 +254,35 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="70dp"
         android:orientation="horizontal"
+        android:background="@color/grey_20"
+        android:layout_marginStart="@dimen/margin"
+        android:layout_marginEnd="@dimen/margin">
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/margin"
+            android:layout_marginTop="@dimen/margin"
+            android:layout_weight="1"
+            android:text="@string/weathering"
+            android:textColor="@android:color/black" />
+
+        <ImageView
+            android:id="@+id/imageView8"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_weight="1"
+            android:contentDescription="@null" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
         android:background="@color/green"
         android:layout_marginStart="@dimen/margin"
         android:layout_marginEnd="@dimen/margin"
@@ -177,16 +291,20 @@
         <TextView
             android:id="@+id/textView6"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_weight="1"
-            android:text="TextView"  />
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin"
+            android:layout_marginTop="@dimen/margin"
+            android:text="@string/cost"
+            android:textColor="@android:color/white" />
 
-        <ImageView
-            android:id="@+id/imageView6"
+        <TextView
+            android:id="@+id/price"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_weight="1"
-            android:contentDescription="@null" />
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin"
+            android:textSize="@dimen/spacing_xlarge"
+            android:text=""
+            android:textColor="@android:color/white" />
 
     </LinearLayout>
     </LinearLayout>

@@ -107,33 +107,32 @@ public class ActivityMain extends AppCompatActivity implements AdapterView.OnIte
         switch (view.getId()){
 
             case R.id.set1_iv_up_left :
-            Cart set1UpLeft = new Cart(view.getId(), R.drawable.img_200x130, R.string.name_settings1_up_left,
-                1350, 1400, 1, 1000);
-                        recived = set1UpLeft;
-                  break;
+                recived = new Cart(view.getId(), R.drawable.img_200x130, R.string.two,1350, 1400, 1, 1000);
+                    break;
 
             case R.id.set1_iv_up_right:
-                Cart set1UpRight = new Cart(view.getId(), R.drawable.bb, R.string.name_settings1_up_right,
+                recived = new Cart(view.getId(), R.drawable.bb, R.string.balkon,
                         2100, 2100, 1, 3000);
-                        recived = set1UpRight;
-                break;
+                    break;
 
             case R.id.set1_iv_mid_left:
-                Cart set1MidLeft = new Cart(view.getId(), R.drawable.triple, R.string.name_settings1_mid_left,
-                        2100, 1400, 1, 2000);
-                        recived = set1MidLeft;
-                break;
+                recived = new Cart(view.getId(), R.drawable.one_po, R.string.one_po,
+                        900, 1300, 1, 1000);
+                    break;
 
             case R.id.set1_iv_mid_right:
-                Cart set1MidRight = new Cart(view.getId(), R.drawable.deaf, R.string.name_settings1_mid_right,
-                        1000, 1000, 1, 500);
-                recived = set1MidRight;
-                break;
+                recived = new Cart(view.getId(), R.drawable.deaf, R.string.deaf,1000, 1000, 1, 500);
+                    break;
+
+            case R.id.set1_iv_bottom_left:
+                recived = new Cart(view.getId(), R.drawable.four, R.string.four,
+                        3000, 1300, 1, 3000);
+                    break;
 
             case R.id.set1_iv_bottom_right:
-
-
-                break;
+                recived = new Cart(view.getId(), R.drawable.triple, R.string.triple,
+                        2000, 1300, 1, 2000);
+                    break;
 
             case R.id.set2_iv_up_left :
 

@@ -6,7 +6,12 @@
     <!--Activity_product_details -->
     <string name="width">Ширина</string>
     <string name="height">Высота</string>
+    <string name="profil">Профиль</string>
+    <string name="fittings">Фурнитура</string>
     <string name="glasses">Стеклопакет</string>
+    <string name="sill">Подоконник</string>
+    <string name="weathering">Отлив</string>
+    <string name="cost">Стоимость</string>
     <string name="quantity">Количество</string>
     <string name="button1">Назад</string>
     <string name="button2">Добавить в корзину</string>
@@ -38,10 +43,12 @@
     <string name="version_unknown">Unknown</string>
 
     <!-- String resourse for settings_1 -->
-    <string name="name_settings1_up_left">Двухсекционное с левой поворотно-откидной створкой</string>
-    <string name="name_settings1_up_right">Балконный блок</string>
-    <string name="name_settings1_mid_left">Трехсекционное со средней поворотно-откидной створкой</string>
-    <string name="name_settings1_mid_right">Глухое</string>
+    <string name="two">Двухсекционное с левой поворотно-откидной створкой</string>
+    <string name="balkon">Балконный блок</string>
+    <string name="triple">Трехсекционное со средней поворотно-откидной створкой</string>
+    <string name="four">Четырехсекционное с двумя поворотно-откидными створками</string>
+    <string name="deaf">Глухое</string>
+    <string name="one_po">Односекционное поворотно-откидное</string>
     <string name="name_settings1_bottom_right">bottom_right</string>
 
 </resources>

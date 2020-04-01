@@ -25,6 +25,12 @@
         <item name="colorControlNormal">@color/orange</item>
     </style>
 
+    <!-- ColorRadio -->
+    <style name="MyRadioButton" parent="Theme.AppCompat.Light">
+        <item name="colorControlNormal">@android:color/white</item>
+        <item name="colorControlActivated">@color/green</item>
+    </style>
+
     <!-- ТРИ ТОЧКИ МЕНЮ -->
     <style name="OverFlow" parent="Widget.AppCompat.ActionButton.Overflow">
         <item name="android:src">@drawable/icon_menu_in_toolbar_24dp</item>
@@ -48,17 +54,5 @@
         <item name="android:background">@drawable/my_rectangle</item>
         <item name="android:popupBackground">#ffffff</item>//а может и не сюда(в Spinner1 или Spinner2)
     </style>
-
-    <!-- TableLayout theme. -->
-    <style name="Table">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:background">@color/colorPrimary</item>
-    </style>
-
-    <!-- Focusable ImageViev. -->
-    <style name="FocusImage" >
-<!--        <item name="colorControlNormal">@android:color/transparent</item>-->
-<!--        <item name="colorControlActivated">@android:color/black</item>-->
-        </style>
 
 </resources>

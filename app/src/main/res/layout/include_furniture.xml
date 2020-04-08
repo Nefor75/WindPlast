@@ -1,0 +1,42 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_furnit"
+    android:layout_width="match_parent"
+    android:layout_height="70dp"
+    android:orientation="horizontal"
+    android:background="@color/grey_10"
+    android:layout_marginHorizontal="@dimen/margin">
+
+    <TextView
+        android:id="@+id/textView_furnit"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center_vertical"
+        android:text="@string/fittings"
+        android:layout_marginStart="@dimen/margin"
+        android:textColor="@android:color/black" />
+
+    <RadioGroup
+        android:id="@+id/radio_group_furnit"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="start|center_vertical"
+        android:layout_marginEnd="@dimen/margin"
+        android:theme="@style/MyRadioButton">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Roto"
+            android:textColor="@android:color/black" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Axor"
+            android:textColor="@android:color/black"/>
+
+    </RadioGroup>
+
+</LinearLayout>

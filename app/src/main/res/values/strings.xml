@@ -6,11 +6,35 @@
     <!--Activity_product_details -->
     <string name="width">Ширина</string>
     <string name="height">Высота</string>
+    <string name="length">Длинна</string>
     <string name="profil">Профиль</string>
+
+    <string name="Rehau">Rehau</string>
+    <string name="REHAU_Euro_Design_60">Euro-Design 60</string>
+    <string name="REHAU_Euro_Design_70">Euro-Design 70</string>
+    <string name="REHAU_Brillant_Design">Brillant-Design</string>
+    <string name="REHAU_SYNEGO">SYNEGO</string>
+    <string name="REHAU_GENEO_RAU_FIPRO_X">GENEO</string>
+
+    <string name="WDS">WDS</string>
+    <string name="WDS_5S">5S</string>
+    <string name="WDS_6S">6S</string>
+    <string name="WDS_7S">7S</string>
+    <string name="WDS_8S">8S</string>
+
+    <string name="OpenTeck">OpenTeck</string>
+    <string name="OpenTeck_STANDARD">STANDARD</string>
+    <string name="OpenTeck_DE_LUX">DE-LUX</string>
+    <string name="OpenTeck_ELIT">ELIT</string>
+
     <string name="fittings">Фурнитура</string>
     <string name="glasses">Стеклопакет</string>
+    <string name="one_camera">1 камерный</string>
+    <string name="two_camera">2 камерный</string>
+
     <string name="sill">Подоконник</string>
     <string name="weathering">Отлив</string>
+
     <string name="cost">Стоимость</string>
     <string name="quantity">Количество</string>
     <string name="button1">Назад</string>
@@ -26,6 +50,7 @@
         <item>Кирпичный дом</item>
 
     </string-array>
+
 
     <!--    <integer-array name="about_images_array">-->
     <!--        <item>@drawable/intro_img_1</item>-->
@@ -43,12 +68,12 @@
     <string name="version_unknown">Unknown</string>
 
     <!-- String resourse for settings_1 -->
-    <string name="two">Двухсекционное с левой поворотно-откидной створкой</string>
+    <string name="two">Две секции с одной створкой</string>
     <string name="balkon">Балконный блок</string>
-    <string name="triple">Трехсекционное со средней поворотно-откидной створкой</string>
-    <string name="four">Четырехсекционное с двумя поворотно-откидными створками</string>
+    <string name="triple">Три секции с одной створкой</string>
+    <string name="four">Четыре секции с двумя створками</string>
     <string name="deaf">Глухое</string>
-    <string name="one_po">Односекционное поворотно-откидное</string>
+    <string name="one_po">Одна секция - створка</string>
     <string name="name_settings1_bottom_right">bottom_right</string>
 
 </resources>

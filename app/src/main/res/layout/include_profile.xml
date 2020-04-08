@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/ll_profil"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/margin"
+        android:background="@color/grey_20"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textView_profil"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="@string/profil"
+            android:textColor="@android:color/black"
+            android:layout_marginStart="@dimen/margin"/>
+
+        <RadioGroup
+            android:id="@+id/radio_group_profil"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="@dimen/margin"
+            android:layout_weight="1"
+            android:gravity="start|center_vertical"
+            android:theme="@style/MyRadioButton"
+            android:onClick="Radiogroup">
+
+            <RadioButton
+                android:id="@+id/rb_rehau"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/Rehau"
+                android:textColor="@android:color/black"
+                android:theme="@style/MyRadioButton"
+                android:onClick="Radiogroup"/>
+
+            <RadioGroup
+                android:id="@+id/rg_rehau"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_mlarge"
+                android:visibility="gone">
+
+                <RadioButton
+                    android:id="@+id/rb_euro_design_60"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/REHAU_Euro_Design_60"
+                    android:textColor="@android:color/black" />
+
+                <RadioButton
+                    android:id="@+id/rb_euro_design_70"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/REHAU_Euro_Design_70"
+                    android:textColor="@android:color/black" />
+
+                <RadioButton
+                    android:id="@+id/rb_brillant_design"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/REHAU_Brillant_Design"
+                    android:textColor="@android:color/black" />
+
+                <RadioButton
+                    android:id="@+id/rb_synego"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/REHAU_SYNEGO"
+                    android:textColor="@android:color/black" />
+
+                <RadioButton
+                    android:id="@+id/rb_geneo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/REHAU_GENEO_RAU_FIPRO_X"
+                    android:textColor="@android:color/black" />
+
+        </RadioGroup>
+
+            <RadioButton
+                android:id="@+id/rb_wds"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/WDS"
+                android:textColor="@android:color/black"
+                android:theme="@style/MyRadioButton"
+                android:onClick="Radiogroup" />
+
+            <RadioGroup
+                android:id="@+id/rg_wds"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_mxlarge"
+                android:theme="@style/MyRadioButton"
+                android:onClick="Radiogroup"
+                android:visibility="gone">
+
+                <RadioButton
+                    android:id="@+id/rb_wds_5s"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/WDS_5S"
+                    android:textColor="@android:color/black" />
+
+                <RadioButton
+                    android:id="@+id/rb_wds_6s"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/WDS_6S"
+                    android:textColor="@android:color/black" />
+
+                <RadioButton
+                    android:id="@+id/rb_wds_7s"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/WDS_7S"
+                    android:textColor="@android:color/black" />
+
+                <RadioButton
+                    android:id="@+id/rb_wds_8s"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/WDS_8S"
+                    android:textColor="@android:color/black" />
+
+                </RadioGroup>
+
+            <RadioButton
+                android:id="@+id/rb_openteck"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/OpenTeck"
+                android:textColor="@android:color/black"
+                android:theme="@style/MyRadioButton"
+                android:onClick="Radiogroup" />
+
+            <RadioGroup
+                android:id="@+id/rg_openteck"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_mxlarge"
+                android:theme="@style/MyRadioButton"
+                android:onClick="Radiogroup"
+                android:visibility="gone">
+
+                <RadioButton
+                    android:id="@+id/rb_openteck_standart"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/OpenTeck_STANDARD"
+                    android:textColor="@android:color/black" />
+
+                <RadioButton
+                    android:id="@+id/rb_openteck_de_lux"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/OpenTeck_DE_LUX"
+                    android:textColor="@android:color/black" />
+
+                <RadioButton
+                    android:id="@+id/rb_rb_openteck_elit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/OpenTeck_ELIT"
+                    android:textColor="@android:color/black" />
+
+                </RadioGroup>
+
+        </RadioGroup>
+
+    </LinearLayout>

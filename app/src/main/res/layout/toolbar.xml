@@ -6,10 +6,11 @@
     android:theme="@style/Toolbar">
 
 <Spinner
-android:id="@+id/spinner"
+android:id="@+id/spinner_tolbar"
 android:layout_width="wrap_content"
 android:layout_height="wrap_content"
-android:layout_marginStart="@dimen/margin"/>
+android:layout_marginStart="@dimen/margin"
+android:entries="@array/spinner_menu" />
 
 </androidx.appcompat.widget.Toolbar>
 

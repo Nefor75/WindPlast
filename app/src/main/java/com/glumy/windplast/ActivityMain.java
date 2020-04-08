@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,7 +25,6 @@ public class ActivityMain extends AppCompatActivity implements AdapterView.OnIte
     private FragmentSettingsOne frag1;
     private FragmentSettingsTwo frag2;
     private FragmentTransaction trans;
-    private TextView tvProductDetails;
 
 
     @Override
@@ -55,12 +53,12 @@ public class ActivityMain extends AppCompatActivity implements AdapterView.OnIte
     }
 
     private void initSpinner() {
-        Spinner spinner = findViewById(R.id.spinner);
+        final Spinner spinner_tolbar = findViewById(R.id.spinner_tolbar);
         ArrayAdapter<?> adapter =
                 ArrayAdapter.createFromResource(this, R.array.spinner_menu, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
-        spinner.setOnItemSelectedListener(this);
+        spinner_tolbar.setAdapter(adapter);
+        spinner_tolbar.setOnItemSelectedListener(this);
         //spinner.setSelection(0);//выбор позиции загрузки item
     }
 

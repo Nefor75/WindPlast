@@ -29,11 +29,11 @@
             android:contentDescription="@null" />
 
         <TextView
-            android:id="@+id/text_left"
+            android:id="@+id/rate_result"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Text Left"
+            android:text=""
             android:textColor="@android:color/white" />
 
         <ImageView

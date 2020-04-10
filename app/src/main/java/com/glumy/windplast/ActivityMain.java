@@ -1,30 +1,46 @@
 package com.glumy.windplast;
 
 import android.content.Intent;
+import android.net.Network;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentTransaction;
 import com.glumy.windplast.Cart.Cart;
+import com.glumy.windplast.connection.JsonPlaceHolderApi;
+import com.glumy.windplast.connection.Post;
+import com.glumy.windplast.data.Constant;
 import com.glumy.windplast.fragment.FragmentSettingsOne;
 import com.glumy.windplast.fragment.FragmentSettingsTwo;
+import com.glumy.windplast.util.NetworkCheck;
+
+import java.util.List;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 
 public class ActivityMain extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
+    public String content = "";
     private ActionBar actionBar;
     private Toolbar toolbar;
     private FragmentSettingsOne frag1;
     private FragmentSettingsTwo frag2;
     private FragmentTransaction trans;
+    private TextView tv_rate;
 
 
     @Override
@@ -32,6 +48,7 @@ public class ActivityMain extends AppCompatActivity implements AdapterView.OnIte
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        initcomponents();
         initToolbar();
         initFragments();
 
@@ -40,6 +57,11 @@ public class ActivityMain extends AppCompatActivity implements AdapterView.OnIte
 //            startActivity(new Intent(this, ActivityInstruction.class));
 //            sharedPref.setFirstLaunch(false);
 //        }
+    }
+
+    public void initcomponents() {
+        tv_rate = findViewById(R.id.rate_result);
+        //requestRate();
     }
 
     private void initToolbar() {
@@ -65,7 +87,7 @@ public class ActivityMain extends AppCompatActivity implements AdapterView.OnIte
     //Методы Спиннера
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-             trans = getSupportFragmentManager().beginTransaction();
+        trans = getSupportFragmentManager().beginTransaction();
 
         switch (position) {
             case 0:
@@ -82,6 +104,7 @@ public class ActivityMain extends AppCompatActivity implements AdapterView.OnIte
     public void onNothingSelected(AdapterView<?> parent) {
 
     }
+
     //Методы меню
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -89,6 +112,10 @@ public class ActivityMain extends AppCompatActivity implements AdapterView.OnIte
         if (id == R.id.settings) {
             Toast.makeText(this, "Item1", Toast.LENGTH_SHORT).show();
         }
+        if (id == R.id.menu_rate){
+             requestRate();
+         }
+
         return super.onOptionsItemSelected(item);
     }
 
@@ -97,44 +124,40 @@ public class ActivityMain extends AppCompatActivity implements AdapterView.OnIte
         getMenuInflater().inflate(R.menu.menu_activity_main, menu);
         return true;
     }
+
     //onClick
-    public void onClick(View view){
+    public void onClick(View view) {
         Intent i;
         Cart recived = new Cart();
 
-        switch (view.getId()){
+        switch (view.getId()) {
 
-            case R.id.set1_iv_up_left :
-                recived = new Cart(view.getId(), R.drawable.img_200x130, R.string.two,1350, 1400, 1, 1000);
-                    break;
+            case R.id.set1_iv_up_left:
+                recived = new Cart(view.getId(), R.drawable.img_200x130, R.string.two, 1350, 1400, 1, 1000);
+                break;
 
             case R.id.set1_iv_up_right:
                 recived = new Cart(view.getId(), R.drawable.bb, R.string.balkon,
                         2100, 2100, 1, 3000);
-                    break;
+                break;
 
             case R.id.set1_iv_mid_left:
                 recived = new Cart(view.getId(), R.drawable.one_po, R.string.one_po,
                         900, 1300, 1, 1000);
-                    break;
+                break;
 
             case R.id.set1_iv_mid_right:
-                recived = new Cart(view.getId(), R.drawable.deaf, R.string.deaf,1000, 1000, 1, 500);
-                    break;
+                recived = new Cart(view.getId(), R.drawable.deaf, R.string.deaf, 1000, 1000, 1, 500);
+                break;
 
             case R.id.set1_iv_bottom_left:
                 recived = new Cart(view.getId(), R.drawable.four, R.string.four,
                         3000, 1300, 1, 3000);
-                    break;
+                break;
 
             case R.id.set1_iv_bottom_right:
                 recived = new Cart(view.getId(), R.drawable.triple, R.string.triple,
                         2000, 1300, 1, 2000);
-                    break;
-
-            case R.id.set2_iv_up_left :
-
-
                 break;
 
             case R.id.set2_iv_mid_left:
@@ -170,18 +193,51 @@ public class ActivityMain extends AppCompatActivity implements AdapterView.OnIte
         startActivity(i);
     }
 
-    public void initFragments(){
+    public void initFragments() {
         frag1 = new FragmentSettingsOne();
         frag2 = new FragmentSettingsTwo();
-
-//        ArrayList<Cart> winSet1 = new ArrayList<Cart>();
-//        winSet1.add(new Cart(R.id.set1_iv_up_left, R.drawable.img_200x130, R.string.name_settings1_up_left,
-//                1350, 1400, 1, 1000));
-
-
     }
 
+    //метод для извлечения курса валют (api PrivatBank)
+    private void requestRate() {
+        if (!NetworkCheck.isConnect(this)) {
+            content = "Нет соединения с интернетом";
+            tv_rate.setText(content);
+        } else {
+            Retrofit retrofit = new Retrofit.Builder()
+                    .baseUrl(Constant.WEB_URL_RATE)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build();
+
+            JsonPlaceHolderApi jsonPlaceHolderApi = retrofit.create(JsonPlaceHolderApi.class);
+
+            Call<List<Post>> call = jsonPlaceHolderApi.getPosts();
+
+            call.enqueue(new Callback<List<Post>>() {
+                @Override
+                public void onResponse(Call<List<Post>> call, Response<List<Post>> response) {
+
+                    List<Post> posts = response.body();
+
+                    for (Post post : posts) {
+
+                        content += post.getSale() + "\n";
+                        String s = "Курс USD: Приватбанк "+ "\n" +content.substring(0,content.length()-4);
+                        tv_rate.append(s);
+                        break;
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<List<Post>> call, Throwable t) {
+                    tv_rate.setText(t.getMessage());
+                }
+            });
+        }
+    }
 }
+
+
 
 
 

@@ -3,6 +3,9 @@
     <string name="app_name">WindPlast</string>
     <string name="tv_as_bottom_line">Dev by GlooMy</string>
 
+    <!--ActivityMain -->
+    <string name="Rate">Курс</string>
+
     <!--Activity_product_details -->
     <string name="width">Ширина</string>
     <string name="height">Высота</string>

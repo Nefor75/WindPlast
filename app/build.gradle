@@ -27,4 +27,9 @@ dependencies {
     implementation 'org.jetbrains:annotations-java5:15.0'
     implementation "androidx.recyclerview:recyclerview:1.1.0"
     implementation 'com.balysv:material-ripple:1.0.2'
+
+    // library for api
+    implementation 'com.squareup.retrofit2:retrofit:2.2.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.2.0'
+    implementation 'com.google.code.gson:gson:2.8.5'
 }

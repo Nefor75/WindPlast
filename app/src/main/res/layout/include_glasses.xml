@@ -1,9 +1,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
+    android:layout_marginHorizontal="@dimen/margin"
     android:background="@color/grey_20"
-    android:layout_marginHorizontal="@dimen/margin">
+    android:orientation="horizontal">
 
     <TextView
         android:id="@+id/textView5"
@@ -19,9 +19,9 @@
         android:id="@+id/radio_group_glasses"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginEnd="@dimen/margin"
         android:layout_weight="1"
         android:gravity="start|center_vertical"
-        android:layout_marginEnd="@dimen/margin"
         android:theme="@style/MyRadioButton">
 
         <RadioButton
@@ -34,15 +34,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/two_camera"
-            android:textColor="@android:color/black"/>
+            android:textColor="@android:color/black" />
 
     </RadioGroup>
-<!--    <Spinner-->
-<!--        android:id="@+id/spinner_glasses"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:layout_weight="1"-->
-<!--        android:gravity="end"-->
-<!--        android:theme="@style/Spinner"/>-->
+    <!--    <Spinner-->
+    <!--        android:id="@+id/spinner_glasses"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent"-->
+    <!--        android:layout_weight="1"-->
+    <!--        android:gravity="end"-->
+    <!--        android:theme="@style/Spinner"/>-->
 
 </LinearLayout>

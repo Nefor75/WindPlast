@@ -1,21 +1,21 @@
 package com.glumy.windplast;
 
 import android.content.Intent;
-import android.net.Network;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentTransaction;
+
 import com.glumy.windplast.Cart.Cart;
 import com.glumy.windplast.connection.JsonPlaceHolderApi;
 import com.glumy.windplast.connection.Post;
@@ -25,6 +25,7 @@ import com.glumy.windplast.fragment.FragmentSettingsTwo;
 import com.glumy.windplast.util.NetworkCheck;
 
 import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -112,9 +113,9 @@ public class ActivityMain extends AppCompatActivity implements AdapterView.OnIte
         if (id == R.id.settings) {
             Toast.makeText(this, "Item1", Toast.LENGTH_SHORT).show();
         }
-        if (id == R.id.menu_rate){
-             requestRate();
-         }
+        if (id == R.id.menu_rate) {
+            requestRate();
+        }
 
         return super.onOptionsItemSelected(item);
     }
@@ -160,31 +161,6 @@ public class ActivityMain extends AppCompatActivity implements AdapterView.OnIte
                         2000, 1300, 1, 2000);
                 break;
 
-            case R.id.set2_iv_mid_left:
-
-
-                break;
-
-            case R.id.set2_iv_bottom_left:
-
-
-                break;
-
-            case R.id.set2_iv_up_right:
-
-
-                break;
-
-            case R.id.set2_iv_mid_right:
-
-
-                break;
-
-            case R.id.set2_iv_bottom_right:
-
-
-                break;
-
             default:
                 throw new IllegalStateException("Unexpected value: " + view.getId());
         }
@@ -212,7 +188,6 @@ public class ActivityMain extends AppCompatActivity implements AdapterView.OnIte
             JsonPlaceHolderApi jsonPlaceHolderApi = retrofit.create(JsonPlaceHolderApi.class);
 
             Call<List<Post>> call = jsonPlaceHolderApi.getPosts();
-
             call.enqueue(new Callback<List<Post>>() {
                 @Override
                 public void onResponse(Call<List<Post>> call, Response<List<Post>> response) {
@@ -220,9 +195,8 @@ public class ActivityMain extends AppCompatActivity implements AdapterView.OnIte
                     List<Post> posts = response.body();
 
                     for (Post post : posts) {
-
                         content += post.getSale() + "\n";
-                        String s = "Курс USD: Приватбанк "+ "\n" +content.substring(0,content.length()-4);
+                        String s = "Курс USD: Приватбанк " + "\n" + content.substring(0, content.length() - 4);
                         tv_rate.append(s);
                         break;
                     }

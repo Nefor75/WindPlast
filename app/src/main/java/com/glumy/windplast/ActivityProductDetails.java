@@ -1,24 +1,18 @@
 package com.glumy.windplast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import android.content.Context;
+
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Spinner;
 import android.widget.TextView;
+
 import com.glumy.windplast.Cart.Cart;
-import com.glumy.windplast.util.Tools;
-import org.jetbrains.annotations.NotNull;
 
 
 public class ActivityProductDetails extends AppCompatActivity {//implements AdapterView.OnItemSelectedListener {
@@ -39,7 +33,7 @@ public class ActivityProductDetails extends AppCompatActivity {//implements Adap
         setContentView(R.layout.activity_product_details);
 
         initComponent();
-       // initSpinner();
+        // initSpinner();
 
     }
 
@@ -79,7 +73,6 @@ public class ActivityProductDetails extends AppCompatActivity {//implements Adap
             et_width.setText(setActivity.getWidth() + "");
             et_height.setText(setActivity.getHeight() + "");
 
-
         }
     }
 
@@ -111,9 +104,9 @@ public class ActivityProductDetails extends AppCompatActivity {//implements Adap
 
     public void Radiogroup(View view) {
         switch (view.getId()) {
+
             case R.id.rb_rehau:
                 rg_rehau.setVisibility(View.VISIBLE);
-
                 rg_wds.setVisibility(View.GONE);
                 rg_wds.clearCheck();
                 rg_opentech.setVisibility(View.GONE);
@@ -137,20 +130,20 @@ public class ActivityProductDetails extends AppCompatActivity {//implements Adap
                 break;
 
             case R.id.chbx_windowsill:
-               if (checkBoxSill.isChecked()) {
-                   rgroupSill.setVisibility(View.VISIBLE);
-                   llWindowSillSizes.setVisibility(View.VISIBLE);
-               } else{
-                   rgroupSill.setVisibility(View.GONE);
-                   llWindowSillSizes.setVisibility(View.GONE);
-               }
+                if (checkBoxSill.isChecked()) {
+                    rgroupSill.setVisibility(View.VISIBLE);
+                    llWindowSillSizes.setVisibility(View.VISIBLE);
+                } else {
+                    rgroupSill.setVisibility(View.GONE);
+                    llWindowSillSizes.setVisibility(View.GONE);
+                }
                 break;
 
             case R.id.chbx_weadering:
-                if (checkBoxWeathering.isChecked()){
+                if (checkBoxWeathering.isChecked()) {
                     rgWeathering.setVisibility(View.VISIBLE);
                     llWeathering.setVisibility(View.VISIBLE);
-                }else {
+                } else {
                     rgWeathering.setVisibility(View.GONE);
                     llWeathering.setVisibility(View.GONE);
                 }
@@ -174,21 +167,8 @@ public class ActivityProductDetails extends AppCompatActivity {//implements Adap
 //        builder.show();
 //    }
 
-//    private void refreshCartButton() {
-//        Cart c = db.getCart(product_id);
-//        flag_cart = (c != null);
-//        if (flag_cart) {
-//            lyt_add_cart.setBackgroundColor(getResources().getColor(R.color.colorGreen));
-//            tv_add_cart.setText(R.string.bt_remove_cart);
-//            ic_add_cart.setImageResource(R.drawable.ic_remove);
-//        } else {
-//            lyt_add_cart.setBackgroundColor(getResources().getColor(R.color.colorRemoveCart));
-//            tv_add_cart.setText(R.string.bt_add_cart);
-//            ic_add_cart.setImageResource(R.drawable.ic_add);
-//        }
-//    }
 
-////Класс с кастомным адаптером --------------------------------------------------------------
+////Класс с кастомным адаптером для спиннера к стеклопакетам--------------------------------------------------------------
 //public class AdapterSpinner extends ArrayAdapter<String> {
 //
 //    AdapterSpinner(Context context, int textViewResourceId, String[] objects) {

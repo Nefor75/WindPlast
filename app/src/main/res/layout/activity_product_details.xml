@@ -39,7 +39,8 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent"
+        android:fadeScrollbars="false">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -133,7 +134,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/margin" />
 
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -160,8 +160,8 @@
                     android:text=""
                     android:textColor="@android:color/white"
                     android:textSize="@dimen/spacing_xlarge" />
+
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
-
 </LinearLayout>

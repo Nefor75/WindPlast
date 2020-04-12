@@ -15,10 +15,10 @@
     <!-- ActivityMain theme. -->
     <style name="Main" parent="Theme.AppCompat.NoActionBar">
         <item name="android:windowFullscreen">true</item>
-        </style>
+    </style>
 
     <!-- Toolbar theme. -->
-    <style name="Toolbar"> parent="Theme.AppCompat.NoActionBar"
+    <style name="Toolbar">parent="Theme.AppCompat.NoActionBar"
         <item name="android:background">@color/colorPrimary</item>
         <item name="android:height">?attr/actionBarSize</item>
         <item name="actionOverflowButtonStyle">@style/OverFlow</item>
@@ -38,7 +38,7 @@
 
     <!-- Spinner -->
     <style name="Spinner" parent="Theme.Design.Light">
-               <item name="android:spinnerItemStyle">@style/SpinnerItem</item>
+        <item name="android:spinnerItemStyle">@style/SpinnerItem</item>
         <item name="android:spinnerDropDownItemStyle">@style/SpinnerDropDownItem</item>
 
     </style>
@@ -52,6 +52,13 @@
     <style name="SpinnerDropDownItem">
         <item name="android:background">@android:color/black</item>
 
+    </style>
+    <!-- Ripple эффект(пока не используется)-->
+    <style name="RippleStyleWhite">
+        <item name="mrl_rippleOverlay">true</item>
+        <item name="mrl_rippleColor">#80FFFFFF</item>
+        <item name="mrl_rippleHover">true</item>
+        <item name="mrl_rippleAlpha">0.2</item>
     </style>
 
 </resources>

@@ -7,7 +7,7 @@ public class Post {
     @SerializedName("sale")
     private String sale;
 
-   public String getSale() {
+    public String getSale() {
         return sale;
     }
 

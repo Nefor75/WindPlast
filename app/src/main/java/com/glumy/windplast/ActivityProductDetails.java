@@ -19,7 +19,6 @@ public class ActivityProductDetails extends AppCompatActivity {//implements Adap
 
     private ImageView mainImage;
     private TextView textView_main;
-    private TextView tv_price;
     private EditText et_width;
     private EditText et_height;
     private RadioGroup rg_rehau, rg_wds, rg_opentech, rgroupSill, rgWeathering;
@@ -40,7 +39,6 @@ public class ActivityProductDetails extends AppCompatActivity {//implements Adap
     private void initComponent() {
         mainImage = findViewById(R.id.imageView);
         textView_main = findViewById(R.id.textView);
-        tv_price = findViewById(R.id.tv_price);
         et_width = findViewById(R.id.edit_width);
         et_height = findViewById(R.id.edit_height);
 
@@ -69,7 +67,6 @@ public class ActivityProductDetails extends AppCompatActivity {//implements Adap
             assert setActivity != null;
             textView_main.setText(setActivity.getName());
             mainImage.setImageResource(setActivity.getImage());
-            tv_price.setText(setActivity.getPrice() + " грн");
             et_width.setText(setActivity.getWidth() + "");
             et_height.setText(setActivity.getHeight() + "");
 

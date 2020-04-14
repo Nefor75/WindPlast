@@ -38,7 +38,6 @@
     <string name="sill">Подоконник</string>
     <string name="weathering">Отлив</string>
 
-    <string name="cost">Стоимость</string>
     <string name="quantity">Количество</string>
     <string name="button1">Назад</string>
     <string name="button2">Добавить в корзину</string>
@@ -78,5 +77,6 @@
     <string name="deaf">Глухое</string>
     <string name="one_po">Одна секция - створка</string>
     <string name="name_settings1_bottom_right">bottom_right</string>
+    <string name="calculation">Расчет</string>
 
 </resources>

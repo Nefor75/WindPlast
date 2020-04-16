@@ -87,11 +87,13 @@
                 android:focusable="true">
 
                 <Button
+                    android:id="@+id/btn_calculation"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="bottom"
                     android:background="@color/orange"
-                    android:text="@string/calculation" />
+                    android:text="@string/calculation"
+                    android:onClick="Radiogroup"/>
 
             </com.balysv.materialripple.MaterialRippleLayout>
         </LinearLayout>

@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/green"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_top"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:padding="@dimen/margin"
+        android:text="@string/order_result" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/grey_10"
+        android:padding="@dimen/margin"
+        android:orientation="vertical"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/tv_width_height"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/width_height"
+            android:textColor="@color/grey_80" />
+
+        <TextView
+            android:id="@+id/tv_profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/profil"
+            android:textColor="@color/grey_80" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Результат расчета"
+            android:textColor="@color/grey_80" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Результат расчета"
+            android:textColor="@color/grey_80" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Результат расчета"
+            android:textColor="@color/grey_80" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Результат расчета"
+            android:textColor="@color/grey_80" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Результат расчета"
+            android:textColor="@color/grey_80" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Результат расчета"
+            android:textColor="@color/grey_80" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Результат расчета"
+            android:textColor="@color/grey_80" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Результат расчета"
+            android:textColor="@color/grey_80" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+
+        android:layout_weight="2"
+        android:padding="@dimen/margin">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Dialog Title will be here"
+
+            android:textColor="@color/grey_90" />
+
+        <TextView
+            android:id="@+id/content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:text="Content will be here"
+            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+            android:textColor="@color/grey_90" />
+
+
+        <LinearLayout
+            android:id="@+id/lyt_action"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="bottom|center_horizontal"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@android:drawable/btn_star"
+                android:layout_weight="1"/>
+
+            <Button
+                android:id="@+id/bt_back"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/back"
+                android:textColor="@color/grey_80"
+                android:textStyle="bold"
+                android:layout_weight="1"/>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@android:drawable/btn_star"
+                android:layout_weight="1"/>
+
+            <Button
+                android:id="@+id/bt_transfer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/transfer"
+                android:textColor="@color/grey_90"
+                android:textStyle="bold"
+                android:layout_weight="1"/>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@android:drawable/btn_star"
+                android:layout_weight="1"/>
+
+            <Button
+                android:id="@+id/bt_save"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/save"
+                android:textColor="@color/grey_90"
+                android:layout_weight="1"
+                android:onClick="Radiogroup"/>
+
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

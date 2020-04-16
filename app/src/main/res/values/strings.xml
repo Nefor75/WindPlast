@@ -39,9 +39,12 @@
     <string name="weathering">Отлив</string>
 
     <string name="quantity">Количество</string>
-    <string name="button1">Назад</string>
-    <string name="button2">Добавить в корзину</string>
-    <string name="button3">Перейти в корзину</string>
+    <string name="calculation">Расчет</string>
+    <string name="order_result">Результат расчета</string>
+    <string name="width_height">Размер изделия</string>
+
+    <string name="transfer">Передать</string>
+    <string name="save">Сохранить</string>
 
     <!--Toolbar -->
     <string name="settings">Настройки</string>
@@ -77,6 +80,8 @@
     <string name="deaf">Глухое</string>
     <string name="one_po">Одна секция - створка</string>
     <string name="name_settings1_bottom_right">bottom_right</string>
-    <string name="calculation">Расчет</string>
+    <string name="back">Назад</string>
+
+
 
 </resources>

@@ -41,7 +41,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/spacing_mlarge"
-            android:visibility="gone">
+            android:visibility="visible">
 
             <RadioButton
                 android:id="@+id/rb_euro_design_60"
@@ -129,7 +129,7 @@
         </RadioGroup>
 
         <RadioButton
-            android:id="@+id/rb_openteck"
+            android:id="@+id/rb_opentech"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="Radiogroup"
@@ -138,7 +138,7 @@
             android:theme="@style/MyRadioButton" />
 
         <RadioGroup
-            android:id="@+id/rg_openteck"
+            android:id="@+id/rg_opentech"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/spacing_mxlarge"
@@ -147,21 +147,21 @@
             android:visibility="gone">
 
             <RadioButton
-                android:id="@+id/rb_openteck_standart"
+                android:id="@+id/rb_opentech_standart"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/OpenTeck_STANDARD"
                 android:textColor="@android:color/black" />
 
             <RadioButton
-                android:id="@+id/rb_openteck_de_lux"
+                android:id="@+id/rb_opentech_de_lux"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/OpenTeck_DE_LUX"
                 android:textColor="@android:color/black" />
 
             <RadioButton
-                android:id="@+id/rb_rb_openteck_elit"
+                android:id="@+id/rb_opentech_elit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/OpenTeck_ELIT"

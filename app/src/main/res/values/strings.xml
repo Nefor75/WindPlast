@@ -81,7 +81,8 @@
     <string name="one_po">Одна секция - створка</string>
     <string name="name_settings1_bottom_right">bottom_right</string>
     <string name="back">Назад</string>
-
+    <string name="roto">Roto</string>
+    <string name="axor">Axor</string>
 
 
 </resources>

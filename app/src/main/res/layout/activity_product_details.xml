@@ -38,8 +38,8 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="@dimen/spacing_xlarge"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:fadeScrollbars="false">
 
         <LinearLayout
@@ -78,25 +78,33 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
-            <com.balysv.materialripple.MaterialRippleLayout
-                style="@style/RippleStyleWhite"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginHorizontal="@dimen/spacing_xlarge"
-                android:layout_marginTop="@dimen/margin"
-                android:focusable="true">
-
-                <Button
-                    android:id="@+id/btn_calculation"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="bottom"
-                    android:background="@color/orange"
-                    android:text="@string/calculation"
-                    android:onClick="Radiogroup"/>
-
-            </com.balysv.materialripple.MaterialRippleLayout>
         </LinearLayout>
     </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginHorizontal="@dimen/margin"
+        android:orientation="horizontal">
+
+        <com.balysv.materialripple.MaterialRippleLayout
+            style="@style/RippleStyleWhite"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/spacing_xlarge"
+            android:layout_marginTop="@dimen/margin"
+            android:focusable="true">
+
+            <Button
+                android:id="@+id/btn_calculation"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="bottom"
+                android:background="@color/orange"
+                android:onClick="Radiogroup"
+                android:text="@string/calculation" />
+
+        </com.balysv.materialripple.MaterialRippleLayout>
+    </LinearLayout>
 </LinearLayout>
 

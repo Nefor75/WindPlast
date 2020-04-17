@@ -17,7 +17,7 @@
         android:textColor="@android:color/black" />
 
     <RadioGroup
-        android:id="@+id/radio_group_furnit"
+        android:id="@+id/rg_furnit"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginEnd="@dimen/margin"
@@ -26,15 +26,17 @@
         android:theme="@style/MyRadioButton">
 
         <RadioButton
+            android:id="@+id/rb_roto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Roto"
+            android:text="@string/roto"
             android:textColor="@android:color/black" />
 
         <RadioButton
+            android:id="@+id/rb_axor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Axor"
+            android:text="@string/axor"
             android:textColor="@android:color/black" />
 
     </RadioGroup>

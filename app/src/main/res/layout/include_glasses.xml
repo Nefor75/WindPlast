@@ -16,7 +16,7 @@
         android:textColor="@android:color/black" />
 
     <RadioGroup
-        android:id="@+id/radio_group_glasses"
+        android:id="@+id/rg_glasses"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginEnd="@dimen/margin"
@@ -25,12 +25,14 @@
         android:theme="@style/MyRadioButton">
 
         <RadioButton
+            android:id="@+id/rb_one_camera"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/one_camera"
             android:textColor="@android:color/black" />
 
         <RadioButton
+            android:id="@+id/rb_two_camera"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/two_camera"

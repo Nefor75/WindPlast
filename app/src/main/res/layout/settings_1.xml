@@ -60,7 +60,9 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal" >
+
+
 
                     <ImageView
                         android:id="@+id/set1_iv_up_left"
@@ -74,7 +76,8 @@
                         android:paddingEnd="@dimen/spacing_xlarge"
                         android:paddingBottom="@dimen/spacing_xlarge"
                         android:src="@drawable/img_200x130"
-                        tools:ignore="NestedWeights" />
+                        tools:ignore="NestedWeights"
+                        android:background="?attr/selectableItemBackground" />
 
                     <View
                         android:layout_width="3dp"
@@ -92,7 +95,8 @@
                         android:paddingTop="@dimen/spacing_xmedium"
                         android:paddingEnd="@dimen/spacing_xlarge"
                         android:paddingBottom="@dimen/spacing_xlarge"
-                        android:src="@drawable/bb" />
+                        android:src="@drawable/bb"
+                        android:background="?attr/selectableItemBackground"/>
 
                 </LinearLayout>
 
@@ -147,7 +151,8 @@
                         android:paddingEnd="@dimen/spacing_xlarge"
                         android:paddingBottom="@dimen/spacing_xlarge"
                         android:src="@drawable/one_po"
-                        tools:ignore="NestedWeights" />
+                        tools:ignore="NestedWeights"
+                        android:background="?attr/selectableItemBackground"/>
 
                     <View
                         android:layout_width="3dp"
@@ -165,7 +170,8 @@
                         android:paddingTop="@dimen/spacing_xmedium"
                         android:paddingEnd="@dimen/spacing_xlarge"
                         android:paddingBottom="@dimen/spacing_xlarge"
-                        android:src="@drawable/deaf" />
+                        android:src="@drawable/deaf"
+                        android:background="?attr/selectableItemBackground"/>
 
                 </LinearLayout>
 
@@ -220,7 +226,8 @@
                         android:paddingTop="@dimen/spacing_xmedium"
                         android:paddingEnd="@dimen/spacing_xlarge"
                         android:paddingBottom="@dimen/spacing_xlarge"
-                        android:src="@drawable/four" />
+                        android:src="@drawable/four"
+                        android:background="?attr/selectableItemBackground"/>
 
                     <View
                         android:layout_width="3dp"
@@ -238,7 +245,8 @@
                         android:paddingTop="@dimen/spacing_xmedium"
                         android:paddingEnd="@dimen/spacing_xlarge"
                         android:paddingBottom="@dimen/spacing_xlarge"
-                        android:src="@drawable/triple" />
+                        android:src="@drawable/triple"
+                        android:background="?attr/selectableItemBackground"/>
 
                 </LinearLayout>
 
@@ -293,7 +301,8 @@
                         android:paddingTop="@dimen/spacing_xmedium"
                         android:paddingEnd="@dimen/spacing_xlarge"
                         android:paddingBottom="@dimen/spacing_xlarge"
-                        android:src="@drawable/four" />
+                        android:src="@drawable/four"
+                        android:background="?attr/selectableItemBackground"/>
 
                     <View
                         android:layout_width="3dp"
@@ -311,7 +320,8 @@
                         android:paddingTop="@dimen/spacing_xmedium"
                         android:paddingEnd="@dimen/spacing_xlarge"
                         android:paddingBottom="@dimen/spacing_xlarge"
-                        android:src="@drawable/triple" />
+                        android:src="@drawable/triple"
+                        android:background="?attr/selectableItemBackground"/>
 
                 </LinearLayout>
             </LinearLayout>

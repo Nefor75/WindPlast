@@ -45,6 +45,7 @@
 
     <string name="transfer">Передать</string>
     <string name="save">Сохранить</string>
+    <string name="cost">Стоимость</string>
 
     <!--Toolbar -->
     <string name="settings">Настройки</string>

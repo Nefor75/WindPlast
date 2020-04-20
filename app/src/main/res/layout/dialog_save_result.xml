@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/grey_10"
+    android:padding="@dimen/margin">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Расчет №1"
+        android:textColor="@android:color/black"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
+
+    <EditText
+        android:id="@+id/edittext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin"
+        android:background="@drawable/my_rectangle"
+        android:gravity="start"
+        android:textColorHint="@color/grey_20"
+        android:hint="@string/address"
+        android:textColor="#000000" />
+
+    <com.balysv.materialripple.MaterialRippleLayout
+        style="@style/RippleStyleWhite"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/margin"
+        android:layout_gravity="center"
+        android:focusable="true">
+
+    <Button
+        android:id="@+id/button_save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/save"
+        android:background="@color/orange"
+        android:padding="@dimen/margin" />
+
+    </com.balysv.materialripple.MaterialRippleLayout>
+</LinearLayout>

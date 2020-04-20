@@ -51,8 +51,8 @@
     <!-- Spinner 2-->
     <style name="SpinnerDropDownItem">
         <item name="android:background">@android:color/black</item>
-
     </style>
+
     <!-- Ripple эффект-->
     <style name="RippleStyleWhite">
         <item name="mrl_rippleOverlay">true</item>

@@ -99,12 +99,15 @@
 
         <ImageView
             android:id="@+id/bt_back"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:paddingTop="@dimen/spacing_medium"
+            android:paddingBottom="@dimen/spacing_medium"
             android:src="@mipmap/arrow_back_round" />
 
         <TextView
-            android:id="@+id/tv_1"
+            android:id="@+id/tv_back"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -120,12 +123,15 @@
             android:background="@color/green" />
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:paddingTop="@dimen/spacing_medium"
+            android:paddingBottom="@dimen/spacing_medium"
             android:src="@mipmap/share_round" />
 
         <TextView
-            android:id="@+id/tv_2"
+            android:id="@+id/tv_transfer"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -141,12 +147,15 @@
             android:background="@color/green" />
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:paddingTop="@dimen/spacing_medium"
+            android:paddingBottom="@dimen/spacing_medium"
             android:src="@mipmap/save_round" />
 
         <TextView
-            android:id="@+id/tv_3"
+            android:id="@+id/tv_save"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"

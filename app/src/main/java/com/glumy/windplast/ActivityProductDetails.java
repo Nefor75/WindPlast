@@ -33,9 +33,12 @@ public class ActivityProductDetails extends AppCompatActivity {//implements Adap
     private RadioButton rb_one_camera;
     private RadioButton rb_two_camera;
     private CheckBox checkBoxWeathering, checkBoxSill;
+    private RadioButton rb_sill_ukraine, rb_sill_usa;
+    private RadioButton rb_weath_ukraine, rb_weath_usa;
     private LinearLayout llWindowSillSizes, llWeathering;
     private Button btnCalculation;
     private Activity activity;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,37 +58,42 @@ public class ActivityProductDetails extends AppCompatActivity {//implements Adap
         rg_rehau = findViewById(R.id.rg_rehau);
         rb_rehau = findViewById(R.id.rb_rehau);
         rb_rehau.setChecked(true);
-           rb_rehau_60 = findViewById(R.id.rb_euro_design_60);
-           rb_rehau_60.setChecked(true);
+        rb_rehau_60 = findViewById(R.id.rb_euro_design_60);
+        rb_rehau_60.setChecked(true);
 
         rg_wds = findViewById(R.id.rg_wds);
         rb_wds = findViewById(R.id.rb_wds);
-            rb_wds_5s =findViewById(R.id.rb_wds_5s);
-            rb_wds_6s =findViewById(R.id.rb_wds_6s);
-            rb_wds_7s =findViewById(R.id.rb_wds_7s);
-            rb_wds_8s =findViewById(R.id.rb_wds_8s);
+        rb_wds_5s = findViewById(R.id.rb_wds_5s);
+        rb_wds_6s = findViewById(R.id.rb_wds_6s);
+        rb_wds_7s = findViewById(R.id.rb_wds_7s);
+        rb_wds_8s = findViewById(R.id.rb_wds_8s);
 
         rg_opentech = findViewById(R.id.rg_opentech);
         rb_opentech = findViewById(R.id.rb_opentech);
-            rb_opentech_standart = findViewById(R.id.rb_opentech_standart);
-            rb_opentech_delux = findViewById(R.id.rb_opentech_de_lux);
-            rb_opentech_elit = findViewById(R.id.rb_opentech_elit);
+        rb_opentech_standart = findViewById(R.id.rb_opentech_standart);
+        rb_opentech_delux = findViewById(R.id.rb_opentech_de_lux);
+        rb_opentech_elit = findViewById(R.id.rb_opentech_elit);
 
-         rg_furnit = findViewById(R.id.rg_furnit);
-            rb_roto = findViewById(R.id.rb_roto);
-            rb_roto.setChecked(true);
-            rb_axor = findViewById(R.id.rb_axor);
+        rg_furnit = findViewById(R.id.rg_furnit);
+        rb_roto = findViewById(R.id.rb_roto);
+        rb_roto.setChecked(true);
+        rb_axor = findViewById(R.id.rb_axor);
 
-         rg_glasses = findViewById(R.id.rg_glasses);
-            rb_one_camera = findViewById(R.id.rb_one_camera);
-            rb_one_camera.setChecked(true);
-            rb_two_camera = findViewById(R.id.rb_two_camera);
+        rg_glasses = findViewById(R.id.rg_glasses);
+        rb_one_camera = findViewById(R.id.rb_one_camera);
+        rb_one_camera.setChecked(true);
+        rb_two_camera = findViewById(R.id.rb_two_camera);
 
         checkBoxSill = findViewById(R.id.chbx_windowsill);
         checkBoxWeathering = findViewById(R.id.chbx_weadering);
 
         rgroupSill = findViewById(R.id.radio_group_sill);
+        rb_sill_ukraine = findViewById(R.id.rb_sill_ukraine);
+        rb_sill_usa = findViewById(R.id.rb_sill_usa);
+
         rgWeathering = findViewById(R.id.rg_weathering);
+        rb_weath_ukraine = findViewById(R.id.rb_weath_ukraine);
+        rb_weath_usa = findViewById(R.id.rb_weath_usa);
 
         llWindowSillSizes = findViewById(R.id.ll_windowsill_sizes);
         llWeathering = findViewById(R.id.ll_Weathering);
@@ -138,6 +146,7 @@ public class ActivityProductDetails extends AppCompatActivity {//implements Adap
                     rgroupSill.setVisibility(View.VISIBLE);
                     llWindowSillSizes.setVisibility(View.VISIBLE);
                 } else {
+                    rgroupSill.clearCheck();
                     rgroupSill.setVisibility(View.GONE);
                     llWindowSillSizes.setVisibility(View.GONE);
                 }
@@ -148,20 +157,17 @@ public class ActivityProductDetails extends AppCompatActivity {//implements Adap
                     rgWeathering.setVisibility(View.VISIBLE);
                     llWeathering.setVisibility(View.VISIBLE);
                 } else {
+                    rgWeathering.clearCheck();
                     rgWeathering.setVisibility(View.GONE);
                     llWeathering.setVisibility(View.GONE);
                 }
                 break;
-            case R.id.btn_calculation:
-                openDialogOrderResult();
-
-                break;
         }
     }
-//Метод для запуска диалога
-    public void openDialogOrderResult() {
+
+    //Метод для запуска диалога
+    public void openDialogOrderResult(View view) {
         DialogUtils dialogUtils = new DialogUtils();
         dialogUtils.show(getSupportFragmentManager(), "DialogOrderResult");
-
     }
 }

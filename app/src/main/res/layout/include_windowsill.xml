@@ -45,12 +45,14 @@
             android:visibility="gone">
 
             <RadioButton
+                android:id="@+id/rb_sill_ukraine"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Украина"
                 android:textColor="@android:color/black" />
 
             <RadioButton
+                android:id="@+id/rb_sill_usa"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="США"

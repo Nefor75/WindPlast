@@ -41,11 +41,18 @@
     <string name="quantity">Количество</string>
     <string name="calculation">Расчет</string>
     <string name="order_result">Результат расчета</string>
-    <string name="width_height">Размер изделия</string>
 
-    <string name="transfer">Передать</string>
+    <string name="transfer">Поделиться</string>
     <string name="save">Сохранить</string>
     <string name="cost">Стоимость</string>
+
+    <!--dialog_order_result -->
+    <string name="weatheringWithDots">Отлив :</string>
+    <string name="width_height">Размер изделия :</string>
+    <string name="sillWithDots">Подоконник :</string>
+    <string name="glassesWithDots">Стеклопакет :</string>
+    <string name="fittingsWithDots">Фурнитура :</string>
+    <string name="profilWithDots">Профиль :</string>
 
     <!--Toolbar -->
     <string name="settings">Настройки</string>

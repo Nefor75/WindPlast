@@ -1,9 +1,12 @@
 package com.glumy.windplast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -15,7 +18,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.glumy.windplast.Cart.Cart;
-import com.glumy.windplast.util.DialogUtils;
+import com.glumy.windplast.util.DialogUtil;
 
 
 public class ActivityProductDetails extends AppCompatActivity {//implements AdapterView.OnItemSelectedListener {
@@ -37,7 +40,6 @@ public class ActivityProductDetails extends AppCompatActivity {//implements Adap
     private RadioButton rb_weath_ukraine, rb_weath_usa;
     private LinearLayout llWindowSillSizes, llWeathering;
     private Button btnCalculation;
-    private Activity activity;
 
 
     @Override
@@ -162,12 +164,56 @@ public class ActivityProductDetails extends AppCompatActivity {//implements Adap
                     llWeathering.setVisibility(View.GONE);
                 }
                 break;
+            case R.id.btn_calculation:
+                openDialog();
         }
+
+//    public Dialog openDialogOrderResult() {
+//        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+//        View view = getLayoutInflater().inflate(R.layout.dialog_order_result, null);
+//
+//        builder.setView(view);
+//
+//        //view.findViewById(R.id.tv_back).setDi
+//
+//        view.findViewById(R.id.tv_transfer).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                //onBackPressed();
+//            }
+//        });
+//
+//        view.findViewById(R.id.tv_save).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                openDialog();
+//
+//            }
+//
+//        });
+//
+//        return builder.create();
+//    }
+//
+//    private Dialog openDialogSaveResult() {
+//        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+//        View view = getLayoutInflater().inflate(R.layout.dialog_save_result, null);
+//
+//        builder.setView(view);
+//
+//        view.findViewById(R.id.button_save).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                //onBackPressed();
+//            }
+//        });
+//
+//        return builder.create();
     }
 
-    //Метод для запуска диалога
-    public void openDialogOrderResult(View view) {
-        DialogUtils dialogUtils = new DialogUtils();
-        dialogUtils.show(getSupportFragmentManager(), "DialogOrderResult");
+    private void openDialog() {
+        DialogUtil dialog = new DialogUtil();
+        dialog.show(getSupportFragmentManager(), "onCreateDialog");
     }
 }

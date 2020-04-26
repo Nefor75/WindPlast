@@ -101,7 +101,7 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="bottom"
                 android:background="@color/orange"
-                android:onClick="openDialogOrderResult"
+                android:onClick="Radiogroup"
                 android:text="@string/calculation" />
 
         </com.balysv.materialripple.MaterialRippleLayout>

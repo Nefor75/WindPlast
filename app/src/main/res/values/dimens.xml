@@ -13,7 +13,9 @@
     <dimen name="spacing_mxlarge">25dp</dimen>
     <dimen name="spacing_xlarge">32dp</dimen>
     <dimen name="spacing_xmlarge">40dp</dimen>
+    <dimen name="spacing_forty_five">45dp</dimen>
     <dimen name="spacing_xxlarge">50dp</dimen>
     <dimen name="spacing_xxxlarge">64dp</dimen>
+    <dimen name="hundred">100dp</dimen>
 
 </resources>

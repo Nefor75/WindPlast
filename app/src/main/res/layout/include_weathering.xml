@@ -22,7 +22,7 @@
             android:textColor="@android:color/black" />
 
         <CheckBox
-            android:id="@+id/chbx_weadering"
+            android:id="@+id/chbx_weathering"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
@@ -62,48 +62,42 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/ll_Weathering"
+        android:id="@+id/ll_weathering"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:visibility="gone">
 
         <TextView
-            android:id="@+id/textView_width"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginStart="@dimen/margin"
-            android:layout_weight="1"
+            android:layout_marginHorizontal="@dimen/margin"
             android:gravity="center_vertical"
             android:text="@string/width"
             android:textColor="@android:color/black" />
 
-        <EditText
-            android:id="@+id/edit_width"
+        <TextView
+            android:id="@+id/tv_width_weathering"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="@dimen/spacing_xmedium"
-            android:layout_marginEnd="@dimen/spacing_xmedium"
             android:layout_weight="1"
             android:background="@drawable/my_rectangle"
-            android:focusable="false"
             android:gravity="center_vertical|center_horizontal"
-            android:text="170"
             android:textColor="@android:color/black"
             android:textSize="16sp" />
 
         <TextView
-            android:id="@+id/textView_height"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginStart="@dimen/spacing_xmedium"
+            android:layout_marginEnd="@dimen/spacing_xmedium"
             android:layout_weight="1"
-            android:gravity="center_vertical"
+            android:gravity="center_vertical|end"
             android:text="@string/length"
             android:textColor="@android:color/black" />
 
-        <EditText
-            android:id="@+id/edit_height"
+        <TextView
+            android:id="@+id/tv_length_weathering"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center_vertical|end"
@@ -111,9 +105,7 @@
             android:layout_marginEnd="@dimen/margin"
             android:layout_weight="1"
             android:background="@drawable/my_rectangle"
-            android:focusable="false"
             android:gravity="center_vertical|center_horizontal"
-            android:text="1600"
             android:textColor="@android:color/black"
             android:textSize="16sp" />
 

@@ -134,31 +134,39 @@ public class ActivityMain extends AppCompatActivity implements AdapterView.OnIte
         switch (view.getId()) {
 
             case R.id.set1_iv_up_left:
-                recived = new Cart(view.getId(), R.drawable.img_200x130, R.string.two, 1350, 1400, 1, 1000);
+                recived = new Cart(R.drawable.img_200x130, R.string.two,
+                        1350, 1400, 250, 1450, 160, 1350,
+                        100, 1000);
                 break;
 
             case R.id.set1_iv_up_right:
-                recived = new Cart(view.getId(), R.drawable.bb, R.string.balkon,
-                        2100, 2100, 1, 3000);
+                recived = new Cart(R.drawable.bb, R.string.balkon,
+                        2100, 2100, 250, 2200, 160, 2100,
+                        1, 3000);
                 break;
 
             case R.id.set1_iv_mid_left:
-                recived = new Cart(view.getId(), R.drawable.one_po, R.string.one_po,
-                        900, 1300, 1, 1000);
+                recived = new Cart(R.drawable.one_po, R.string.one_po,
+                        900, 1300, 250, 1000, 160, 900,
+                        1, 1000);
                 break;
 
             case R.id.set1_iv_mid_right:
-                recived = new Cart(view.getId(), R.drawable.deaf, R.string.deaf, 1000, 1000, 1, 500);
+                recived = new Cart(R.drawable.deaf, R.string.deaf,
+                        1000, 1000, 250, 1100, 160, 1000,
+                        1, 500);
                 break;
 
             case R.id.set1_iv_bottom_left:
-                recived = new Cart(view.getId(), R.drawable.four, R.string.four,
-                        3000, 1300, 1, 3000);
+                recived = new Cart(R.drawable.four, R.string.four,
+                        3000, 1300, 250, 3100, 160, 3000,
+                        1, 3000);
                 break;
 
             case R.id.set1_iv_bottom_right:
-                recived = new Cart(view.getId(), R.drawable.triple, R.string.triple,
-                        2000, 1300, 1, 2000);
+                recived = new Cart(R.drawable.triple, R.string.triple,
+                        2000, 1300, 250, 2100, 160, 2000,
+                        1, 2000);
                 break;
 
             default:

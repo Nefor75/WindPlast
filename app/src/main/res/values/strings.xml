@@ -8,8 +8,11 @@
 
     <!--Activity_product_details -->
     <string name="width">Ширина</string>
+    <string name="width1">ширина</string>
     <string name="height">Высота</string>
-    <string name="length">Длинна</string>
+    <string name="height1">высота</string>
+    <string name="length">Длина</string>
+    <string name="length1">длина</string>
     <string name="profil">Профиль</string>
 
     <string name="Rehau">Rehau</string>
@@ -47,12 +50,9 @@
     <string name="cost">Стоимость</string>
 
     <!--dialog_order_result -->
-    <string name="weatheringWithDots">Отлив :</string>
-    <string name="width_height">Размер изделия :</string>
-    <string name="sillWithDots">Подоконник :</string>
-    <string name="glassesWithDots">Стеклопакет :</string>
-    <string name="fittingsWithDots">Фурнитура :</string>
-    <string name="profilWithDots">Профиль :</string>
+    <string name="width_height">Размер изделия</string>
+    <string name="amount">Количество</string>
+    <string name="square">Площадь изделия</string>
 
     <!--Toolbar -->
     <string name="settings">Настройки</string>

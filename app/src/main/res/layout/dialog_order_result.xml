@@ -6,7 +6,7 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/tv_top"
+        style="@style/TextAppearance.MaterialComponents.Headline6"
         android:layout_width="match_parent"
         android:layout_height="@dimen/hundred"
         android:padding="@dimen/margin"
@@ -23,12 +23,11 @@
         android:padding="@dimen/margin">
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/tv_width_height"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/width_height"
@@ -38,212 +37,241 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin"
-                android:layout_marginEnd="@dimen/spacing_xmedium"
                 android:gravity="center_vertical|end"
-                android:text="Шир."
+                android:text="@string/width1"
                 android:textColor="@color/grey_80" />
 
             <TextView
-                android:id="@+id/tv_width"
-                android:layout_width="50dp"
+                android:id="@+id/tv_width_or_res"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/my_rectangle"
+                android:layout_marginStart="@dimen/spacing_xmedium"
                 android:gravity="center"
-                android:text="1000"
                 android:textColor="@color/grey_80"
-                android:textSize="14sp" />
+                android:textStyle="bold|italic" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin"
-                android:layout_marginEnd="@dimen/spacing_xmedium"
-                android:text="Выс."
+                android:text="@string/height1"
                 android:textColor="@color/grey_80" />
 
             <TextView
-                android:id="@+id/tv_height"
-                android:layout_width="50dp"
+                android:id="@+id/tv_height_or_res"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/my_rectangle"
+                android:layout_marginStart="@dimen/spacing_xmedium"
                 android:gravity="center"
-                android:text="1000"
                 android:textColor="@color/grey_80"
-                android:textSize="14sp" />
+                android:textStyle="bold|italic" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spacing_xmedium"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/profilWithDots"
+                android:text="@string/amount"
                 android:textColor="@color/grey_80" />
 
             <TextView
-                android:id="@+id/tv_profile"
-                android:layout_width="50dp"
+                android:id="@+id/tv_amount_or_res"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/my_rectangle"
+                android:layout_marginStart="@dimen/spacing_xmedium"
+                android:textStyle="italic"
                 android:gravity="center"
-                android:text="Rehau"
-                android:textColor="@color/grey_80"
-                android:textSize="14sp" />
+                android:text="1"
+                android:textColor="@color/grey_80" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spacing_xmedium"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/fittingsWithDots"
+                android:text="@string/square"
                 android:textColor="@color/grey_80" />
 
             <TextView
-                android:id="@+id/tv_furniture"
-                android:layout_width="50dp"
+                android:id="@+id/tv_square"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/my_rectangle"
+                android:gravity="center"
+                android:text="1.42 м*2"
+                android:textColor="@color/grey_80"
+                android:layout_marginStart="@dimen/spacing_xmedium"
+                android:textStyle="italic" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/profil"
+                android:textColor="@color/grey_80" />
+
+            <TextView
+                android:id="@+id/tv_profile_or_res"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_xmedium"
+                android:textStyle="italic"
+                android:gravity="center"
+                android:text="Rehau Euro Design 60"
+                android:textColor="@color/grey_80" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/fittings"
+                android:textColor="@color/grey_80" />
+
+            <TextView
+                android:id="@+id/tv_furniture_or_res"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_xmedium"
+                android:textStyle="italic"
                 android:gravity="center"
                 android:text="Roto"
-                android:textColor="@color/grey_80"
-                android:textSize="14sp" />
+                android:textColor="@color/grey_80" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spacing_xmedium"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/glassesWithDots"
+                android:text="@string/glasses"
                 android:textColor="@color/grey_80" />
 
             <TextView
-                android:id="@+id/tv_glasses"
-                android:layout_width="50dp"
+                android:id="@+id/tv_glasses_or_res"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/my_rectangle"
+                android:layout_marginStart="@dimen/spacing_xmedium"
+                android:textStyle="italic"
                 android:gravity="center"
                 android:text="4/16/4"
-                android:textColor="@color/grey_80"
-                android:textSize="14sp" />
+                android:textColor="@color/grey_80" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spacing_xmedium"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/sillWithDots"
+                android:text="@string/sill"
                 android:textColor="@color/grey_80" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin"
-                android:layout_marginEnd="@dimen/spacing_xmedium"
                 android:gravity="center_vertical|end"
-                android:text="Шир."
+                android:text="@string/width1"
                 android:textColor="@color/grey_80" />
 
             <TextView
-                android:id="@+id/textView_width_sill"
-                android:layout_width="50dp"
+                android:id="@+id/tv_width_sill_or_res"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/my_rectangle"
                 android:gravity="center"
-                android:text="1000"
-                android:textColor="@color/grey_80"
-                android:textSize="14sp" />
+                android:layout_marginStart="@dimen/spacing_xmedium"
+                android:textStyle="italic"
+                android:textColor="@color/grey_80" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin"
-                android:layout_marginEnd="@dimen/spacing_xmedium"
-                android:text="Длин."
+                android:text="@string/length1"
                 android:textColor="@color/grey_80" />
 
             <TextView
-                android:id="@+id/textView_height_sill"
-                android:layout_width="50dp"
+                android:id="@+id/tv_length_sill_or_res"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/my_rectangle"
                 android:gravity="center"
-                android:text="1000"
-                android:textColor="@color/grey_80"
-                android:textSize="14sp" />
+                android:layout_marginStart="@dimen/spacing_xmedium"
+                android:textStyle="italic"
+                android:textColor="@color/grey_80" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spacing_xmedium"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/weatheringWithDots"
+                android:text="@string/weathering"
                 android:textColor="@color/grey_80" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin"
-                android:layout_marginEnd="@dimen/spacing_xmedium"
                 android:gravity="center_vertical|end"
-                android:text="Шир."
+                android:text="@string/width1"
                 android:textColor="@color/grey_80" />
 
             <TextView
-                android:id="@+id/tv_width_weathering"
-                android:layout_width="50dp"
+                android:id="@+id/tv_width_weathering_or_res"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/my_rectangle"
                 android:gravity="center"
-                android:text="1000"
-                android:textColor="@color/grey_80"
-                android:textSize="14sp" />
+                android:layout_marginStart="@dimen/spacing_xmedium"
+                android:textStyle="italic"
+                android:textColor="@color/grey_80" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin"
-                android:layout_marginEnd="@dimen/spacing_xmedium"
-                android:text="Длин."
+                android:text="@string/length1"
                 android:textColor="@color/grey_80" />
 
             <TextView
-                android:id="@+id/tv_height_weathering"
-                android:layout_width="50dp"
+                android:id="@+id/tv_length_weathering_or_res"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/my_rectangle"
                 android:gravity="center"
-                android:text="1000"
-                android:textColor="@color/grey_80"
-                android:textSize="14sp" />
+                android:layout_marginStart="@dimen/spacing_xmedium"
+                android:textStyle="italic"
+                android:textColor="@color/grey_80" />
 
         </LinearLayout>
     </LinearLayout>
@@ -266,7 +294,7 @@
             android:textColor="@android:color/white" />
 
         <TextView
-            android:id="@+id/content"
+            android:id="@+id/price_or_res"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="2000 грн"
@@ -277,79 +305,45 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginHorizontal="@dimen/spacing_xmedium"
-        android:layout_marginBottom="@dimen/spacing_xmedium"
-        android:background="@color/orange"
+        android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <ImageView
-            android:id="@+id/bt_back"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
+        <ImageButton
+            android:id="@+id/ib_back"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:paddingTop="@dimen/spacing_medium"
-            android:paddingBottom="@dimen/spacing_medium"
+            android:layout_weight="1"
+            android:background="@color/orange"
             android:src="@mipmap/arrow_back_round" />
 
-        <TextView
-            android:id="@+id/tv_back"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@color/orange"
-            android:gravity="start|center_vertical"
-            android:text="@string/back"
-            android:textColor="@android:color/white"
-            android:textSize="12sp" />
-
         <View
             android:layout_width="3dp"
             android:layout_height="match_parent"
             android:background="@color/green" />
 
-        <ImageView
-            android:layout_width="35dp"
-            android:layout_height="35dp"
+        <ImageButton
+            android:id="@+id/ib_transfer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:paddingTop="@dimen/spacing_medium"
-            android:paddingBottom="@dimen/spacing_medium"
+            android:layout_weight="1"
+            android:background="@color/orange"
             android:src="@mipmap/share_round" />
 
-        <TextView
-            android:id="@+id/tv_transfer"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@color/orange"
-            android:gravity="start|center_vertical"
-            android:text="@string/transfer"
-            android:textColor="@android:color/white"
-            android:textSize="12sp" />
-
         <View
             android:layout_width="3dp"
             android:layout_height="match_parent"
             android:background="@color/green" />
 
-        <ImageView
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:layout_gravity="center"
-            android:paddingTop="@dimen/spacing_medium"
-            android:paddingBottom="@dimen/spacing_medium"
-            android:src="@mipmap/save_round" />
-
-        <TextView
-            android:id="@+id/tv_save"
+        <ImageButton
+            android:id="@+id/ib_save"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_weight="1"
             android:background="@color/orange"
-            android:gravity="start|center_vertical"
-            android:text="@string/save"
-            android:textColor="@android:color/white"
-            android:textSize="12sp" />
+            android:src="@mipmap/save_round" />
 
     </LinearLayout>
 </LinearLayout>

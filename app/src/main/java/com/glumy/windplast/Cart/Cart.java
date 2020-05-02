@@ -4,30 +4,37 @@ import java.io.Serializable;
 
 public class Cart implements Serializable {
 
-    private int id,width,height,amount,price,image,name;
+    private int width, height, widthSill, lengthSill, widthWeathering, lengthWeathering, amount, price, image, name;
 
     public Cart() {
     }
 
-    public Cart(int id, int image, int name, int width, int height, int amount, int price) {
-        this.id = id;
+    public Cart(int image, int name, int width, int height, int widthSill, int lengthSill, int widthWeathering, int lengthWeathering, int amount, int price) {
+
         this.image = image;
         this.name = name;
         this.width = width;
         this.height = height;
+        this.widthSill = widthSill;
+        this.lengthSill = lengthSill;
+        this.widthWeathering = widthWeathering;
+        this.lengthWeathering = lengthWeathering;
         this.amount = amount;
         this.price = price;
     }
 
-    public int getId() {
-        return id;
-    }
+//    public Cart(int id, int image, int name, int width, int height, int amount, int price) {
+//        this.id = id;
+//        this.image = image;
+//        this.name = name;
+//        this.width = width;
+//        this.height = height;
+//        this.amount = amount;
+//        this.price = price;
+//    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
-    public int getWidth() {
+     public int getWidth() {
         return width;
     }
 
@@ -41,6 +48,38 @@ public class Cart implements Serializable {
 
     public void setHeight(int height) {
         this.height = height;
+    }
+
+    public int getWidthSill() {
+        return widthSill;
+    }
+
+    public void setWidthSill(int widthSill) {
+        this.widthSill = widthSill;
+    }
+
+    public int getLengthSill() {
+        return lengthSill;
+    }
+
+    public void setLengthSill(int lengthSill) {
+        this.lengthSill = lengthSill;
+    }
+
+    public int getWidthWeathering() {
+        return widthWeathering;
+    }
+
+    public void setWidthWeathering(int widthWeathering) {
+        this.widthWeathering = widthWeathering;
+    }
+
+    public int getLengthWeathering() {
+        return lengthWeathering;
+    }
+
+    public void setLengthWeathering(int lengthWeathering) {
+        this.lengthWeathering = lengthWeathering;
     }
 
     public int getAmount() {
@@ -74,5 +113,4 @@ public class Cart implements Serializable {
     public void setName(int name) {
         this.name = name;
     }
-
 }

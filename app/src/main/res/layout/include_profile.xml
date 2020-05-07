@@ -47,6 +47,7 @@
                 android:id="@+id/rb_euro_design_60"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="Radiogroup"
                 android:text="@string/REHAU_Euro_Design_60"
                 android:textColor="@android:color/black" />
 
@@ -54,6 +55,7 @@
                 android:id="@+id/rb_euro_design_70"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="Radiogroup"
                 android:text="@string/REHAU_Euro_Design_70"
                 android:textColor="@android:color/black" />
 
@@ -61,6 +63,7 @@
                 android:id="@+id/rb_brillant_design"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="Radiogroup"
                 android:text="@string/REHAU_Brillant_Design"
                 android:textColor="@android:color/black" />
 
@@ -68,6 +71,7 @@
                 android:id="@+id/rb_synego"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="Radiogroup"
                 android:text="@string/REHAU_SYNEGO"
                 android:textColor="@android:color/black" />
 
@@ -75,6 +79,7 @@
                 android:id="@+id/rb_geneo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="Radiogroup"
                 android:text="@string/REHAU_GENEO_RAU_FIPRO_X"
                 android:textColor="@android:color/black" />
 
@@ -102,6 +107,7 @@
                 android:id="@+id/rb_wds_5s"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="Radiogroup"
                 android:text="@string/WDS_5S"
                 android:textColor="@android:color/black" />
 
@@ -109,6 +115,7 @@
                 android:id="@+id/rb_wds_6s"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="Radiogroup"
                 android:text="@string/WDS_6S"
                 android:textColor="@android:color/black" />
 
@@ -116,6 +123,7 @@
                 android:id="@+id/rb_wds_7s"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="Radiogroup"
                 android:text="@string/WDS_7S"
                 android:textColor="@android:color/black" />
 
@@ -123,6 +131,7 @@
                 android:id="@+id/rb_wds_8s"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="Radiogroup"
                 android:text="@string/WDS_8S"
                 android:textColor="@android:color/black" />
 
@@ -142,7 +151,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/spacing_mxlarge"
-            android:onClick="Radiogroup"
+
             android:theme="@style/MyRadioButton"
             android:visibility="gone">
 
@@ -150,6 +159,7 @@
                 android:id="@+id/rb_openteck_standart"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="Radiogroup"
                 android:text="@string/OpenTeck_STANDARD"
                 android:textColor="@android:color/black" />
 
@@ -157,6 +167,7 @@
                 android:id="@+id/rb_openteck_de_lux"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="Radiogroup"
                 android:text="@string/OpenTeck_DE_LUX"
                 android:textColor="@android:color/black" />
 
@@ -164,6 +175,7 @@
                 android:id="@+id/rb_openteck_elit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="Radiogroup"
                 android:text="@string/OpenTeck_ELIT"
                 android:textColor="@android:color/black" />
 

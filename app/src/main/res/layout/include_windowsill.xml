@@ -12,7 +12,6 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/textView_sill"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
@@ -48,6 +47,7 @@
                 android:id="@+id/rb_sill_ukraine"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="Radiogroup"
                 android:text="Украина"
                 android:textColor="@android:color/black" />
 
@@ -55,6 +55,7 @@
                 android:id="@+id/rb_sill_usa"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="Radiogroup"
                 android:text="США"
                 android:textColor="@android:color/black" />
 

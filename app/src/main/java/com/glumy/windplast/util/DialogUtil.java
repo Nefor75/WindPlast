@@ -55,13 +55,27 @@ public class DialogUtil extends AppCompatDialogFragment {
         tv_width_or_res.setText(getArguments().getString("width_product"));//передались данные из ActivityProductDetails в этот диалог
         TextView tv_height_or_res = view.findViewById(R.id.tv_height_or_res);
         tv_height_or_res.setText(getArguments().getString("height_product"));//передались данные из ActivityProductDetails в этот диалог
+
         TextView et_amount_or_res = view.findViewById(R.id.tv_amount_or_res);
         et_amount_or_res.setText(getArguments().getString("et_amount"));
+
         TextView tv_square = view.findViewById(R.id.tv_square);
         tv_square.setText(Tools.getsquareProduct(tv_width_or_res.getText().toString(), tv_height_or_res.getText().toString()));
 
         TextView tv_profile_or_res = view.findViewById(R.id.tv_profile_or_res);
-     //   tv_profile_or_res.setText(getArguments().getString("checkedRadiobuttonProfile"));
+        tv_profile_or_res.setText(getArguments().getString("Profile"));
+
+        TextView tv_prof_second_part = view.findViewById(R.id.tv_prof_second_part);
+        tv_prof_second_part.setText(getArguments().getString("ProfileSecondPart"));
+
+        TextView tv_furniture_or_res = view.findViewById(R.id.tv_furniture_or_res);
+        tv_furniture_or_res.setText(getArguments().getString("furniture"));
+
+        TextView tv_manufacturer_sill = view.findViewById(R.id.tv_manufacturer_sill);
+        tv_manufacturer_sill.setText(getArguments().getString("manufacturer_sill"));
+
+        TextView tv_manufacturer_weathering = view.findViewById(R.id.tv_manufacturer_weathering);
+        tv_manufacturer_weathering.setText(getArguments().getString("manufacturer_weathering"));
 
         TextView tv_width_sill_or_res = view.findViewById(R.id.tv_width_sill_or_res);
         tv_width_sill_or_res.setText(getArguments().getString("width_sill"));

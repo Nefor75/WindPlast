@@ -25,7 +25,7 @@ import com.glumy.windplast.util.DialogUtil;
 public class ActivityProductDetails extends AppCompatActivity {
 
     private ImageView mainImage;
-    private TextView textView_main, tv_width_product, tv_height_product, tv_width_sill, tv_length_sill, tv_width_weathering, tv_length_weathering;
+    private TextView textView_main, tv_width_product, tv_height_product, tv_width_sill, tv_length_sill, tv_width_weathering, tv_length_weathering, tv_prof_second_part;
     private RadioGroup rg_rehau, rg_wds, rg_openteck, rg_furnit, rg_glasses, rgroupSill, rgWeathering, rg_profil;
     private RadioButton rb_rehau, rb_wds, rb_openteck;
     private RadioButton rb_rehau_60, rb_rehau_70, rb_rehau_brillant, rb_rehau_sineo, rb_rehau_geneo;
@@ -40,7 +40,11 @@ public class ActivityProductDetails extends AppCompatActivity {
     private LinearLayout llWindowSillSizes, llWeathering;
     private Button btnCalculation;
     private EditText et_amount;
-
+    private String str_furniture = "Roto";
+    private String str_profile = "Rehau";
+    private String str_profile2part = "Euro Disign 60";
+    private String str_manufacturer_sill = " Без подоконника";
+    private String str_manufacturer_weathering = " Без отлива";
 
 
     @Override
@@ -62,6 +66,7 @@ public class ActivityProductDetails extends AppCompatActivity {
         tv_width_weathering = findViewById(R.id.tv_width_weathering);
         tv_length_weathering = findViewById(R.id.tv_length_weathering);
         et_amount = findViewById(R.id.et_amount);
+        tv_prof_second_part = findViewById(R.id.tv_prof_second_part);
 
         rg_profil = findViewById(R.id.rg_profil);
 
@@ -71,6 +76,8 @@ public class ActivityProductDetails extends AppCompatActivity {
 
         rb_rehau_60 = findViewById(R.id.rb_euro_design_60);
         rb_rehau_60.setChecked(true);
+
+        rb_rehau_70 = findViewById(R.id.rb_euro_design_70);
 
         rg_wds = findViewById(R.id.rg_wds);
         rb_wds = findViewById(R.id.rb_wds);
@@ -100,6 +107,7 @@ public class ActivityProductDetails extends AppCompatActivity {
 
         rgroupSill = findViewById(R.id.radio_group_sill);
         rb_sill_ukraine = findViewById(R.id.rb_sill_ukraine);
+        rb_sill_ukraine.setChecked(true);
         rb_sill_usa = findViewById(R.id.rb_sill_usa);
 
         rgWeathering = findViewById(R.id.rg_weathering);
@@ -127,79 +135,177 @@ public class ActivityProductDetails extends AppCompatActivity {
             tv_length_weathering.setText(setActivity.getLengthWeathering() + "");
             et_amount.setText(setActivity.getAmount() + "");
 
-
         }
     }
-    String str_CheckedRadiobuttonProfile = "";//rb_rehau.getText().toString();
-    String str_profileTwoPart = "";//rb_rehau_60.getText().toString();
-    String str_fullProfileName = str_CheckedRadiobuttonProfile + " " + str_profileTwoPart;
-
 
     public void Radiogroup(View view) {
-
 
         switch (view.getId()) {
 
             case R.id.rb_rehau:
-                str_CheckedRadiobuttonProfile = rb_rehau.getText().toString();
+
+                str_profile = Constant.REHAU;
+                rb_rehau_60.setChecked(true);
+                str_profile2part = Constant.EURO_DESIGN_60;
 
                 rg_rehau.setVisibility(View.VISIBLE);
                 rg_wds.setVisibility(View.GONE);
-                rg_wds.clearCheck();
                 rg_openteck.setVisibility(View.GONE);
-                rg_openteck.clearCheck();
+
                 break;
 
             case R.id.rb_euro_design_60:
-                str_profileTwoPart = rb_rehau_60.getText().toString();
+                str_profile = Constant.REHAU;
+                str_profile2part = Constant.EURO_DESIGN_60;
                 break;
+
             case R.id.rb_euro_design_70:
-                str_profileTwoPart = rb_rehau_70.getText().toString();
+                str_profile = Constant.REHAU;
+                str_profile2part = Constant.EURO_DESIGN_70;
+
+                break;
+
+            case R.id.rb_brillant_design:
+                str_profile = Constant.REHAU;
+                str_profile2part = Constant.BRILLANT;
+
+                break;
+
+            case R.id.rb_synego:
+                str_profile = Constant.REHAU;
+                str_profile2part = Constant.SYNEGO;
+
+                break;
+
+            case R.id.rb_geneo:
+                str_profile = Constant.REHAU;
+                str_profile2part = Constant.GENEO;
+
                 break;
 
             case R.id.rb_wds:
-                str_CheckedRadiobuttonProfile = Constant.WDS;
+                str_profile = Constant.WDS;
+                rb_wds_5s.setChecked(true);
+                str_profile2part = Constant.WDS_5S;
                 rg_wds.setVisibility(View.VISIBLE);
                 rg_rehau.setVisibility(View.GONE);
-                rg_rehau.clearCheck();
                 rg_openteck.setVisibility(View.GONE);
-                rg_openteck.clearCheck();
+
+                break;
+
+            case R.id.rb_wds_5s:
+                str_profile = Constant.WDS;
+                str_profile2part = Constant.WDS_5S;
+
+                break;
+
+            case R.id.rb_wds_6s:
+                str_profile = Constant.WDS;
+                str_profile2part = Constant.WDS_6S;
+
+                break;
+
+            case R.id.rb_wds_7s:
+                str_profile = Constant.WDS;
+                str_profile2part = Constant.WDS_7S;
+
+                break;
+
+            case R.id.rb_wds_8s:
+                str_profile = Constant.WDS;
+                str_profile2part = Constant.WDS_8S;
+
                 break;
 
             case R.id.rb_openteck:
-                str_CheckedRadiobuttonProfile = Constant.OPENTECK;
+                str_profile = Constant.OPENTECK;
+                rb_openteck_standart.setChecked(true);
+                str_profile2part = Constant.OPENTECK_STANDARD;
                 rg_openteck.setVisibility(View.VISIBLE);
                 rg_rehau.setVisibility(View.GONE);
-                rg_rehau.clearCheck();
                 rg_wds.setVisibility(View.GONE);
-                rg_wds.clearCheck();
+
+                break;
+
+            case R.id.rb_openteck_standart:
+                str_profile = Constant.OPENTECK;
+                str_profile2part = Constant.OPENTECK_STANDARD;
+
+                break;
+
+            case R.id.rb_openteck_de_lux:
+                str_profile = Constant.OPENTECK;
+                str_profile2part = Constant.OPENTECK_DELUX;
+
+                break;
+
+            case R.id.rb_openteck_elit:
+                str_profile = Constant.OPENTECK;
+                str_profile2part = Constant.OPENTECK_ELIT;
+
+                break;
+
+            case R.id.rb_roto:
+                str_furniture = Constant.ROTO;
+
+                break;
+
+            case R.id.rb_axor:
+                str_furniture = Constant.AXOR;
+
                 break;
 
             case R.id.chbx_windowsill:
                 if (checkBoxSill.isChecked()) {
                     rgroupSill.setVisibility(View.VISIBLE);
-                    rb_sill_ukraine.setChecked(true);
                     llWindowSillSizes.setVisibility(View.VISIBLE);
+                    rb_sill_ukraine.setChecked(true);
+                    str_manufacturer_sill = " (укр)";
                 } else {
-                    rgroupSill.clearCheck();
+                    str_manufacturer_sill = " Без подоконника";
                     rgroupSill.setVisibility(View.GONE);
                     llWindowSillSizes.setVisibility(View.GONE);
+
                 }
+                break;
+
+            case R.id.rb_sill_ukraine:
+                str_manufacturer_sill = " (укр)";
+
+                break;
+
+            case R.id.rb_sill_usa:
+                str_manufacturer_sill = " (сша)";
+
                 break;
 
             case R.id.chbx_weathering:
                 if (checkBoxWeathering.isChecked()) {
                     rgWeathering.setVisibility(View.VISIBLE);
-                    rb_weath_ukraine.setChecked(true);
                     llWeathering.setVisibility(View.VISIBLE);
+                    rb_weath_ukraine.setChecked(true);
+                    str_manufacturer_weathering = " (укр)";
                 } else {
-                    rgWeathering.clearCheck();
+                    str_manufacturer_weathering = " Без отлива";
                     rgWeathering.setVisibility(View.GONE);
                     llWeathering.setVisibility(View.GONE);
                 }
                 break;
+
+            case R.id.rb_weath_ukraine:
+                str_manufacturer_weathering = " (укр)";
+
+                break;
+
+            case R.id.rb_weath_usa:
+                str_manufacturer_weathering = " (сша)";
+
+                break;
+
             case R.id.btn_calculation:
                 openDialog();
+
+                break;
         }
     }
 
@@ -209,8 +315,11 @@ public class ActivityProductDetails extends AppCompatActivity {
         dataProductDetails.putString("width_product", tv_width_product.getText().toString());
         dataProductDetails.putString("height_product", tv_height_product.getText().toString());
         dataProductDetails.putString("et_amount", et_amount.getText().toString());
-
-        dataProductDetails.putString("checkedRadiobuttonProfile", str_fullProfileName);
+        dataProductDetails.putString("Profile", str_profile);
+        dataProductDetails.putString("ProfileSecondPart", str_profile2part);
+        dataProductDetails.putString("furniture", str_furniture);
+        dataProductDetails.putString("manufacturer_sill", str_manufacturer_sill);
+        dataProductDetails.putString("manufacturer_weathering", str_manufacturer_weathering);
         dataProductDetails.putString("width_sill", tv_width_sill.getText().toString());
         dataProductDetails.putString("length_sill", tv_length_sill.getText().toString());
         dataProductDetails.putString("width_weathering", tv_width_weathering.getText().toString());

@@ -13,6 +13,6 @@ public class Tools {
         double d = 1.0 * (width * height) / 1000000;
         double result = Math.round(d * 100.0) / 100.0;
 
-        return result + " m*2";
+        return result + " м. кв.";
     }
 }

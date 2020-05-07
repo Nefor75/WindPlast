@@ -29,6 +29,7 @@
             android:id="@+id/rb_roto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="Radiogroup"
             android:text="@string/roto"
             android:textColor="@android:color/black" />
 
@@ -36,6 +37,7 @@
             android:id="@+id/rb_axor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="Radiogroup"
             android:text="@string/axor"
             android:textColor="@android:color/black" />
 

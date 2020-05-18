@@ -260,7 +260,8 @@ public class ActivityProductDetails extends AppCompatActivity {
                     rgroupSill.setVisibility(View.VISIBLE);
                     llWindowSillSizes.setVisibility(View.VISIBLE);
                     rb_sill_ukraine.setChecked(true);
-                    str_manufacturer_sill = " (укр)";
+                    str_manufacturer_sill = " (укр) " + " " + getString(R.string.width1) + " " + tv_width_sill.getText() + "   " + getString(R.string.length1) + " " + tv_length_sill.getText();
+
                 } else {
                     str_manufacturer_sill = " Без подоконника";
                     rgroupSill.setVisibility(View.GONE);
@@ -270,12 +271,12 @@ public class ActivityProductDetails extends AppCompatActivity {
                 break;
 
             case R.id.rb_sill_ukraine:
-                str_manufacturer_sill = " (укр)";
+                str_manufacturer_sill = " (укр)  " + " " + getString(R.string.width1) + " " + tv_width_sill.getText() + "    " + getString(R.string.length1) + " " + tv_length_sill.getText();
 
                 break;
 
             case R.id.rb_sill_usa:
-                str_manufacturer_sill = " (сша)";
+                str_manufacturer_sill = " (сша)  " + getString(R.string.width1) + " " + tv_width_sill.getText() + "    " + getString(R.string.length1) + " " + tv_length_sill.getText();
 
                 break;
 
@@ -284,21 +285,24 @@ public class ActivityProductDetails extends AppCompatActivity {
                     rgWeathering.setVisibility(View.VISIBLE);
                     llWeathering.setVisibility(View.VISIBLE);
                     rb_weath_ukraine.setChecked(true);
-                    str_manufacturer_weathering = " (укр)";
+                    str_manufacturer_weathering = " (укр)  " + getString(R.string.width1) + " " + tv_width_weathering.getText() + "   " + getString(R.string.length1) + " " + tv_length_weathering.getText();
+
+
                 } else {
                     str_manufacturer_weathering = " Без отлива";
                     rgWeathering.setVisibility(View.GONE);
                     llWeathering.setVisibility(View.GONE);
+
                 }
                 break;
 
             case R.id.rb_weath_ukraine:
-                str_manufacturer_weathering = " (укр)";
+                str_manufacturer_weathering = " (укр)  " + getString(R.string.width1) + " " + tv_width_weathering.getText() + "   " + getString(R.string.length1) + " " + tv_length_weathering.getText();
 
                 break;
 
             case R.id.rb_weath_usa:
-                str_manufacturer_weathering = " (сша)";
+                str_manufacturer_weathering = " (сша)  " + getString(R.string.width1) + " " + tv_width_weathering.getText() + "   " + getString(R.string.length1) + " " + tv_length_weathering.getText();
 
                 break;
 
@@ -320,10 +324,6 @@ public class ActivityProductDetails extends AppCompatActivity {
         dataProductDetails.putString("furniture", str_furniture);
         dataProductDetails.putString("manufacturer_sill", str_manufacturer_sill);
         dataProductDetails.putString("manufacturer_weathering", str_manufacturer_weathering);
-        dataProductDetails.putString("width_sill", tv_width_sill.getText().toString());
-        dataProductDetails.putString("length_sill", tv_length_sill.getText().toString());
-        dataProductDetails.putString("width_weathering", tv_width_weathering.getText().toString());
-        dataProductDetails.putString("length_weathering", tv_length_weathering.getText().toString());
         dialog.setArguments(dataProductDetails);
         dialog.show(getSupportFragmentManager(), "onCreateDialog");
     }

@@ -38,7 +38,7 @@
     <string name="one_camera">1 камерный</string>
     <string name="two_camera">2 камерный</string>
 
-    <string name="sill">Подоконник</string>
+    <string name="sill">Под - к</string>
     <string name="weathering">Отлив</string>
 
     <string name="quantity">Количество</string>
@@ -50,9 +50,9 @@
     <string name="cost">Стоимость</string>
 
     <!--dialog_order_result -->
-    <string name="width_height">Размер изделия</string>
+    <string name="sizes">Размеры</string>
     <string name="amount">Количество</string>
-    <string name="square">Площадь изделия</string>
+    <string name="square">Площадь</string>
 
     <!--Toolbar -->
     <string name="settings">Настройки</string>

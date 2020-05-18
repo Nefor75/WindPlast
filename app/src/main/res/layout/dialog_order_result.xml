@@ -23,42 +23,18 @@
         android:padding="@dimen/margin">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/width_height"
+                android:text="@string/sizes"
                 android:textColor="@color/grey_80" />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin"
-                android:gravity="center_vertical|end"
-                android:text="@string/width1"
-                android:textColor="@color/grey_80" />
-
-            <TextView
-                android:id="@+id/tv_width_or_res"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/spacing_xmedium"
-                android:gravity="center"
-                android:textColor="@color/grey_80"
-                android:textStyle="italic" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin"
-                android:text="@string/height1"
-                android:textColor="@color/grey_80" />
-
-            <TextView
-                android:id="@+id/tv_height_or_res"
+                android:id="@+id/tv_width_height_or_res"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/spacing_xmedium"
@@ -208,38 +184,7 @@
                 android:textColor="@color/grey_80"
                 android:textStyle="italic" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin"
-                android:gravity="center_vertical|end"
-                android:text="@string/width1"
-                android:textColor="@color/grey_80" />
 
-            <TextView
-                android:id="@+id/tv_width_sill_or_res"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/spacing_xmedium"
-                android:gravity="center"
-                android:textColor="@color/grey_80"
-                android:textStyle="italic" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin"
-                android:text="@string/length1"
-                android:textColor="@color/grey_80" />
-
-            <TextView
-                android:id="@+id/tv_length_sill_or_res"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/spacing_xmedium"
-                android:gravity="center"
-                android:textColor="@color/grey_80"
-                android:textStyle="italic" />
 
         </LinearLayout>
 
@@ -261,38 +206,7 @@
                 android:textColor="@color/grey_80"
                 android:textStyle="italic" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin"
-                android:gravity="center_vertical|end"
-                android:text="@string/width1"
-                android:textColor="@color/grey_80" />
 
-            <TextView
-                android:id="@+id/tv_width_weathering_or_res"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/spacing_xmedium"
-                android:gravity="center"
-                android:textColor="@color/grey_80"
-                android:textStyle="italic" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin"
-                android:text="@string/length1"
-                android:textColor="@color/grey_80" />
-
-            <TextView
-                android:id="@+id/tv_length_weathering_or_res"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/spacing_xmedium"
-                android:gravity="center"
-                android:textColor="@color/grey_80"
-                android:textStyle="italic" />
 
         </LinearLayout>
     </LinearLayout>

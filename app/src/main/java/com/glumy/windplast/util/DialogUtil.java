@@ -51,16 +51,15 @@ public class DialogUtil extends AppCompatDialogFragment {
             }
         });
 
-        TextView tv_width_or_res = view.findViewById(R.id.tv_width_or_res);
-        tv_width_or_res.setText(getArguments().getString("width_product"));//передались данные из ActivityProductDetails в этот диалог
-        TextView tv_height_or_res = view.findViewById(R.id.tv_height_or_res);
-        tv_height_or_res.setText(getArguments().getString("height_product"));//передались данные из ActivityProductDetails в этот диалог
+        TextView tv_width_height_or_res = view.findViewById(R.id.tv_width_height_or_res);
+        String resultPlust = getString(R.string.width)+ "  " + getArguments().getString("width_product") + "   " + getString(R.string.height) + "  " +getArguments().getString("height_product");
+        tv_width_height_or_res.setText(resultPlust);
 
         TextView et_amount_or_res = view.findViewById(R.id.tv_amount_or_res);
         et_amount_or_res.setText(getArguments().getString("et_amount"));
 
         TextView tv_square = view.findViewById(R.id.tv_square);
-        tv_square.setText(Tools.getsquareProduct(tv_width_or_res.getText().toString(), tv_height_or_res.getText().toString()));
+        tv_square.setText(Tools.getsquareProduct(getArguments().getString("width_product"), getArguments().getString("height_product")));
 
         TextView tv_profile_or_res = view.findViewById(R.id.tv_profile_or_res);
         tv_profile_or_res.setText(getArguments().getString("Profile"));
@@ -76,16 +75,6 @@ public class DialogUtil extends AppCompatDialogFragment {
 
         TextView tv_manufacturer_weathering = view.findViewById(R.id.tv_manufacturer_weathering);
         tv_manufacturer_weathering.setText(getArguments().getString("manufacturer_weathering"));
-
-        TextView tv_width_sill_or_res = view.findViewById(R.id.tv_width_sill_or_res);
-        tv_width_sill_or_res.setText(getArguments().getString("width_sill"));
-        TextView tv_length_sill_or_res = view.findViewById(R.id.tv_length_sill_or_res);
-        tv_length_sill_or_res.setText(getArguments().getString("length_sill"));
-
-        TextView tv_width_weathering_or_res = view.findViewById(R.id.tv_width_weathering_or_res);
-        tv_width_weathering_or_res.setText(getArguments().getString("width_weathering"));
-        TextView tv_length_weathering_or_res = view.findViewById(R.id.tv_length_weathering_or_res);
-        tv_length_weathering_or_res.setText(getArguments().getString("length_weathering"));
 
         return builder.create();
     }

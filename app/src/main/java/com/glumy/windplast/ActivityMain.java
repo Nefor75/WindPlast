@@ -136,7 +136,7 @@ public class ActivityMain extends AppCompatActivity implements AdapterView.OnIte
             case R.id.set1_iv_up_left:
                 recived = new Cart(R.drawable.img_200x130, R.string.two,
                         1350, 1400, 250, 1450, 160, 1350,
-                        100, 1000);
+                        1, 1000);
                 break;
 
             case R.id.set1_iv_up_right:

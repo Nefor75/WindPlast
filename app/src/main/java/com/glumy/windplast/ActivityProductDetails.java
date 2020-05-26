@@ -3,8 +3,6 @@ package com.glumy.windplast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
-import android.app.Dialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +11,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -20,12 +19,14 @@ import android.widget.TextView;
 import com.glumy.windplast.Cart.Cart;
 import com.glumy.windplast.data.Constant;
 import com.glumy.windplast.util.DialogUtil;
+import com.glumy.windplast.util.Tools;
 
 
 public class ActivityProductDetails extends AppCompatActivity {
 
     private ImageView mainImage;
-    private TextView textView_main, tv_width_product, tv_height_product, tv_width_sill, tv_length_sill, tv_width_weathering, tv_length_weathering, tv_prof_second_part;
+    private TextView textView_main, tv_width_product, tv_height_product, tv_width_sill, tv_length_sill,
+            tv_width_weathering, tv_length_weathering, tv_prof_second_part, tv_one_package, tv_two_package;
     private RadioGroup rg_rehau, rg_wds, rg_openteck, rg_furnit, rg_glasses, rgroupSill, rgWeathering, rg_profil;
     private RadioButton rb_rehau, rb_wds, rb_openteck;
     private RadioButton rb_rehau_60, rb_rehau_70, rb_rehau_brillant, rb_rehau_sineo, rb_rehau_geneo;
@@ -42,9 +43,10 @@ public class ActivityProductDetails extends AppCompatActivity {
     private EditText et_amount;
     private String str_furniture = "Roto";
     private String str_profile = "Rehau";
+    private String str_glass = "4/16/4";
     private String str_profile2part = "Euro Disign 60";
-    private String str_manufacturer_sill = " Без подоконника";
-    private String str_manufacturer_weathering = " Без отлива";
+    private String str_manufacturer_sill = "Без подоконника";
+    private String str_manufacturer_weathering = "Без отлива";
 
 
     @Override
@@ -97,10 +99,20 @@ public class ActivityProductDetails extends AppCompatActivity {
         rb_roto.setChecked(true);
         rb_axor = findViewById(R.id.rb_axor);
 
+//        final String[] glassesOne = getResources().getStringArray(R.array.one_camera);
+//        ListView listViewGlassesOne = findViewById(R.id.listView_one_camera);
+//        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
+//                android.R.layout.simple_list_item_checked, glassesOne);
+//
+//        listViewGlassesOne.setAdapter(adapter);
+
         rg_glasses = findViewById(R.id.rg_glasses);
         rb_one_camera = findViewById(R.id.rb_one_camera);
         rb_one_camera.setChecked(true);
+        tv_one_package = findViewById(R.id.tv_one_package);
+
         rb_two_camera = findViewById(R.id.rb_two_camera);
+        tv_two_package = findViewById(R.id.tv_two_package);
 
         checkBoxSill = findViewById(R.id.chbx_windowsill);
         checkBoxWeathering = findViewById(R.id.chbx_weathering);
@@ -143,7 +155,6 @@ public class ActivityProductDetails extends AppCompatActivity {
         switch (view.getId()) {
 
             case R.id.rb_rehau:
-
                 str_profile = Constant.REHAU;
                 rb_rehau_60.setChecked(true);
                 str_profile2part = Constant.EURO_DESIGN_60;
@@ -260,7 +271,7 @@ public class ActivityProductDetails extends AppCompatActivity {
                     rgroupSill.setVisibility(View.VISIBLE);
                     llWindowSillSizes.setVisibility(View.VISIBLE);
                     rb_sill_ukraine.setChecked(true);
-                    str_manufacturer_sill = " (укр) " + " " + getString(R.string.width1) + " " + tv_width_sill.getText() + "   " + getString(R.string.length1) + " " + tv_length_sill.getText();
+                    str_manufacturer_sill = "(укр) " + " " + getString(R.string.width1) + " " + tv_width_sill.getText() + "   " + getString(R.string.length1) + " " + tv_length_sill.getText();
 
                 } else {
                     str_manufacturer_sill = " Без подоконника";
@@ -271,12 +282,12 @@ public class ActivityProductDetails extends AppCompatActivity {
                 break;
 
             case R.id.rb_sill_ukraine:
-                str_manufacturer_sill = " (укр)  " + " " + getString(R.string.width1) + " " + tv_width_sill.getText() + "    " + getString(R.string.length1) + " " + tv_length_sill.getText();
+                str_manufacturer_sill = "(укр)  " + " " + getString(R.string.width1) + " " + tv_width_sill.getText() + "    " + getString(R.string.length1) + " " + tv_length_sill.getText();
 
                 break;
 
             case R.id.rb_sill_usa:
-                str_manufacturer_sill = " (сша)  " + getString(R.string.width1) + " " + tv_width_sill.getText() + "    " + getString(R.string.length1) + " " + tv_length_sill.getText();
+                str_manufacturer_sill = "(сша)  " + getString(R.string.width1) + " " + tv_width_sill.getText() + "    " + getString(R.string.length1) + " " + tv_length_sill.getText();
 
                 break;
 
@@ -285,7 +296,7 @@ public class ActivityProductDetails extends AppCompatActivity {
                     rgWeathering.setVisibility(View.VISIBLE);
                     llWeathering.setVisibility(View.VISIBLE);
                     rb_weath_ukraine.setChecked(true);
-                    str_manufacturer_weathering = " (укр)  " + getString(R.string.width1) + " " + tv_width_weathering.getText() + "   " + getString(R.string.length1) + " " + tv_length_weathering.getText();
+                    str_manufacturer_weathering = "(укр)  " + getString(R.string.width1) + " " + tv_width_weathering.getText() + "   " + getString(R.string.length1) + " " + tv_length_weathering.getText();
 
 
                 } else {
@@ -297,12 +308,37 @@ public class ActivityProductDetails extends AppCompatActivity {
                 break;
 
             case R.id.rb_weath_ukraine:
-                str_manufacturer_weathering = " (укр)  " + getString(R.string.width1) + " " + tv_width_weathering.getText() + "   " + getString(R.string.length1) + " " + tv_length_weathering.getText();
+                str_manufacturer_weathering = "(укр)  " + getString(R.string.width1) + " " + tv_width_weathering.getText() + "   " + getString(R.string.length1) + " " + tv_length_weathering.getText();
 
                 break;
 
             case R.id.rb_weath_usa:
-                str_manufacturer_weathering = " (сша)  " + getString(R.string.width1) + " " + tv_width_weathering.getText() + "   " + getString(R.string.length1) + " " + tv_length_weathering.getText();
+                str_manufacturer_weathering = "(сша)  " + getString(R.string.width1) + " " + tv_width_weathering.getText() + "   " + getString(R.string.length1) + " " + tv_length_weathering.getText();
+
+                break;
+
+            case R.id.rb_one_camera:
+                tv_two_package.setVisibility(View.GONE);
+                tv_one_package.setVisibility(View.VISIBLE);
+                str_glass = "4/16/4";
+
+                break;
+
+            case R.id.tv_one_package:
+                openDialogOnePackages().show();
+
+                break;
+
+            case R.id.tv_two_package:
+                openDialogTwoPackages().show();
+
+
+                break;
+
+            case R.id.rb_two_camera:
+                tv_one_package.setVisibility(View.GONE);
+                tv_two_package.setVisibility(View.VISIBLE);
+                str_glass = "4/8/4/12/4";
 
                 break;
 
@@ -322,9 +358,58 @@ public class ActivityProductDetails extends AppCompatActivity {
         dataProductDetails.putString("Profile", str_profile);
         dataProductDetails.putString("ProfileSecondPart", str_profile2part);
         dataProductDetails.putString("furniture", str_furniture);
+        dataProductDetails.putString("glass", str_glass);
         dataProductDetails.putString("manufacturer_sill", str_manufacturer_sill);
         dataProductDetails.putString("manufacturer_weathering", str_manufacturer_weathering);
         dialog.setArguments(dataProductDetails);
         dialog.show(getSupportFragmentManager(), "onCreateDialog");
+    }
+
+    private AlertDialog openDialogOnePackages() {
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = this.getLayoutInflater();
+        final View view = inflater.inflate(R.layout.dialog_one_packages, null);
+
+        //final String[] arraytwoGlasses = Tools.singlGlass;
+
+        builder.setView(view);
+
+        // .setItems(R.id.one_glasses_List, new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                      //  tv_one_package.setText(arrayoneGlasses[which]);
+//                  //  }
+//                });
+        return builder.create();
+
+    }
+
+    private AlertDialog openDialogTwoPackages() {
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = this.getLayoutInflater();
+        final View view = inflater.inflate(R.layout.dialog_two_packages, null);
+
+        //final String[] arraytwoGlasses = Tools.twoGlass;
+
+        builder.setView(view);
+
+        // .setItems(R.id.one_glasses_List, new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+
+//                  //  }
+//                });
+        return builder.create();
+
+    }
+
+    public void choiceSingleCameral(View t) {
+        //String formula = t.getText().toString();
+       // tv_one_package.setText(t.getText().toString(););
+    }
+
+    public String choiceTwoCameral(TextView t) {
+
+        return t.getText().toString();
     }
 }

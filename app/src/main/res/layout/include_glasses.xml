@@ -28,15 +28,45 @@
             android:id="@+id/rb_one_camera"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="Radiogroup"
             android:text="@string/one_camera"
             android:textColor="@android:color/black" />
+
+        <TextView
+            android:id="@+id/tv_one_package"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/spacing_xmedium"
+            android:layout_weight="1"
+            android:background="@drawable/my_rectangle"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="4/16/4"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:visibility="visible"
+            android:onClick="Radiogroup" />
 
         <RadioButton
             android:id="@+id/rb_two_camera"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="Radiogroup"
             android:text="@string/two_camera"
             android:textColor="@android:color/black" />
+
+        <TextView
+            android:id="@+id/tv_two_package"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/spacing_xmedium"
+            android:layout_weight="1"
+            android:background="@drawable/my_rectangle"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="4/12/4/8/4"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:visibility="gone"
+            android:onClick="Radiogroup"/>
 
     </RadioGroup>
     <!--    <Spinner-->

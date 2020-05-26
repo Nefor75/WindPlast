@@ -65,6 +65,10 @@
     </string-array>
 
 
+
+
+    <string name="choice_glasses">Выберите стеклопакет</string>
+
     <!--    <integer-array name="about_images_array">-->
     <!--        <item>@drawable/intro_img_1</item>-->
     <!--        <item>@drawable/intro_img_2</item>-->

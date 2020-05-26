@@ -1,8 +1,9 @@
 package com.glumy.windplast.util;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.DialogInterface;
-import android.graphics.drawable.InsetDrawable;
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +19,9 @@ import com.glumy.windplast.R;
 
 public class DialogUtil extends AppCompatDialogFragment {
 
+    private EditText et_saveOrder;
+    public static final int DIALOG_ONE_PACKAGES = 1; // Идентификаторы диалоговых окон
+    public static final int DIALOG_TWO_PACKAGES = 2;
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -48,11 +52,12 @@ public class DialogUtil extends AppCompatDialogFragment {
             @Override
             public void onClick(View v) {
                 openDiaologSaveOrder().show();
+
             }
         });
 
         TextView tv_width_height_or_res = view.findViewById(R.id.tv_width_height_or_res);
-        String resultPlust = getString(R.string.width)+ "  " + getArguments().getString("width_product") + "   " + getString(R.string.height) + "  " +getArguments().getString("height_product");
+        String resultPlust = getString(R.string.width) + " " + getArguments().getString("width_product") + "    " + getString(R.string.height) + " " + getArguments().getString("height_product");
         tv_width_height_or_res.setText(resultPlust);
 
         TextView et_amount_or_res = view.findViewById(R.id.tv_amount_or_res);
@@ -70,6 +75,9 @@ public class DialogUtil extends AppCompatDialogFragment {
         TextView tv_furniture_or_res = view.findViewById(R.id.tv_furniture_or_res);
         tv_furniture_or_res.setText(getArguments().getString("furniture"));
 
+        TextView tv_glasses_or_res = view.findViewById(R.id.tv_glasses_or_res);
+        tv_glasses_or_res.setText(getArguments().getString("glass"));
+
         TextView tv_manufacturer_sill = view.findViewById(R.id.tv_manufacturer_sill);
         tv_manufacturer_sill.setText(getArguments().getString("manufacturer_sill"));
 
@@ -79,13 +87,42 @@ public class DialogUtil extends AppCompatDialogFragment {
         return builder.create();
     }
 
+
+    public static AlertDialog getDialog(Activity activity, int ID) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+
+        switch (ID) {
+            case DIALOG_ONE_PACKAGES:
+                builder.setTitle(R.string.choice_glasses);
+                builder.setItems(R.array.one_camera, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+                return builder.create();
+
+            case DIALOG_TWO_PACKAGES:
+                View view = activity.getLayoutInflater().inflate(R.layout.dialog_one_packages, null);
+                builder.setView(view);
+
+                builder.setTitle(R.string.choice_glasses);
+                builder.setItems(R.array.two_camera, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+
+                        dialog.dismiss();
+                    }
+                });
+                return builder.create();
+            default:
+                return null;
+        }
+    }
+
     private AlertDialog openDiaologSaveOrder() {
         final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getActivity().getLayoutInflater();
         final View view = inflater.inflate(R.layout.dialog_save_result, null);
-        InsetDrawable background = new InsetDrawable(getResources().getDrawable(R.drawable.image_splash), 0, 0,
-                0, 0);
-        background.setAlpha(100);
 
         builder.setView(view)
 

@@ -19,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin"
-        android:background="@drawable/my_rectangle"
+        android:background="@drawable/my_rectangle_background"
         android:gravity="start"
         android:textColorHint="@color/grey_20"
         android:hint="@string/address"

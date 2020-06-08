@@ -67,7 +67,9 @@
 
 
 
-    <string name="choice_glasses">Выберите стеклопакет</string>
+    <string name="usual_glasses">Стеклопакет обычный</string>
+    <string name="function_glasses">Стеклопакет функциональный</string>
+    <string name="tinted_glasses">Стеклопакет тонированный</string>
 
     <!--    <integer-array name="about_images_array">-->
     <!--        <item>@drawable/intro_img_1</item>-->

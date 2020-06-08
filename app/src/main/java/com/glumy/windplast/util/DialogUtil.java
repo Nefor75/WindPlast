@@ -14,7 +14,9 @@ import android.widget.TextView;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
+import com.glumy.windplast.ActivityProductDetails;
 import com.glumy.windplast.R;
+import com.glumy.windplast.data.Constant;
 
 
 public class DialogUtil extends AppCompatDialogFragment {
@@ -87,38 +89,40 @@ public class DialogUtil extends AppCompatDialogFragment {
         return builder.create();
     }
 
-
-    public static AlertDialog getDialog(Activity activity, int ID) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-
-        switch (ID) {
-            case DIALOG_ONE_PACKAGES:
-                builder.setTitle(R.string.choice_glasses);
-                builder.setItems(R.array.one_camera, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                    }
-                });
-                return builder.create();
-
-            case DIALOG_TWO_PACKAGES:
-                View view = activity.getLayoutInflater().inflate(R.layout.dialog_one_packages, null);
-                builder.setView(view);
-
-                builder.setTitle(R.string.choice_glasses);
-                builder.setItems(R.array.two_camera, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int whichButton) {
-
-                        dialog.dismiss();
-                    }
-                });
-                return builder.create();
-            default:
-                return null;
-        }
-    }
-
+//---------------------------------------------------------------------------------------------------------------------
+//    public static AlertDialog getDialog(Activity activity, int ID) {
+//        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+//
+//        switch (ID) {
+//            case DIALOG_ONE_PACKAGES:
+//                int[] single = Constant.singlePackage;
+//                builder.setTitle(R.string.choice_glasses);
+//                builder.setItems(R.array.one_camera, new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                    //TextView tvsingle = ActivityProductDetails.
+//
+//                    }
+//                });
+//                return builder.create();
+//
+//            case DIALOG_TWO_PACKAGES:
+//                View view = activity.getLayoutInflater().inflate(R.layout.dialog_two_packages, null);
+//                builder.setView(view);
+//
+//                builder.setTitle(R.string.choice_glasses);
+//                builder.setItems(R.array.two_camera, new DialogInterface.OnClickListener() {
+//                    public void onClick(DialogInterface dialog, int whichButton) {
+//
+//                        dialog.dismiss();
+//                    }
+//                });
+//                return builder.create();
+//            default:
+//                return null;
+//        }
+//    }
+//----------------------------------------------------------------------------------------------------
     private AlertDialog openDiaologSaveOrder() {
         final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getActivity().getLayoutInflater();

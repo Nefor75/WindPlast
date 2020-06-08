@@ -3,9 +3,13 @@ package com.glumy.windplast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -15,11 +19,11 @@ import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.glumy.windplast.Cart.Cart;
 import com.glumy.windplast.data.Constant;
 import com.glumy.windplast.util.DialogUtil;
-import com.glumy.windplast.util.Tools;
 
 
 public class ActivityProductDetails extends AppCompatActivity {
@@ -99,12 +103,12 @@ public class ActivityProductDetails extends AppCompatActivity {
         rb_roto.setChecked(true);
         rb_axor = findViewById(R.id.rb_axor);
 
+//        final ListView listViewUsual = findViewById(R.id.listview_usual);
 //        final String[] glassesOne = getResources().getStringArray(R.array.one_camera);
-//        ListView listViewGlassesOne = findViewById(R.id.listView_one_camera);
-//        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
+//               ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
 //                android.R.layout.simple_list_item_checked, glassesOne);
 //
-//        listViewGlassesOne.setAdapter(adapter);
+//        listViewUsual.setAdapter(adapter);
 
         rg_glasses = findViewById(R.id.rg_glasses);
         rb_one_camera = findViewById(R.id.rb_one_camera);
@@ -332,7 +336,6 @@ public class ActivityProductDetails extends AppCompatActivity {
             case R.id.tv_two_package:
                 openDialogTwoPackages().show();
 
-
                 break;
 
             case R.id.rb_two_camera:
@@ -365,23 +368,72 @@ public class ActivityProductDetails extends AppCompatActivity {
         dialog.show(getSupportFragmentManager(), "onCreateDialog");
     }
 
+    //--------------------------------------------------------------------------------------
     private AlertDialog openDialogOnePackages() {
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
         LayoutInflater inflater = this.getLayoutInflater();
         final View view = inflater.inflate(R.layout.dialog_one_packages, null);
 
-        //final String[] arraytwoGlasses = Tools.singlGlass;
-
         builder.setView(view);
+        //------------------------------------------------------------------------------------------
 
-        // .setItems(R.id.one_glasses_List, new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int which) {
-//                      //  tv_one_package.setText(arrayoneGlasses[which]);
-//                  //  }
-//                });
+        final ListView listViewUsual = view.findViewById(R.id.listview_usual);
+        final ListView listViewFunc = view.findViewById(R.id.listview_function);
+        final ListView listViewTinted = view.findViewById(R.id.listview_tinted);
+
+        final String[] arrayUsualGlass = getResources().getStringArray(R.array.one_camera_usual);
+        final String[] arrayFuncGlass = getResources().getStringArray(R.array.one_camera_func);
+        final String[] arrayTintGlass = getResources().getStringArray(R.array.one_camera_tint);
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                R.layout.item_for_listview, R.id.textForListview, arrayUsualGlass);
+        listViewUsual.setAdapter(adapter);
+
+        listViewUsual.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                listViewUsual.setItemChecked(position, true);
+                listViewUsual.setSelected(true);
+                tv_one_package.setText(arrayUsualGlass[position]);
+            }
+        });
+
+//------------------------------------------------------------------------------------------------
+        ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this,
+                R.layout.item_for_listview, R.id.textForListview, arrayFuncGlass);
+        listViewFunc.setAdapter(adapter1);
+
+        listViewFunc.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                listViewFunc.setItemChecked(position, true);
+                listViewFunc.setSelected(true);
+                tv_one_package.setText(arrayFuncGlass[position]);
+            }
+        });
+//-----------------------------------------------------------------------------------------------
+
+        ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this,
+                R.layout.item_for_listview, R.id.textForListview, arrayTintGlass);
+        listViewTinted.setAdapter(adapter2);
+
+        listViewTinted.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                listViewTinted.setItemChecked(position, true);
+                listViewTinted.setSelected(true);
+                tv_one_package.setText(arrayTintGlass[position]);
+            }
+        });
+
+        builder.setPositiveButton("Выбрать", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                dialog.dismiss();
+            }
+        });
         return builder.create();
-
     }
 
     private AlertDialog openDialogTwoPackages() {
@@ -389,27 +441,65 @@ public class ActivityProductDetails extends AppCompatActivity {
         LayoutInflater inflater = this.getLayoutInflater();
         final View view = inflater.inflate(R.layout.dialog_two_packages, null);
 
-        //final String[] arraytwoGlasses = Tools.twoGlass;
-
         builder.setView(view);
+        final ListView listViewUsual2 = view.findViewById(R.id.listview_usual2);
+        final ListView listViewFunc2 = view.findViewById(R.id.listview_function2);
+        final ListView listViewTinted2 = view.findViewById(R.id.listview_tinted2);
 
-        // .setItems(R.id.one_glasses_List, new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int which) {
+        final String[] arrayUsualGlass2 = getResources().getStringArray(R.array.two_camera_usual);
+        final String[] arrayFuncGlass2 = getResources().getStringArray(R.array.two_camera_func);
+        final String[] arrayTintGlass2 = getResources().getStringArray(R.array.two_camera_tint);
 
-//                  //  }
-//                });
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                R.layout.item_for_listview, R.id.textForListview, arrayUsualGlass2);
+        listViewUsual2.setAdapter(adapter);
+
+        listViewUsual2.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                listViewUsual2.setItemChecked(position, true);
+                listViewUsual2.setSelected(true);
+                tv_two_package.setText(arrayUsualGlass2[position]);
+            }
+        });
+
+        //------------------------------------------------------------------------------------------------
+        ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this,
+                R.layout.item_for_listview, R.id.textForListview, arrayFuncGlass2);
+        listViewFunc2.setAdapter(adapter1);
+
+        listViewFunc2.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                listViewFunc2.setItemChecked(position, true);
+                listViewFunc2.setSelected(true);
+                tv_two_package.setText(arrayFuncGlass2[position]);
+            }
+        });
+//-----------------------------------------------------------------------------------------------
+
+        ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this,
+                R.layout.item_for_listview, R.id.textForListview, arrayTintGlass2);
+        listViewTinted2.setAdapter(adapter2);
+
+        listViewTinted2.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                listViewTinted2.setItemChecked(position, true);
+                listViewTinted2.setSelected(true);
+                tv_two_package.setText(arrayTintGlass2[position]);
+            }
+        });
+
+        builder.setPositiveButton("Выбрать", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                dialog.dismiss();
+            }
+        });
         return builder.create();
-
-    }
-
-    public void choiceSingleCameral(View t) {
-        //String formula = t.getText().toString();
-       // tv_one_package.setText(t.getText().toString(););
-    }
-
-    public String choiceTwoCameral(TextView t) {
-
-        return t.getText().toString();
     }
 }
+
+

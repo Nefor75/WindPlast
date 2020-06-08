@@ -3,197 +3,105 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center_horizontal"
-    android:background="@android:color/white"
+    android:background="@color/blu"
     android:orientation="vertical">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/colorPrimary"
-        android:gravity="center_horizontal|center_vertical"
-        android:text="@string/choice_glasses"
-        android:textAppearance="@style/TextAppearance.AppCompat.Title"
-        android:textColor="@android:color/white"
-        android:textSize="@dimen/twenty" />
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_height="match_parent"
+        android:layout_marginStart="@dimen/spacing_medium"
+        android:layout_marginTop="@dimen/spacing_medium"
+        android:layout_marginEnd="@dimen/spacing_medium"
+        android:layout_marginBottom="@dimen/spacing_medium"
+        android:background="@android:color/white"
+        android:orientation="vertical"
+        android:padding="@dimen/spacing_small">
 
-        <TextView
-            android:id="@+id/tv_4_8_4_12_4"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginBottom="@dimen/spacing_small"
+            android:background="@color/colorPrimary"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="@string/usual_glasses"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/titletext" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/colorPrimary"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="@string/function_glasses"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/titletext" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/colorPrimary"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="@string/tinted_glasses"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/titletext" />
+
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="@dimen/spacing_xmedium"
-            android:layout_weight="1"
-            android:background="@drawable/my_rectangle"
-            android:gravity="center"
-            android:onClick="Radiogroup"
-            android:text="4/8/4/12/4"
-            android:textColor="@android:color/black"
-            android:textSize="16sp" />
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/tv_4i_16_4"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="@dimen/spacing_xmedium"
-            android:layout_weight="1"
-            android:background="@drawable/my_rectangle"
-            android:gravity="center"
-            android:onClick="Radiogroup"
-            android:text="4i/16/4"
-            android:textColor="@android:color/black"
-            android:textSize="16sp" />
+            <ListView
+                android:id="@+id/listview_usual2"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_weight="1"
+                android:choiceMode="singleChoice" />
 
-        <TextView
-            android:id="@+id/tv_4_16_4i"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="@dimen/spacing_xmedium"
-            android:layout_weight="1"
-            android:background="@drawable/my_rectangle"
-            android:gravity="center"
-            android:onClick="Radiogroup"
-            android:text="4/16/4i"
-            android:textColor="@android:color/black"
-            android:textSize="16sp" />
+            <View
+                android:layout_width="3dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/spacing_small"
+                android:layout_marginEnd="@dimen/spacing_small"
+                android:background="@color/blu" />
+
+            <ListView
+                android:id="@+id/listview_function2"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_weight="1"
+                android:choiceMode="singleChoice"
+                android:listSelector="@android:color/transparent" />
+
+            <View
+                android:layout_width="3dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/spacing_small"
+                android:layout_marginEnd="@dimen/spacing_small"
+                android:background="@color/blu" />
+
+            <ListView
+                android:id="@+id/listview_tinted2"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_weight="1"
+                android:choiceMode="singleChoice" />
+
+        </LinearLayout>
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/tv_4_10_4"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="@dimen/spacing_xmedium"
-            android:layout_weight="1"
-            android:background="@drawable/my_rectangle"
-            android:gravity="center"
-            android:onClick="Radiogroup"
-            android:text="4/10/4"
-            android:textColor="@android:color/black"
-            android:textSize="16sp" />
-
-        <TextView
-            android:id="@+id/tv_4i_10_4"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="@dimen/spacing_xmedium"
-            android:layout_weight="1"
-            android:background="@drawable/my_rectangle"
-            android:gravity="center"
-            android:onClick="Radiogroup"
-            android:text="4i/10/4"
-            android:textColor="@android:color/black"
-            android:textSize="16sp" />
-
-        <TextView
-            android:id="@+id/tv_4_10_4i"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="@dimen/spacing_xmedium"
-            android:layout_weight="1"
-            android:background="@drawable/my_rectangle"
-            android:gravity="center"
-            android:onClick="Radiogroup"
-            android:text="4/10/4i"
-            android:textColor="@android:color/black"
-            android:textSize="16sp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/tv_4_20_4"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="@dimen/spacing_xmedium"
-            android:layout_weight="1"
-            android:background="@drawable/my_rectangle"
-            android:gravity="center"
-            android:onClick="Radiogroup"
-            android:text="4/20/4"
-            android:textColor="@android:color/black"
-            android:textSize="16sp" />
-
-        <TextView
-            android:id="@+id/tv_4i_20_4"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="@dimen/spacing_xmedium"
-            android:layout_weight="1"
-            android:background="@drawable/my_rectangle"
-            android:gravity="center"
-            android:onClick="Radiogroup"
-            android:text="4i/20/4"
-            android:textColor="@android:color/black"
-            android:textSize="16sp" />
-
-        <TextView
-            android:id="@+id/tv_4_20_4i"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="@dimen/spacing_xmedium"
-            android:layout_weight="1"
-            android:background="@drawable/my_rectangle"
-            android:gravity="center"
-            android:onClick="Radiogroup"
-            android:text="4/20/4i"
-            android:textColor="@android:color/black"
-            android:textSize="16sp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/tv_4_8_4"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="@dimen/spacing_xmedium"
-            android:layout_weight="1"
-            android:background="@drawable/my_rectangle"
-            android:gravity="center"
-            android:onClick="Radiogroup"
-            android:text="4/8/4"
-            android:textColor="@android:color/black"
-            android:textSize="16sp" />
-
-        <TextView
-            android:id="@+id/tv_4i_8_4"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="@dimen/spacing_xmedium"
-            android:layout_weight="1"
-            android:background="@drawable/my_rectangle"
-            android:gravity="center"
-            android:onClick="Radiogroup"
-            android:text="4i/8/4"
-            android:textColor="@android:color/black"
-            android:textSize="16sp" />
-
-        <TextView
-            android:id="@+id/tv_4_8_4i"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="@dimen/spacing_xmedium"
-            android:layout_weight="1"
-            android:background="@drawable/my_rectangle"
-            android:gravity="center"
-            android:onClick="Radiogroup"
-            android:text="4/8/4i"
-            android:textColor="@android:color/black"
-            android:textSize="16sp" />
-    </LinearLayout>
 
 </LinearLayout>
+

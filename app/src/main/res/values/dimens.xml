@@ -20,5 +20,6 @@
 
     <!--Text-Size-->
     <dimen name="twenty">20sp</dimen>
+    <dimen name="titletext">16sp</dimen>
 
 </resources>

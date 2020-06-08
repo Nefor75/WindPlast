@@ -35,16 +35,16 @@
         <TextView
             android:id="@+id/tv_one_package"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="30dp"
             android:layout_margin="@dimen/spacing_xmedium"
             android:layout_weight="1"
-            android:background="@drawable/my_rectangle"
+            android:background="@drawable/my_rectangle_background"
             android:gravity="center_vertical|center_horizontal"
+            android:onClick="Radiogroup"
             android:text="4/16/4"
             android:textColor="@android:color/black"
             android:textSize="16sp"
-            android:visibility="visible"
-            android:onClick="Radiogroup" />
+            android:visibility="visible" />
 
         <RadioButton
             android:id="@+id/rb_two_camera"
@@ -60,13 +60,13 @@
             android:layout_height="match_parent"
             android:layout_margin="@dimen/spacing_xmedium"
             android:layout_weight="1"
-            android:background="@drawable/my_rectangle"
+            android:background="@drawable/my_rectangle_background"
             android:gravity="center_vertical|center_horizontal"
+            android:onClick="Radiogroup"
             android:text="4/12/4/8/4"
             android:textColor="@android:color/black"
             android:textSize="16sp"
-            android:visibility="gone"
-            android:onClick="Radiogroup"/>
+            android:visibility="gone" />
 
     </RadioGroup>
     <!--    <Spinner-->

@@ -1,5 +1,9 @@
 package com.glumy.windplast.data;
 
+import android.widget.TextView;
+
+import com.glumy.windplast.R;
+
 public class Constant {
 
     //URL Privatbank (курс)
@@ -24,5 +28,6 @@ public class Constant {
     public static String OPENTECK_ELIT = "Elit";
     public static String ROTO = "Roto";
     public static String AXOR = "Axor";
+
 
 }

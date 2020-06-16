@@ -64,11 +64,8 @@
 
     </string-array>
 
-
-
-
     <string name="usual_glasses">Стеклопакет обычный</string>
-    <string name="function_glasses">Стеклопакет функциональный</string>
+    <string name="function_glasses">Стеклопакет функ-ный</string>
     <string name="tinted_glasses">Стеклопакет тонированный</string>
 
     <!--    <integer-array name="about_images_array">-->
@@ -98,6 +95,7 @@
     <string name="roto">Roto</string>
     <string name="axor">Axor</string>
     <string name="address">Адрес</string>
+    <string name="one_cam">1 камер.</string>
 
 
 </resources>

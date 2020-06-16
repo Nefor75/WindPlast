@@ -77,6 +77,9 @@ public class DialogUtil extends AppCompatDialogFragment {
         TextView tv_furniture_or_res = view.findViewById(R.id.tv_furniture_or_res);
         tv_furniture_or_res.setText(getArguments().getString("furniture"));
 
+        TextView tv_quantity_glasses = view.findViewById(R.id.tv_qwantity_glasses);
+        tv_quantity_glasses.setText(getArguments().getString("quantity_glasses"));
+
         TextView tv_glasses_or_res = view.findViewById(R.id.tv_glasses_or_res);
         tv_glasses_or_res.setText(getArguments().getString("glass"));
 

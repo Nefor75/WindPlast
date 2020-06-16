@@ -2,6 +2,7 @@ package com.glumy.windplast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.view.ContextThemeWrapper;
 
 import android.content.DialogInterface;
 import android.graphics.Color;
@@ -51,6 +52,7 @@ public class ActivityProductDetails extends AppCompatActivity {
     private String str_profile2part = "Euro Disign 60";
     private String str_manufacturer_sill = "Без подоконника";
     private String str_manufacturer_weathering = "Без отлива";
+    private String str_quantity_glasses = "1 камер. ";
 
 
     @Override
@@ -102,13 +104,6 @@ public class ActivityProductDetails extends AppCompatActivity {
         rb_roto = findViewById(R.id.rb_roto);
         rb_roto.setChecked(true);
         rb_axor = findViewById(R.id.rb_axor);
-
-//        final ListView listViewUsual = findViewById(R.id.listview_usual);
-//        final String[] glassesOne = getResources().getStringArray(R.array.one_camera);
-//               ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
-//                android.R.layout.simple_list_item_checked, glassesOne);
-//
-//        listViewUsual.setAdapter(adapter);
 
         rg_glasses = findViewById(R.id.rg_glasses);
         rb_one_camera = findViewById(R.id.rb_one_camera);
@@ -172,6 +167,7 @@ public class ActivityProductDetails extends AppCompatActivity {
             case R.id.rb_euro_design_60:
                 str_profile = Constant.REHAU;
                 str_profile2part = Constant.EURO_DESIGN_60;
+
                 break;
 
             case R.id.rb_euro_design_70:
@@ -324,7 +320,7 @@ public class ActivityProductDetails extends AppCompatActivity {
             case R.id.rb_one_camera:
                 tv_two_package.setVisibility(View.GONE);
                 tv_one_package.setVisibility(View.VISIBLE);
-                str_glass = "4/16/4";
+                str_quantity_glasses = "1 камер.";
 
                 break;
 
@@ -341,7 +337,8 @@ public class ActivityProductDetails extends AppCompatActivity {
             case R.id.rb_two_camera:
                 tv_one_package.setVisibility(View.GONE);
                 tv_two_package.setVisibility(View.VISIBLE);
-                str_glass = "4/8/4/12/4";
+                str_glass = tv_two_package.getText().toString();
+                str_quantity_glasses = "2 камер.";
 
                 break;
 
@@ -361,6 +358,7 @@ public class ActivityProductDetails extends AppCompatActivity {
         dataProductDetails.putString("Profile", str_profile);
         dataProductDetails.putString("ProfileSecondPart", str_profile2part);
         dataProductDetails.putString("furniture", str_furniture);
+        dataProductDetails.putString("quantity_glasses", str_quantity_glasses);
         dataProductDetails.putString("glass", str_glass);
         dataProductDetails.putString("manufacturer_sill", str_manufacturer_sill);
         dataProductDetails.putString("manufacturer_weathering", str_manufacturer_weathering);
@@ -370,11 +368,12 @@ public class ActivityProductDetails extends AppCompatActivity {
 
     //--------------------------------------------------------------------------------------
     private AlertDialog openDialogOnePackages() {
-        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.MyAlertDialogTheme);
         LayoutInflater inflater = this.getLayoutInflater();
         final View view = inflater.inflate(R.layout.dialog_one_packages, null);
 
         builder.setView(view);
+
         //------------------------------------------------------------------------------------------
 
         final ListView listViewUsual = view.findViewById(R.id.listview_usual);
@@ -392,9 +391,12 @@ public class ActivityProductDetails extends AppCompatActivity {
         listViewUsual.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
                 listViewUsual.setItemChecked(position, true);
                 listViewUsual.setSelected(true);
                 tv_one_package.setText(arrayUsualGlass[position]);
+                str_glass = tv_one_package.getText().toString();
+
             }
         });
 
@@ -409,6 +411,8 @@ public class ActivityProductDetails extends AppCompatActivity {
                 listViewFunc.setItemChecked(position, true);
                 listViewFunc.setSelected(true);
                 tv_one_package.setText(arrayFuncGlass[position]);
+                str_glass = tv_one_package.getText().toString();
+
             }
         });
 //-----------------------------------------------------------------------------------------------
@@ -423,21 +427,23 @@ public class ActivityProductDetails extends AppCompatActivity {
                 listViewTinted.setItemChecked(position, true);
                 listViewTinted.setSelected(true);
                 tv_one_package.setText(arrayTintGlass[position]);
+                str_glass = tv_one_package.getText().toString();
+
             }
         });
 
-        builder.setPositiveButton("Выбрать", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-
-                dialog.dismiss();
-            }
-        });
+//        builder.setPositiveButton("Выбрать", new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialog, int which) {
+//
+//                dialog.dismiss();
+//            }
+//        });
         return builder.create();
     }
 
     private AlertDialog openDialogTwoPackages() {
-        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.MyAlertDialogTheme);
         LayoutInflater inflater = this.getLayoutInflater();
         final View view = inflater.inflate(R.layout.dialog_two_packages, null);
 
@@ -460,6 +466,7 @@ public class ActivityProductDetails extends AppCompatActivity {
                 listViewUsual2.setItemChecked(position, true);
                 listViewUsual2.setSelected(true);
                 tv_two_package.setText(arrayUsualGlass2[position]);
+                str_glass = tv_two_package.getText().toString();
             }
         });
 
@@ -474,6 +481,7 @@ public class ActivityProductDetails extends AppCompatActivity {
                 listViewFunc2.setItemChecked(position, true);
                 listViewFunc2.setSelected(true);
                 tv_two_package.setText(arrayFuncGlass2[position]);
+                str_glass = tv_two_package.getText().toString();
             }
         });
 //-----------------------------------------------------------------------------------------------
@@ -488,16 +496,18 @@ public class ActivityProductDetails extends AppCompatActivity {
                 listViewTinted2.setItemChecked(position, true);
                 listViewTinted2.setSelected(true);
                 tv_two_package.setText(arrayTintGlass2[position]);
+                str_glass = tv_two_package.getText().toString();
             }
         });
 
-        builder.setPositiveButton("Выбрать", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
+//        builder.setPositiveButton("Выбрать", new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialog, int which) {
+//
+//                dialog.dismiss();
+//            }
+//        });
 
-                dialog.dismiss();
-            }
-        });
         return builder.create();
     }
 }

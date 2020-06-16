@@ -9,22 +9,20 @@
 
     <item android:state_pressed="true">
         <shape>
-            <gradient android:angle="90.0" android:endColor="#6699CC" android:startColor="#99CCFF" android:type="linear" />
+            <gradient android:angle="90.0" android:endColor="#f57c00" android:startColor="#6699CC" android:type="linear" />
             <corners android:radius="5.0dip" />
         </shape>
     </item>
     <item android:state_activated="true">
         <shape>
-            <gradient android:angle="90.0" android:endColor="#336699" android:startColor="#99CCFF" android:type="linear" />
+            <gradient android:angle="90.0" android:endColor="#f57c00" android:startColor="#6699CC" android:type="linear" />
             <corners android:radius="5.0dip" />
-
-<!--            <gradient android:angle="90.0" android:endColor="#6699CC" android:startColor="#99CCFF" android:type="linear" />-->
-<!--            <corners android:radius="5.0dip" />-->
         </shape>
     </item>
     <item>
         <shape>
-            <solid android:color="@android:color/transparent"/>
+            <gradient android:angle="90.0" android:endColor="#f57c00" android:startColor="#f5cca1" android:type="linear" />
+            <corners android:radius="5.0dip" />
         </shape>
     </item>
 </selector>

@@ -105,7 +105,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="bottom"
-                android:background="@color/orange"
+                android:background="@drawable/my_rectangle_orange"
                 android:onClick="Radiogroup"
                 android:text="@string/calculation" />
 

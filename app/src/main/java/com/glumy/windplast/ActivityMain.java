@@ -61,7 +61,7 @@ public class ActivityMain extends AppCompatActivity implements AdapterView.OnIte
     }
 
     public void initcomponents() {
-        tv_rate = findViewById(R.id.rate_result);
+//        tv_rate = findViewById(R.id.rate_result);
         //requestRate();
     }
 
@@ -113,9 +113,9 @@ public class ActivityMain extends AppCompatActivity implements AdapterView.OnIte
         if (id == R.id.settings) {
             Toast.makeText(this, "Item1", Toast.LENGTH_SHORT).show();
         }
-        if (id == R.id.menu_rate) {
-            requestRate();
-        }
+     //   if (id == R.id.menu_rate) {
+            //requestRate();
+      //  }
 
         return super.onOptionsItemSelected(item);
     }
@@ -181,43 +181,44 @@ public class ActivityMain extends AppCompatActivity implements AdapterView.OnIte
         frag1 = new FragmentSettingsOne();
         frag2 = new FragmentSettingsTwo();
     }
-
+//-----------------------------------------------------------------
     //метод для извлечения курса валют (api PrivatBank)
-    private void requestRate() {
-        if (!NetworkCheck.isConnect(this)) {
-            content = "Нет соединения с интернетом";
-            tv_rate.setText(content);
-        } else {
-            Retrofit retrofit = new Retrofit.Builder()
-                    .baseUrl(Constant.WEB_URL_RATE)
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .build();
-
-            JsonPlaceHolderApi jsonPlaceHolderApi = retrofit.create(JsonPlaceHolderApi.class);
-
-            Call<List<Post>> call = jsonPlaceHolderApi.getPosts();
-            call.enqueue(new Callback<List<Post>>() {
-                @Override
-                public void onResponse(Call<List<Post>> call, Response<List<Post>> response) {
-
-                    List<Post> posts = response.body();
-
-                    for (Post post : posts) {
-                        content += post.getSale() + "\n";
-                        String s = "Курс USD: Приватбанк " + "\n" + content.substring(0, content.length() - 4);
-                        tv_rate.append(s);
-                        break;
-                    }
-                }
-
-                @Override
-                public void onFailure(Call<List<Post>> call, Throwable t) {
-                    tv_rate.setText(t.getMessage());
-                }
-            });
-        }
+//    private void requestRate() {
+//        if (!NetworkCheck.isConnect(this)) {
+//            content = "Нет соединения с интернетом";
+//            tv_rate.setText(content);
+//        } else {
+//            Retrofit retrofit = new Retrofit.Builder()
+//                    .baseUrl(Constant.WEB_URL_RATE)
+//                    .addConverterFactory(GsonConverterFactory.create())
+//                    .build();
+//
+//            JsonPlaceHolderApi jsonPlaceHolderApi = retrofit.create(JsonPlaceHolderApi.class);
+//
+//            Call<List<Post>> call = jsonPlaceHolderApi.getPosts();
+//            call.enqueue(new Callback<List<Post>>() {
+//                @Override
+//                public void onResponse(Call<List<Post>> call, Response<List<Post>> response) {
+//
+//                    List<Post> posts = response.body();
+//
+//                    for (Post post : posts) {
+//                        content += post.getSale() + "\n";
+//                        String s = "Курс USD: Приватбанк " + "\n" + content.substring(0, content.length() - 4);
+//                        tv_rate.append(s);
+//                        break;
+//                    }
+//                }
+//
+//                @Override
+//                public void onFailure(Call<List<Post>> call, Throwable t) {
+//                    tv_rate.setText(t.getMessage());
+//                }
+//            });
+//        }
+//----------------------------------------------------------------------------------------------------------------
     }
-}
+
 
 
 

@@ -1,12 +1,12 @@
 package com.glumy.windplast.util;
 
-import android.app.Activity;
 import android.app.Dialog;
 import android.content.DialogInterface;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -14,13 +14,15 @@ import android.widget.TextView;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
-import com.glumy.windplast.ActivityProductDetails;
 import com.glumy.windplast.R;
-import com.glumy.windplast.data.Constant;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class DialogUtil extends AppCompatDialogFragment {
 
+    private int counterCalculations = 1;//равен длинне массива просчетов??
     private EditText et_saveOrder;
     public static final int DIALOG_ONE_PACKAGES = 1; // Идентификаторы диалоговых окон
     public static final int DIALOG_TWO_PACKAGES = 2;
@@ -53,7 +55,7 @@ public class DialogUtil extends AppCompatDialogFragment {
         ib_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openDiaologSaveOrder().show();
+                openDiaologSaveOrder();
 
             }
         });
@@ -92,53 +94,25 @@ public class DialogUtil extends AppCompatDialogFragment {
         return builder.create();
     }
 
-//---------------------------------------------------------------------------------------------------------------------
-//    public static AlertDialog getDialog(Activity activity, int ID) {
-//        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-//
-//        switch (ID) {
-//            case DIALOG_ONE_PACKAGES:
-//                int[] single = Constant.singlePackage;
-//                builder.setTitle(R.string.choice_glasses);
-//                builder.setItems(R.array.one_camera, new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int which) {
-//                    //TextView tvsingle = ActivityProductDetails.
-//
-//                    }
-//                });
-//                return builder.create();
-//
-//            case DIALOG_TWO_PACKAGES:
-//                View view = activity.getLayoutInflater().inflate(R.layout.dialog_two_packages, null);
-//                builder.setView(view);
-//
-//                builder.setTitle(R.string.choice_glasses);
-//                builder.setItems(R.array.two_camera, new DialogInterface.OnClickListener() {
-//                    public void onClick(DialogInterface dialog, int whichButton) {
-//
-//                        dialog.dismiss();
-//                    }
-//                });
-//                return builder.create();
-//            default:
-//                return null;
-//        }
-//    }
-//----------------------------------------------------------------------------------------------------
     private AlertDialog openDiaologSaveOrder() {
-        final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getActivity().getLayoutInflater();
         final View view = inflater.inflate(R.layout.dialog_save_result, null);
 
-        builder.setView(view)
+        builder.setView(view);
+        final AlertDialog ad = builder.show();
 
-                .setPositiveButton(R.string.save, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                });
+        TextView tv_counterCalculations = view.findViewById(R.id.tv_counter_calculations);
+        Button buttonSave = view.findViewById(R.id.button_save);
+        buttonSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //здесь добавить в динамический массив просчет
+                //List<> storageCalculations = new ArrayList();
+                // tv_counterCalculations.setText("2");//равен длинне массива просчетов?
+                ad.dismiss();
+            }
+        });
         return builder.create();
     }
 }

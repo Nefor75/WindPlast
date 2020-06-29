@@ -23,18 +23,7 @@ public class Cart implements Serializable {
         this.price = price;
     }
 
-//    public Cart(int id, int image, int name, int width, int height, int amount, int price) {
-//        this.id = id;
-//        this.image = image;
-//        this.name = name;
-//        this.width = width;
-//        this.height = height;
-//        this.amount = amount;
-//        this.price = price;
-//    }
-
-
-     public int getWidth() {
+    public int getWidth() {
         return width;
     }
 

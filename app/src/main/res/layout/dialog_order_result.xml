@@ -243,17 +243,17 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="70dp"
         android:orientation="horizontal">
 
         <ImageButton
             android:id="@+id/ib_back"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_weight="1"
             android:background="@color/orange"
-            android:src="@mipmap/arrow_back_round" />
+            android:src="@mipmap/arrow_back" />
 
         <View
             android:layout_width="3dp"
@@ -263,11 +263,11 @@
         <ImageButton
             android:id="@+id/ib_transfer"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_weight="1"
             android:background="@color/orange"
-            android:src="@mipmap/share_round" />
+            android:src="@mipmap/share_white" />
 
         <View
             android:layout_width="3dp"
@@ -277,11 +277,11 @@
         <ImageButton
             android:id="@+id/ib_save"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_weight="1"
             android:background="@color/orange"
-            android:src="@mipmap/save_round" />
+            android:src="@mipmap/save_white" />
 
     </LinearLayout>
 </LinearLayout>

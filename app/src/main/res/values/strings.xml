@@ -95,7 +95,10 @@
     <string name="roto">Roto</string>
     <string name="axor">Axor</string>
     <string name="address">Адрес</string>
+    <string name="comments">Комментарий</string>
     <string name="one_cam">1 камер.</string>
-
+    <string name="my_calculations">Мои</string>
+    <string name="my_calculations2">расчеты</string>
+    <string name="calculate_number">Расчет №</string>
 
 </resources>

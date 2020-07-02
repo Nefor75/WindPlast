@@ -3,6 +3,7 @@
     <dimen name="margin">16dp</dimen>
 
     <!--genaral spacing-->
+    <dimen name="spacing_xxsmall">1dp</dimen>
     <dimen name="spacing_xsmall">2dp</dimen>
     <dimen name="spacing_small">3dp</dimen>
     <dimen name="spacing_medium">5dp</dimen>

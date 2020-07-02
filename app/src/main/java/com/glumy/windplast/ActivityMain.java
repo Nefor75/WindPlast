@@ -7,6 +7,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,6 +20,7 @@ import androidx.fragment.app.FragmentTransaction;
 import com.glumy.windplast.Cart.Cart;
 import com.glumy.windplast.connection.JsonPlaceHolderApi;
 import com.glumy.windplast.connection.Post;
+import com.glumy.windplast.data.AdapterStorageCalculations;
 import com.glumy.windplast.data.Constant;
 import com.glumy.windplast.fragment.FragmentSettingsOne;
 import com.glumy.windplast.fragment.FragmentSettingsTwo;
@@ -41,7 +43,7 @@ public class ActivityMain extends AppCompatActivity implements AdapterView.OnIte
     private FragmentSettingsOne frag1;
     private FragmentSettingsTwo frag2;
     private FragmentTransaction trans;
-    private TextView tv_rate;
+    private ImageView ivStorage;
 
 
     @Override
@@ -61,6 +63,7 @@ public class ActivityMain extends AppCompatActivity implements AdapterView.OnIte
     }
 
     public void initcomponents() {
+        ivStorage = findViewById(R.id.image_storage);
 //        tv_rate = findViewById(R.id.rate_result);
         //requestRate();
     }
@@ -113,9 +116,9 @@ public class ActivityMain extends AppCompatActivity implements AdapterView.OnIte
         if (id == R.id.settings) {
             Toast.makeText(this, "Item1", Toast.LENGTH_SHORT).show();
         }
-     //   if (id == R.id.menu_rate) {
-            //requestRate();
-      //  }
+        //   if (id == R.id.menu_rate) {
+        //requestRate();
+        //  }
 
         return super.onOptionsItemSelected(item);
     }
@@ -129,7 +132,7 @@ public class ActivityMain extends AppCompatActivity implements AdapterView.OnIte
     //onClick
     public void onClick(View view) {
         Intent i;
-        Cart recived = new Cart();
+        Cart recived;
 
         switch (view.getId()) {
 
@@ -181,7 +184,8 @@ public class ActivityMain extends AppCompatActivity implements AdapterView.OnIte
         frag1 = new FragmentSettingsOne();
         frag2 = new FragmentSettingsTwo();
     }
-//-----------------------------------------------------------------
+
+    //-----------------------------------------------------------------
     //метод для извлечения курса валют (api PrivatBank)
 //    private void requestRate() {
 //        if (!NetworkCheck.isConnect(this)) {
@@ -217,7 +221,19 @@ public class ActivityMain extends AppCompatActivity implements AdapterView.OnIte
 //            });
 //        }
 //----------------------------------------------------------------------------------------------------------------
+    public void onClickMainMenu(View v) {
+
+        switch (v.getId()) {
+
+            case R.id.image_storage:
+                Intent intent = new Intent(this, ActivityStorageCalculations.class);
+                startActivity(intent);
+                break;
+
+        }
     }
+
+}
 
 
 

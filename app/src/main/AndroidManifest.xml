@@ -31,8 +31,7 @@
             android:name=".ActivityProductDetails"
             android:theme="@style/Main" />
         <activity
-            android:name=".ActivityShoppingCart"
-            android:theme="@style/Main" />
+            android:name=".ActivityStorageCalculations" />
     </application>
 
 </manifest>

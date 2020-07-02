@@ -1,6 +1,9 @@
 package com.glumy.windplast.util;
 
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class Tools {
 
     public static String[] singlcameral = {"4/16/4", "4i/16/4", "4/16/4i", "4i/16/4i"};
@@ -13,5 +16,10 @@ public class Tools {
         double result = Math.round(d * 100.0) / 100.0;
 
         return result + " м. кв.";
+    }
+
+    public static String getFormattedDate(Long dateTime) {
+        SimpleDateFormat newFormat = new SimpleDateFormat("dd MMMM, yyyy hh:mm");
+        return newFormat.format(new Date(dateTime));
     }
 }

@@ -1,7 +1,6 @@
 package com.glumy.windplast.util;
 
 import android.app.Dialog;
-import android.content.DialogInterface;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -15,9 +14,6 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
 import com.glumy.windplast.R;
-
-import java.util.ArrayList;
-import java.util.List;
 
 
 public class DialogUtil extends AppCompatDialogFragment {
@@ -107,6 +103,7 @@ public class DialogUtil extends AppCompatDialogFragment {
         buttonSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 //здесь добавить в динамический массив просчет
                 //List<> storageCalculations = new ArrayList();
                 // tv_counterCalculations.setText("2");//равен длинне массива просчетов?

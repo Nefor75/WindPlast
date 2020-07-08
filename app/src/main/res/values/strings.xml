@@ -99,6 +99,7 @@
     <string name="one_cam">1 камер.</string>
     <string name="my_calculations">Мои</string>
     <string name="my_calculations2">расчеты</string>
-    <string name="calculate_number">Расчет №</string>
+    <string name="text">Расчет добавлен в "Мои расчеты"</string>
+    <string name="calcnumber">Расчет №"</string>
 
 </resources>

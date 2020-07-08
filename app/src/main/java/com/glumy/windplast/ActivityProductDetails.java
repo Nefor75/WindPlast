@@ -2,11 +2,7 @@ package com.glumy.windplast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.view.ContextThemeWrapper;
 
-import android.app.Dialog;
-import android.content.DialogInterface;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,7 +17,6 @@ import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.glumy.windplast.Cart.Cart;
 import com.glumy.windplast.data.Constant;
@@ -31,6 +26,11 @@ import com.glumy.windplast.util.DialogUtil;
 public class ActivityProductDetails extends AppCompatActivity {
 
     private ImageView mainImage;
+
+    public ImageView getMainImage() {
+        return mainImage;
+    }
+
     private TextView textView_main, tv_width_product, tv_height_product, tv_width_sill, tv_length_sill,
             tv_width_weathering, tv_length_weathering, tv_prof_second_part, tv_one_package, tv_two_package;
     private RadioGroup rg_rehau, rg_wds, rg_openteck, rg_furnit, rg_glasses, rgroupSill, rgWeathering, rg_profil;

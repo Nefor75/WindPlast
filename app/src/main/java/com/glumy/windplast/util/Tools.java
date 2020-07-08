@@ -19,7 +19,7 @@ public class Tools {
     }
 
     public static String getFormattedDate(Long dateTime) {
-        SimpleDateFormat newFormat = new SimpleDateFormat("dd MMMM, yyyy hh:mm");
+        SimpleDateFormat newFormat = new SimpleDateFormat("dd MMMM, yyyy");
         return newFormat.format(new Date(dateTime));
     }
 }

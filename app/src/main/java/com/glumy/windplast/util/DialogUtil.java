@@ -2,26 +2,35 @@ package com.glumy.windplast.util;
 
 import android.app.Dialog;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
+import com.glumy.windplast.ActivityStorageCalculations;
+import com.glumy.windplast.Cart.Storage;
 import com.glumy.windplast.R;
+import com.glumy.windplast.data.AdapterStorageCalculations;
+
+import java.util.ArrayList;
 
 
 public class DialogUtil extends AppCompatDialogFragment {
 
-    private int counterCalculations = 1;//равен длинне массива просчетов??
-    private EditText et_saveOrder;
+    private static int counterCalculations = 1;//равен длинне массива просчетов??
+    private EditText et_address, et_comment;
     public static final int DIALOG_ONE_PACKAGES = 1; // Идентификаторы диалоговых окон
     public static final int DIALOG_TWO_PACKAGES = 2;
+    ActivityStorageCalculations asc;
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -98,17 +107,26 @@ public class DialogUtil extends AppCompatDialogFragment {
         builder.setView(view);
         final AlertDialog ad = builder.show();
 
+        et_address = view.findViewById(R.id.editAddress);
+        et_comment = view.findViewById(R.id.editComment);
         TextView tv_counterCalculations = view.findViewById(R.id.tv_counter_calculations);
+
+      //  tv_counterCalculations.setText(counterCalculations);
         Button buttonSave = view.findViewById(R.id.button_save);
         buttonSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 //здесь добавить в динамический массив просчет
-                //List<> storageCalculations = new ArrayList();
-                // tv_counterCalculations.setText("2");//равен длинне массива просчетов?
-                ad.dismiss();
-            }
+
+                ArrayList<AlertDialog> storageDialog = new ArrayList<>();
+//storageDialog.add(new Storage());
+                    // tv_counterCalculations.setText("2");//равен длинне массива просчетов?
+
+                    ad.dismiss();
+                    Toast toast = Toast.makeText(getContext(), R.string.text, Toast.LENGTH_LONG);
+                    toast.setGravity(Gravity.CENTER, 0, 0);
+                    toast.show();
+                }
         });
         return builder.create();
     }

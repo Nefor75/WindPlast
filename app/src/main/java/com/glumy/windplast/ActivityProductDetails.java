@@ -3,6 +3,7 @@ package com.glumy.windplast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,8 +20,8 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.glumy.windplast.Cart.Cart;
+import com.glumy.windplast.Cart.OrderResult;
 import com.glumy.windplast.data.Constant;
-import com.glumy.windplast.util.DialogUtil;
 
 
 public class ActivityProductDetails extends AppCompatActivity {
@@ -344,27 +345,16 @@ public class ActivityProductDetails extends AppCompatActivity {
                 break;
 
             case R.id.btn_calculation:
-                openDialog();
+                Intent i = new Intent(this, ActivityOrderResult.class);
+
+                OrderResult orderResult = new OrderResult(tv_width_product.getText().toString(), tv_height_product.getText().toString(),
+                        et_amount.getText().toString(), str_profile, str_profile2part, str_furniture, str_quantity_glasses, str_glass,
+                        str_manufacturer_sill, str_manufacturer_weathering);
+                i.putExtra(OrderResult.class.getSimpleName(), orderResult);
+                startActivity(i);
 
                 break;
         }
-    }
-
-    private void openDialog() {
-        DialogUtil dialog = new DialogUtil();
-        Bundle dataProductDetails = new Bundle();
-        dataProductDetails.putString("width_product", tv_width_product.getText().toString());
-        dataProductDetails.putString("height_product", tv_height_product.getText().toString());
-        dataProductDetails.putString("et_amount", et_amount.getText().toString());
-        dataProductDetails.putString("Profile", str_profile);
-        dataProductDetails.putString("ProfileSecondPart", str_profile2part);
-        dataProductDetails.putString("furniture", str_furniture);
-        dataProductDetails.putString("quantity_glasses", str_quantity_glasses);
-        dataProductDetails.putString("glass", str_glass);
-        dataProductDetails.putString("manufacturer_sill", str_manufacturer_sill);
-        dataProductDetails.putString("manufacturer_weathering", str_manufacturer_weathering);
-        dialog.setArguments(dataProductDetails);
-        dialog.show(getSupportFragmentManager(), "onCreateDialog");
     }
 
     private AlertDialog openDialogOnePackages() {

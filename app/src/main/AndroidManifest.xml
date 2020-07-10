@@ -3,8 +3,6 @@
     package="com.glumy.windplast">
 
     <uses-permission android:name="android.permission.INTERNET" />
-<!--    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />-->
-<!--    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />-->
 
     <application
         android:allowBackup="true"
@@ -30,8 +28,10 @@
         <activity
             android:name=".ActivityProductDetails"
             android:theme="@style/Main" />
-        <activity
-            android:name=".ActivityStorageCalculations" />
+        <activity android:name=".ActivityStorageCalculations" />
+        <activity android:name=".ActivityOrderResult">
+
+        </activity>
     </application>
 
 </manifest>

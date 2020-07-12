@@ -1,17 +1,14 @@
 package com.glumy.windplast;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.glumy.windplast.Cart.Cart;
 import com.glumy.windplast.Cart.Storage;
 import com.glumy.windplast.data.AdapterStorageCalculations;
 import com.glumy.windplast.util.Tools;
@@ -43,7 +40,8 @@ public class ActivityStorageCalculations extends AppCompatActivity {
         ActivityProductDetails apd = new ActivityProductDetails();
 
         //image_recycler.setImageResource(apd.getMainImage());
-       // storageArrayList.add(new Storage(,Tools.getFormattedDate(millis), "1000 грн"));
+
+       // storageArrayList.add(ActivityOrderResult.class.getClass());
 
         storageArrayList.add(new Storage(R.drawable.bb, 1, "Глухое окно","Адрес", "Комментарий", Tools.getFormattedDate(millis), "2000 грн"));
         storageArrayList.add(new Storage(R.drawable.four,  2, "Глухое окно","Адрес", "Комментарий", Tools.getFormattedDate(millis), "3000 грн"));
@@ -86,6 +84,7 @@ public class ActivityStorageCalculations extends AppCompatActivity {
 
             case R.id.image_arrow_back:
                 super.onBackPressed();
+
                 break;
 
         }

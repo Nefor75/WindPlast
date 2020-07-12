@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/grey_20"
+    android:orientation="horizontal">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="@dimen/margin"
+        android:paddingTop="@dimen/spacing_xmedium"
+        android:text="@string/delivery"
+        android:textColor="@android:color/black" />
+
+    <CheckBox
+        android:id="@+id/chbx_delivery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="@dimen/spacing_mlarge"
+        android:onClick="Radiogroup"
+        android:theme="@style/MyRadioButton" />
+
+
+    <LinearLayout
+        android:id="@+id/ll_delivery"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/spacing_xmedium"
+        android:orientation="horizontal"
+        android:gravity="end"
+        android:visibility="gone">
+
+        <EditText
+            android:id="@+id/et_delivery"
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/spacing_xmedium"
+            android:background="@drawable/my_button_usual"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:inputType="number"
+            android:maxLength="6"
+            android:gravity="center_horizontal|center_vertical" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="грн."
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:textColor="@android:color/black" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

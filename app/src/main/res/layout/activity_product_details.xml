@@ -79,6 +79,16 @@
                 android:layout_height="wrap_content" />
 
             <include
+                layout="@layout/include_mounting"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <include
+                layout="@layout/include_delivery"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <include
                 layout="@layout/include_amount"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />

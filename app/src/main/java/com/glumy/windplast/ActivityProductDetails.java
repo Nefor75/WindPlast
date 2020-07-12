@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
@@ -22,6 +23,8 @@ import android.widget.TextView;
 import com.glumy.windplast.Cart.Cart;
 import com.glumy.windplast.Cart.OrderResult;
 import com.glumy.windplast.data.Constant;
+
+import static android.view.KeyEvent.KEYCODE_ENTER;
 
 
 public class ActivityProductDetails extends AppCompatActivity {
@@ -42,12 +45,12 @@ public class ActivityProductDetails extends AppCompatActivity {
     private RadioButton rb_roto, rb_axor;
     private RadioButton rb_one_camera;
     private RadioButton rb_two_camera;
-    private CheckBox checkBoxWeathering, checkBoxSill;
+    private CheckBox checkBoxWeathering, checkBoxSill, checkBoxMounting, checkBoxDelivery;
     private RadioButton rb_sill_ukraine, rb_sill_usa;
     private RadioButton rb_weath_ukraine, rb_weath_usa;
-    private LinearLayout llWindowSillSizes, llWeathering;
+    private LinearLayout llWindowSillSizes, llWeathering, llDelivery;
     private Button btnCalculation;
-    private EditText et_amount;
+    private EditText et_amount, et_delivery;
     private String str_furniture = "Roto";
     private String str_profile = "Rehau";
     private String str_glass = "4/16/4";
@@ -55,7 +58,8 @@ public class ActivityProductDetails extends AppCompatActivity {
     private String str_manufacturer_sill = "Без подоконника";
     private String str_manufacturer_weathering = "Без отлива";
     private String str_quantity_glasses = "1 камер. ";
-
+    private String mounting = "350 грн.";//эта сумма, сумма монтажа в Настройках и передается и добавляется к сумме Изделия в ActivityOrderResult
+    private String strDelivery = " Доставка в пределах города";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +80,7 @@ public class ActivityProductDetails extends AppCompatActivity {
         tv_width_weathering = findViewById(R.id.tv_width_weathering);
         tv_length_weathering = findViewById(R.id.tv_length_weathering);
         et_amount = findViewById(R.id.et_amount);
+        et_delivery = findViewById(R.id.et_delivery);
         tv_prof_second_part = findViewById(R.id.tv_prof_second_part);
 
         rg_profil = findViewById(R.id.rg_profil);
@@ -117,6 +122,9 @@ public class ActivityProductDetails extends AppCompatActivity {
 
         checkBoxSill = findViewById(R.id.chbx_windowsill);
         checkBoxWeathering = findViewById(R.id.chbx_weathering);
+        checkBoxMounting = findViewById(R.id.chbx_mounting);
+        checkBoxMounting.setChecked(true);
+        checkBoxDelivery = findViewById(R.id.chbx_delivery);
 
         rgroupSill = findViewById(R.id.radio_group_sill);
         rb_sill_ukraine = findViewById(R.id.rb_sill_ukraine);
@@ -129,6 +137,7 @@ public class ActivityProductDetails extends AppCompatActivity {
 
         llWindowSillSizes = findViewById(R.id.ll_windowsill_sizes);
         llWeathering = findViewById(R.id.ll_weathering);
+        llDelivery = findViewById(R.id.ll_delivery);
 
         btnCalculation = findViewById(R.id.btn_calculation);
 
@@ -326,6 +335,29 @@ public class ActivityProductDetails extends AppCompatActivity {
 
                 break;
 
+            case R.id.chbx_mounting:
+                if (checkBoxMounting.isChecked()) {//а он включен
+                    mounting = " 350 грн.";
+                } else {
+                    mounting = " Без монтажа";
+                }
+                break;
+
+            case R.id.chbx_delivery:
+                if (checkBoxDelivery.isChecked()) {
+                    llDelivery.setVisibility(View.VISIBLE);
+
+                    if (et_delivery.getText().length() != 0) {
+                        strDelivery = et_delivery.getText().toString();//нет подтверждения ввода?
+                    }
+
+                } else {
+
+                    llDelivery.setVisibility(View.GONE);
+                    strDelivery = " Доставка в пределах города";
+                }
+                break;
+
             case R.id.tv_one_package:
                 openDialogOnePackages();
 
@@ -349,7 +381,7 @@ public class ActivityProductDetails extends AppCompatActivity {
 
                 OrderResult orderResult = new OrderResult(tv_width_product.getText().toString(), tv_height_product.getText().toString(),
                         et_amount.getText().toString(), str_profile, str_profile2part, str_furniture, str_quantity_glasses, str_glass,
-                        str_manufacturer_sill, str_manufacturer_weathering);
+                        str_manufacturer_sill, str_manufacturer_weathering, mounting, strDelivery);
                 i.putExtra(OrderResult.class.getSimpleName(), orderResult);
                 startActivity(i);
 

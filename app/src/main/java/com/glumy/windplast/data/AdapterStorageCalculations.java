@@ -1,5 +1,6 @@
 package com.glumy.windplast.data;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +9,7 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.glumy.windplast.ActivityOrderResult;
 import com.glumy.windplast.Cart.Storage;
 import com.glumy.windplast.R;
 
@@ -43,6 +45,8 @@ public class AdapterStorageCalculations extends RecyclerView.Adapter<AdapterStor
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+//                    Intent i = new Intent(v.getContext(), ActivityOrderResult.class);
+//                    startActivity(i);
                    int positionindex = getAdapterPosition();
                 }
             });

@@ -4,12 +4,12 @@ import java.io.Serializable;
 
 public class Cart implements Serializable {
 
-    private int width, height, widthSill, lengthSill, widthWeathering, lengthWeathering, amount, price, image, name;
-
+    private int width, height, widthSill, lengthSill, widthWeathering, lengthWeathering, amount, price, image;
+    private String name;
     public Cart() {
     }
 
-    public Cart(int image, int name, int width, int height, int widthSill, int lengthSill, int widthWeathering, int lengthWeathering, int amount, int price) {
+    public Cart(int image, String name, int width, int height, int widthSill, int lengthSill, int widthWeathering, int lengthWeathering, int amount, int price) {
 
         this.image = image;
         this.name = name;
@@ -95,11 +95,11 @@ public class Cart implements Serializable {
         this.image = image;
     }
 
-    public int getName() {
+    public String getName() {
         return name;
     }
 
-    public void setName(int name) {
+    public void setName(String name) {
         this.name = name;
     }
 }

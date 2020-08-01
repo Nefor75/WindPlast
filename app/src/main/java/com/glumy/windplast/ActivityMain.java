@@ -137,39 +137,52 @@ public class ActivityMain extends AppCompatActivity implements AdapterView.OnIte
         switch (view.getId()) {
 
             case R.id.set1_iv_up_left:
-                recived = new Cart(R.drawable.img_200x130, R.string.two,
+                recived = new Cart(R.drawable.img_200x130, "Две секции с одной створкой",
                         1350, 1400, 250, 1450, 160, 1350,
                         1, 1000);
                 break;
 
             case R.id.set1_iv_up_right:
-                recived = new Cart(R.drawable.bb, R.string.balkon,
+                recived = new Cart(R.drawable.bb, "Балконный блок",
                         2100, 2100, 250, 2200, 160, 2100,
                         1, 3000);
                 break;
 
             case R.id.set1_iv_mid_left:
-                recived = new Cart(R.drawable.one_po, R.string.one_po,
+
+                recived = new Cart(R.drawable.one_po, "Одна секция - створка",
                         900, 1300, 250, 1000, 160, 900,
                         1, 1000);
                 break;
 
             case R.id.set1_iv_mid_right:
-                recived = new Cart(R.drawable.deaf, R.string.deaf,
+                recived = new Cart(R.drawable.deaf, "Глухое",
                         1000, 1000, 250, 1100, 160, 1000,
                         1, 500);
                 break;
 
             case R.id.set1_iv_bottom_left:
-                recived = new Cart(R.drawable.four, R.string.four,
+                recived = new Cart(R.drawable.four, "Четыре секции с двумя створками",
                         3000, 1300, 250, 3100, 160, 3000,
                         1, 3000);
                 break;
 
             case R.id.set1_iv_bottom_right:
-                recived = new Cart(R.drawable.triple, R.string.triple,
+                recived = new Cart(R.drawable.triple, "Три секции с одной створкой",
                         2000, 1300, 250, 2100, 160, 2000,
                         1, 2000);
+                break;
+
+            case R.id.set1_iv_bottom_left2:
+                recived = new Cart(R.drawable.two_po, "Две секции с двумя створками",
+                        1400, 1300, 250, 1500, 160, 1400,
+                        1, 3000);
+                break;
+
+            case R.id.set1_iv_bottom_right2:
+                recived = new Cart(R.drawable.two_gluh, "Две глухих секции",
+                        1400, 1300, 250, 1500, 160, 1400,
+                        1, 1000);
                 break;
 
             default:

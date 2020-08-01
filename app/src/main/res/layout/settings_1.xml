@@ -119,7 +119,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/spacing_xxlarge"
                         android:padding="@dimen/spacing_xmedium"
-                        android:text="@string/four"
+                        android:text="@string/two_po"
                         android:textColor="@android:color/white" />
 
                     <ImageView
@@ -133,7 +133,7 @@
                         android:paddingTop="@dimen/spacing_xmedium"
                         android:paddingEnd="@dimen/spacing_xlarge"
                         android:paddingBottom="@dimen/spacing_xlarge"
-                        android:src="@drawable/four" />
+                        android:src="@drawable/two_po" />
 
                 </LinearLayout>
 
@@ -231,7 +231,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/spacing_xxlarge"
                         android:padding="@dimen/spacing_xmedium"
-                        android:text="@string/triple"
+                        android:text="@string/two_deaf"
                         android:textColor="@android:color/white" />
 
                     <ImageView
@@ -245,7 +245,7 @@
                         android:paddingTop="@dimen/spacing_xmedium"
                         android:paddingEnd="@dimen/spacing_xlarge"
                         android:paddingBottom="@dimen/spacing_xlarge"
-                        android:src="@drawable/triple" />
+                        android:src="@drawable/two_gluh" />
 
                 </LinearLayout>
             </LinearLayout>

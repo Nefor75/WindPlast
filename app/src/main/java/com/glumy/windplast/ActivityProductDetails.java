@@ -3,9 +3,9 @@ package com.glumy.windplast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
@@ -23,8 +23,6 @@ import android.widget.TextView;
 import com.glumy.windplast.Cart.Cart;
 import com.glumy.windplast.Cart.OrderResult;
 import com.glumy.windplast.data.Constant;
-
-import static android.view.KeyEvent.KEYCODE_ENTER;
 
 
 public class ActivityProductDetails extends AppCompatActivity {
@@ -48,7 +46,7 @@ public class ActivityProductDetails extends AppCompatActivity {
     private CheckBox checkBoxWeathering, checkBoxSill, checkBoxMounting, checkBoxDelivery;
     private RadioButton rb_sill_ukraine, rb_sill_usa;
     private RadioButton rb_weath_ukraine, rb_weath_usa;
-    private LinearLayout llWindowSillSizes, llWeathering, llDelivery;
+    private LinearLayout llWindowSillSizes, llWeathering, llDelivery, ll_furnit;
     private Button btnCalculation;
     private EditText et_amount, et_delivery;
     private String str_furniture = "Roto";
@@ -70,92 +68,113 @@ public class ActivityProductDetails extends AppCompatActivity {
 
     }
 
+    @SuppressLint("SetTextI18n")
     private void initComponent() {
-        mainImage = findViewById(R.id.imageView);
-        textView_main = findViewById(R.id.textView);
-        tv_width_product = findViewById(R.id.tv_width_product);
-        tv_height_product = findViewById(R.id.tv_height_product);
-        tv_width_sill = findViewById(R.id.tv_width_sill);
-        tv_length_sill = findViewById(R.id.tv_length_sill);
-        tv_width_weathering = findViewById(R.id.tv_width_weathering);
-        tv_length_weathering = findViewById(R.id.tv_length_weathering);
-        et_amount = findViewById(R.id.et_amount);
-        et_delivery = findViewById(R.id.et_delivery);
-        tv_prof_second_part = findViewById(R.id.tv_prof_second_part);
 
-        rg_profil = findViewById(R.id.rg_profil);
-
-        rg_rehau = findViewById(R.id.rg_rehau);
-        rb_rehau = findViewById(R.id.rb_rehau);
-        rb_rehau.setChecked(true);
-
-        rb_rehau_60 = findViewById(R.id.rb_euro_design_60);
-        rb_rehau_60.setChecked(true);
-
-        rb_rehau_70 = findViewById(R.id.rb_euro_design_70);
-
-        rg_wds = findViewById(R.id.rg_wds);
-        rb_wds = findViewById(R.id.rb_wds);
-        rb_wds_5s = findViewById(R.id.rb_wds_5s);
-        rb_wds_6s = findViewById(R.id.rb_wds_6s);
-        rb_wds_7s = findViewById(R.id.rb_wds_7s);
-        rb_wds_8s = findViewById(R.id.rb_wds_8s);
-
-        rg_openteck = findViewById(R.id.rg_openteck);
-        rb_openteck = findViewById(R.id.rb_openteck);
-        rb_openteck_standart = findViewById(R.id.rb_openteck_standart);
-        rb_openteck_delux = findViewById(R.id.rb_openteck_de_lux);
-        rb_openteck_elit = findViewById(R.id.rb_openteck_elit);
-
-        rg_furnit = findViewById(R.id.rg_furnit);
-        rb_roto = findViewById(R.id.rb_roto);
-        rb_roto.setChecked(true);
-        rb_axor = findViewById(R.id.rb_axor);
-
-        rg_glasses = findViewById(R.id.rg_glasses);
-        rb_one_camera = findViewById(R.id.rb_one_camera);
-        rb_one_camera.setChecked(true);
-        tv_one_package = findViewById(R.id.tv_one_package);
-
-        rb_two_camera = findViewById(R.id.rb_two_camera);
-        tv_two_package = findViewById(R.id.tv_two_package);
-
-        checkBoxSill = findViewById(R.id.chbx_windowsill);
-        checkBoxWeathering = findViewById(R.id.chbx_weathering);
-        checkBoxMounting = findViewById(R.id.chbx_mounting);
-        checkBoxMounting.setChecked(true);
-        checkBoxDelivery = findViewById(R.id.chbx_delivery);
-
-        rgroupSill = findViewById(R.id.radio_group_sill);
-        rb_sill_ukraine = findViewById(R.id.rb_sill_ukraine);
-        rb_sill_ukraine.setChecked(true);
-        rb_sill_usa = findViewById(R.id.rb_sill_usa);
-
-        rgWeathering = findViewById(R.id.rg_weathering);
-        rb_weath_ukraine = findViewById(R.id.rb_weath_ukraine);
-        rb_weath_usa = findViewById(R.id.rb_weath_usa);
-
-        llWindowSillSizes = findViewById(R.id.ll_windowsill_sizes);
-        llWeathering = findViewById(R.id.ll_weathering);
-        llDelivery = findViewById(R.id.ll_delivery);
-
-        btnCalculation = findViewById(R.id.btn_calculation);
-
-//Передался экземпляр класса
+        //Передался экземпляр класса
         Bundle recivedData = getIntent().getExtras();
         final Cart setActivity;
         if (recivedData != null) {
             setActivity = (Cart) recivedData.getSerializable(Cart.class.getSimpleName());
             assert setActivity != null;
+
+            textView_main = findViewById(R.id.textView);
             textView_main.setText(setActivity.getName());
+
+            String name = setActivity.getName();
+            String strDeaf = getResources().getString(R.string.deaf);
+            String strDeaf2 = getResources().getString(R.string.two_deaf);
+            if (name.equals(strDeaf)|name.equals(strDeaf2)) {
+                ll_furnit = findViewById(R.id.ll_furnit);
+                ll_furnit.setVisibility(View.GONE);//может какое-то другое поведение сделать????
+                str_furniture = "Без фурнитуры";
+            }
+
+            mainImage = findViewById(R.id.imageView);
             mainImage.setImageResource(setActivity.getImage());
+
+            tv_width_product = findViewById(R.id.tv_width_product);
             tv_width_product.setText(setActivity.getWidth() + "");
+
+            tv_height_product = findViewById(R.id.tv_height_product);
             tv_height_product.setText(setActivity.getHeight() + "");
+
+            tv_width_sill = findViewById(R.id.tv_width_sill);
             tv_width_sill.setText(setActivity.getWidthSill() + "");
+
+            tv_length_sill = findViewById(R.id.tv_length_sill);
             tv_length_sill.setText(setActivity.getLengthSill() + "");
+
+            tv_width_weathering = findViewById(R.id.tv_width_weathering);
             tv_width_weathering.setText(setActivity.getWidthWeathering() + "");
+
+            tv_length_weathering = findViewById(R.id.tv_length_weathering);
             tv_length_weathering.setText(setActivity.getLengthWeathering() + "");
+
+            et_amount = findViewById(R.id.et_amount);
             et_amount.setText(setActivity.getAmount() + "");
+
+            et_delivery = findViewById(R.id.et_delivery);
+
+            tv_prof_second_part = findViewById(R.id.tv_prof_second_part);
+
+            rg_profil = findViewById(R.id.rg_profil);
+
+            rg_rehau = findViewById(R.id.rg_rehau);
+            rb_rehau = findViewById(R.id.rb_rehau);
+            rb_rehau.setChecked(true);
+
+            rb_rehau_60 = findViewById(R.id.rb_euro_design_60);
+            rb_rehau_60.setChecked(true);
+
+            rb_rehau_70 = findViewById(R.id.rb_euro_design_70);
+
+            rg_wds = findViewById(R.id.rg_wds);
+            rb_wds = findViewById(R.id.rb_wds);
+            rb_wds_5s = findViewById(R.id.rb_wds_5s);
+            rb_wds_6s = findViewById(R.id.rb_wds_6s);
+            rb_wds_7s = findViewById(R.id.rb_wds_7s);
+            rb_wds_8s = findViewById(R.id.rb_wds_8s);
+
+            rg_openteck = findViewById(R.id.rg_openteck);
+            rb_openteck = findViewById(R.id.rb_openteck);
+            rb_openteck_standart = findViewById(R.id.rb_openteck_standart);
+            rb_openteck_delux = findViewById(R.id.rb_openteck_de_lux);
+            rb_openteck_elit = findViewById(R.id.rb_openteck_elit);
+
+            rg_furnit = findViewById(R.id.rg_furnit);
+            rb_roto = findViewById(R.id.rb_roto);
+            rb_roto.setChecked(true);
+            rb_axor = findViewById(R.id.rb_axor);
+
+            rg_glasses = findViewById(R.id.rg_glasses);
+            rb_one_camera = findViewById(R.id.rb_one_camera);
+            rb_one_camera.setChecked(true);
+            tv_one_package = findViewById(R.id.tv_one_package);
+
+            rb_two_camera = findViewById(R.id.rb_two_camera);
+            tv_two_package = findViewById(R.id.tv_two_package);
+
+            checkBoxSill = findViewById(R.id.chbx_windowsill);
+            checkBoxWeathering = findViewById(R.id.chbx_weathering);
+            checkBoxMounting = findViewById(R.id.chbx_mounting);
+            checkBoxMounting.setChecked(true);
+            checkBoxDelivery = findViewById(R.id.chbx_delivery);
+
+            rgroupSill = findViewById(R.id.radio_group_sill);
+            rb_sill_ukraine = findViewById(R.id.rb_sill_ukraine);
+            rb_sill_ukraine.setChecked(true);
+            rb_sill_usa = findViewById(R.id.rb_sill_usa);
+
+            rgWeathering = findViewById(R.id.rg_weathering);
+            rb_weath_ukraine = findViewById(R.id.rb_weath_ukraine);
+            rb_weath_usa = findViewById(R.id.rb_weath_usa);
+
+            llWindowSillSizes = findViewById(R.id.ll_windowsill_sizes);
+            llWeathering = findViewById(R.id.ll_weathering);
+            llDelivery = findViewById(R.id.ll_delivery);
+
+            btnCalculation = findViewById(R.id.btn_calculation);
 
         }
     }
@@ -337,26 +356,32 @@ public class ActivityProductDetails extends AppCompatActivity {
 
             case R.id.chbx_mounting:
                 if (checkBoxMounting.isChecked()) {//а он включен
-                    mounting = " 350 грн.";
+                    mounting = " 350 грн.";//это если его выключали и опять включили
                 } else {
                     mounting = " Без монтажа";
                 }
                 break;
 
             case R.id.chbx_delivery:
-                if (checkBoxDelivery.isChecked()) {
-                    llDelivery.setVisibility(View.VISIBLE);
-
-                    if (et_delivery.getText().length() != 0) {
-                        strDelivery = et_delivery.getText().toString();//нет подтверждения ввода?
-                    }
-
-                } else {
-
-                    llDelivery.setVisibility(View.GONE);
-                    strDelivery = " Доставка в пределах города";
-                }
+//                if (checkBoxDelivery.isChecked()) {
+                llDelivery.setVisibility(View.VISIBLE);
+                strDelivery = et_delivery.getText().toString();//нет подтверждения ввода?
+//                } else {
+//
+//                    llDelivery.setVisibility(View.GONE);
+//                    strDelivery = " Доставка в пределах города";
+//                }
                 break;
+
+//            case R.id.et_delivery:
+//                 if (et_delivery.getText().length() != 0) {
+//
+//                     et_delivery.clearFocus();
+//                  }else {
+//                     strDelivery = " Доставка в пределах города";
+//                 }
+//
+//                break;
 
             case R.id.tv_one_package:
                 openDialogOnePackages();
@@ -502,6 +527,6 @@ public class ActivityProductDetails extends AppCompatActivity {
         });
         return builder.create();
     }
+
+
 }
-
-

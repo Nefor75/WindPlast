@@ -85,6 +85,8 @@
 
     <!-- String resourse for settings_1 -->
     <string name="two">Две секции с одной створкой</string>
+    <string name="two_po">Две секции с двумя створками</string>
+    <string name="two_deaf">Две глухих секции</string>
     <string name="balkon">Балконный блок</string>
     <string name="triple">Три секции с одной створкой</string>
     <string name="four">Четыре секции с двумя створками</string>

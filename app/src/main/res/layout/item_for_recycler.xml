@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.balysv.materialripple.MaterialRippleLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/lyt_parent"
-    style="@style/RippleStyleWhite"
+    style="@style/RippleStyleBlu"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="@dimen/spacing_xxsmall"
-    android:focusable="true">
+    android:focusable="true"
+    android:background="@color/grey_20">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/spacing_medium"
+        android:layout_marginVertical="@dimen/spacing_xsmall"
+        app:cardCornerRadius="@dimen/spacing_xmedium">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -89,4 +97,5 @@
         </LinearLayout>
 
     </LinearLayout>
+    </androidx.cardview.widget.CardView>
 </com.balysv.materialripple.MaterialRippleLayout>

@@ -30,9 +30,7 @@ public class Storage {
         return numbercalc;
     }
 
-    public String getName() {
-        return name;
-    }
+    public String getName() { return name; }
 
     public String getAddress() {
         return address;

@@ -62,6 +62,13 @@
         <item name="mrl_rippleAlpha">0.5</item>
     </style>
 
+    <style name="RippleStyleBlu">
+        <item name="mrl_rippleOverlay">true</item>
+        <item name="mrl_rippleColor">#006cb3</item>
+        <item name="mrl_rippleHover">true</item>
+        <item name="mrl_rippleAlpha">0.5</item>
+    </style>
+
     <!-- ChangeColor textview glass-->
     <style name="ChangeColor" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorControlNormal">@android:color/white</item>

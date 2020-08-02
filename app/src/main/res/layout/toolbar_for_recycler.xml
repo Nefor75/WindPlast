@@ -11,6 +11,13 @@
         android:src="@drawable/arrow_back_foreground"
         android:onClick="onClickForStorage"/>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/myCalc"
+        android:gravity="center_vertical|center_horizontal"
+        style="@style/TextAppearance.AppCompat.Title"/>
+
 </androidx.appcompat.widget.Toolbar>
 
 

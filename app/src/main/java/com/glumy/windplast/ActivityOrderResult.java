@@ -2,9 +2,13 @@ package com.glumy.windplast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -12,18 +16,22 @@ import android.widget.Toast;
 
 import com.glumy.windplast.Cart.OrderResult;
 import com.glumy.windplast.util.Tools;
+import com.google.android.material.snackbar.Snackbar;
+import com.google.android.material.textfield.TextInputLayout;
 
 
 public class ActivityOrderResult extends AppCompatActivity {
 
     private static int counterCalculations = 1;//равен длинне массива просчетов??
     private EditText et_address, et_comment;
-
+    private TextInputLayout address_lyt, comment_lyt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_result);
+
+        iniComponent();
 
         Bundle recivedData = getIntent().getExtras();
         final OrderResult setActivity;
@@ -88,45 +96,69 @@ public class ActivityOrderResult extends AppCompatActivity {
             ib_save.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
-                    Toast toast = Toast.makeText(getApplicationContext(), R.string.text, Toast.LENGTH_LONG);
-                    toast.setGravity(Gravity.CENTER, 0, 0);
-                    toast.show();
-                    // openDiaologSaveOrder();
+                    submitForm();
 
                 }
             });
         }
     }
 
-//    private AlertDialog openDiaologSaveOrder() {
-//        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-//        LayoutInflater inflater = this.getLayoutInflater();
-//        final View view = inflater.inflate(R.layout.dialog_save_result, null);
-//
-//        builder.setView(view);
-//        final AlertDialog ad = builder.show();
-//
-//        et_address = view.findViewById(R.id.editAddress);
-//        et_comment = view.findViewById(R.id.editComment);
-//        TextView tv_counterCalculations = view.findViewById(R.id.tv_counter_calculations);
-//
-//        //  tv_counterCalculations.setText(counterCalculations);
-//        Button buttonSave = view.findViewById(R.id.button_save);
-//        buttonSave.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                //здесь добавить в динамический массив эту активность просчета
-//
-//                // tv_counterCalculations.setText("2");//равен длинне массива просчетов?
-//
-//
-//                ad.dismiss();
-//                Toast toast = Toast.makeText(getApplicationContext(), R.string.text, Toast.LENGTH_LONG);
-//                toast.setGravity(Gravity.CENTER, 0, 0);
-//                toast.show();
-//            }
-//        });
-//        return builder.create();
-//    }
+    private void iniComponent() {
+        et_address = findViewById(R.id.editAddress);
+        et_comment = findViewById(R.id.editComment);
+        address_lyt = findViewById(R.id.address_lyt);
+        comment_lyt = findViewById(R.id.comment_lyt);
+    }
+
+//Методы с валидацией EditText----------------------------
+    private void requestFocus(View view) {
+        if (view.requestFocus()) {
+            getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+        }
+    }
+
+
+    private void submitForm() {
+        if (!validateAddress()) {
+            Snackbar.make(findViewById(android.R.id.content), R.string.invalid_address, Snackbar.LENGTH_LONG).show();
+            return;
+        }
+        if (!validateComment()) {
+            Snackbar.make(findViewById(android.R.id.content), R.string.invalid_comment, Snackbar.LENGTH_LONG).show();
+            return;
+        } else {
+            Toast toast = Toast.makeText(getApplicationContext(), R.string.text, Toast.LENGTH_LONG);
+            toast.setGravity(Gravity.CENTER, 0, 0);
+            toast.show();
+            Intent i = new Intent(this, ActivityMain.class);
+            startActivity(i);
+        }
+    }
+
+    private boolean validateAddress() {
+        String str = et_address.getText().toString().trim();
+        if (str.isEmpty()) {
+            address_lyt.setError(getString(R.string.invalid_address));
+            requestFocus(et_address);
+            return false;
+        } else {
+            address_lyt.setErrorEnabled(false);
+        }
+        return true;
+
+    }
+
+    private boolean validateComment() {
+        String str = et_comment.getText().toString().trim();
+        if (str.isEmpty()) {
+            comment_lyt.setError(getString(R.string.invalid_comment));
+            requestFocus(et_comment);
+            return false;
+        } else {
+            comment_lyt.setErrorEnabled(false);
+        }
+        return true;
+
+    }
+//Методы с валидацией EditText--------------------------------------------------------------------
 }

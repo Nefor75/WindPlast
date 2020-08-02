@@ -1,5 +1,6 @@
 package com.glumy.windplast.data;
 
+import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,8 +15,11 @@ import com.glumy.windplast.Cart.Storage;
 import com.glumy.windplast.R;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class AdapterStorageCalculations extends RecyclerView.Adapter<AdapterStorageCalculations.StorageAdapterViewHolder> {
+
     private ArrayList<Storage> storages;
 
     public ArrayList<Storage> getStorages() {
@@ -45,9 +49,12 @@ public class AdapterStorageCalculations extends RecyclerView.Adapter<AdapterStor
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-//                    Intent i = new Intent(v.getContext(), ActivityOrderResult.class);
-//                    startActivity(i);
-                   int positionindex = getAdapterPosition();
+
+                    int positionindex = getAdapterPosition();
+//                    Map<Integer, Object> mapStorage = new HashMap<>();
+                    Intent i = new Intent(v.getContext(), ActivityOrderResult.class);
+                    v.getContext().startActivity(i);
+
                 }
             });
         }

@@ -21,8 +21,7 @@ public class OrderResult implements Serializable {
 
     public OrderResult(String width_product, String height_product, String amount, String profile, String profile2part, String furniture,
                        String quantity_glasses, String glass, String manufacturer_sill, String manufacturer_weathering, String mounting, String delivery) {
-        this.address = address;
-        this.comment = comment;
+
         this.width_product = width_product;
         this.height_product = height_product;
         this.amount = amount;
@@ -35,6 +34,11 @@ public class OrderResult implements Serializable {
         this.manufacturer_weathering = manufacturer_weathering;
         this.mounting = mounting;
         this.delivery = delivery;
+    }
+
+    public OrderResult(String address, String comment){
+        this.address = address;
+        this.comment = comment;
     }
 
     public OrderResult(String address, String comment, String width_product, String height_product, String amount, String profile, String profile2part, String furniture,
@@ -55,7 +59,8 @@ public class OrderResult implements Serializable {
         this.delivery = delivery;
     }
 
-    public String getAddress() { return address; }
+    public String getAddress() {
+        return address; }
 
     public String getComment() {
         return comment;

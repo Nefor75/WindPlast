@@ -2,9 +2,7 @@ package com.glumy.windplast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
@@ -14,14 +12,20 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.glumy.windplast.Cart.Cart;
 import com.glumy.windplast.Cart.OrderResult;
 import com.glumy.windplast.util.Tools;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputLayout;
 
+import java.util.HashMap;
+import java.util.Map;
+
 
 public class ActivityOrderResult extends AppCompatActivity {
 
+    Map<Integer, Object> mapStorage = new HashMap<>();
+    int number = 1;
     private static int counterCalculations = 1;//равен длинне массива просчетов??
     private EditText et_address, et_comment;
     private TextInputLayout address_lyt, comment_lyt;
@@ -130,8 +134,17 @@ public class ActivityOrderResult extends AppCompatActivity {
             Toast toast = Toast.makeText(getApplicationContext(), R.string.text, Toast.LENGTH_LONG);
             toast.setGravity(Gravity.CENTER, 0, 0);
             toast.show();
+
+            mapStorage.put(number, new ActivityOrderResult());
+
             Intent i = new Intent(this, ActivityMain.class);
+            String str_address = et_address.getText().toString();
+            String str_comment = et_address.getText().toString();
+
+            OrderResult recived = new OrderResult(str_address, str_comment);
+            i.putExtra(OrderResult.class.getSimpleName(), recived);
             startActivity(i);
+
         }
     }
 

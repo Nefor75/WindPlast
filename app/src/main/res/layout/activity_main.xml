@@ -63,8 +63,8 @@
             android:layout_height="60dp"
             android:layout_gravity="center_vertical"
             android:contentDescription="@null"
-            app:srcCompat="@drawable/storage"
-            android:onClick="onClickMainMenu"/>
+            android:onClick="onClickMainMenu"
+            app:srcCompat="@drawable/storage" />
 
         <LinearLayout
             android:layout_width="wrap_content"

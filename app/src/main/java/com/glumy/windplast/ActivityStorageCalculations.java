@@ -1,103 +1,152 @@
 package com.glumy.windplast;
 
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.os.Handler;
 
+import com.glumy.windplast.Cart.Order;
+import com.glumy.windplast.Cart.Storage;
+
+import com.glumy.windplast.data.AdapterStorageCalculations;
+import com.glumy.windplast.data.Constant;
+import com.glumy.windplast.util.Tools;
+import com.google.android.material.snackbar.Snackbar;
+
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.appcompat.widget.Toolbar;
 
-import com.glumy.windplast.Cart.OrderResult;
-import com.glumy.windplast.Cart.Storage;
-import com.glumy.windplast.data.AdapterStorageCalculations;
-import com.glumy.windplast.util.Tools;
+import android.view.Gravity;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
 
 public class ActivityStorageCalculations extends AppCompatActivity {
 
-    private RecyclerView mRecyclerView;
-    private RecyclerView.LayoutManager mlayoutManager;
-    private RecyclerView.Adapter mAdapter;
 
-    private ImageView image_recycler, image_arrow_back;
-    private TextView tv_number_calc, tv_name, tv_address, tv_comment, tv_date, tv_cost;
-
+    private RecyclerView recyclerView;
+    private List<Storage> listItems;
+    private AdapterStorageCalculations adapter;
+    private int image;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_storage_calculations);
 
-        Bundle recivedData = getIntent().getExtras();
-        final OrderResult setActivity;
-        if (recivedData != null) {
-            setActivity = (OrderResult) recivedData.getSerializable(OrderResult.class.getSimpleName());
+
+//--------------------------------------------------------------------------------
+        Bundle reciveToStorage = getIntent().getExtras();
+        final Storage setActivity;
+        if (reciveToStorage != null) {
+            setActivity = (Storage) reciveToStorage.getSerializable(Storage.class.getSimpleName());
             assert setActivity != null;
 
-            TextView tv_address = findViewById(R.id.tv_address);
-            tv_address.setText(setActivity.getAddress());
+            image = setActivity.getImage();
+            String str_name = setActivity.getName();
+            String str_address = setActivity.getAddress();
+            String str_comments = setActivity.getComment();
+            int cost = setActivity.getCost();
+            Date date = new Date();
+            String str_date = date.toString();
+            String str_date2 = Tools.getFormattedDateSimple(str_date);
 
-            TextView tv_comment = findViewById(R.id.tv_comment);
-            tv_comment.setText(setActivity.getComment());
+            ImageView iv_arrow_back = findViewById(R.id.image_arrow_back);
+            iv_arrow_back.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent i = new Intent(getApplicationContext(), ActivityMain.class);
+                    startActivity(i);
+                }
+            });
+
+//-----------------------------------------------------------------------------------
+            recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+            recyclerView.setHasFixedSize(true);
+            recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+            listItems = new ArrayList<>();
+            //Generate sample data
+
+            for (int i = 0; i < 10; i++) {
+                listItems.add(new Storage(image, str_name, str_address, str_comments, str_date2, cost));
+                //оригинал listItems.add(new Storage("Item " + (i + 1), "Welcome to Torisan channel, this is description of item " + (i+1), 1));
+            }
+
+            //Set adapter
+            adapter = new AdapterStorageCalculations(listItems, this);
+            recyclerView.setAdapter(adapter);
+
+
         }
 
-        InitComponent();
 
-        Date date = new Date();
-        long millis = date.getTime();
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        getMenuInflater().inflate(R.menu.menu_activity_storage_calculations, menu);
+//        return true;
+//    }
 
-        ArrayList<Storage> storageArrayList = new ArrayList<>();
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        int item_id = item.getItemId();
+//        if (item_id == android.R.id.im) {
+//            super.onBackPressed();
+////        } else if (item_id == R.id.action_delete) {
+////            if (adapter.getItemCount() == 0) {
+////                Snackbar.make(parent_view, "Нет прощетов", Snackbar.LENGTH_SHORT).show();
+////                return true;
+//           }
+//          //  dialogDeleteConfirmation();
+////        }
+//        return super.onOptionsItemSelected(item);
+    }
 
-        //  String str = et_address.getText().toString().trim();
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
 
-        storageArrayList.add(new Storage(R.drawable.bb, 1, getResources().getString(R.string.balkon),"", "", Tools.getFormattedDate(millis), "2000 грн"));
-        storageArrayList.add(new Storage(R.drawable.four,  2, getResources().getString(R.string.four),"", "", Tools.getFormattedDate(millis), "3000 грн"));
-        storageArrayList.add(new Storage(R.drawable.deaf,  3, getResources().getString(R.string.deaf),"", "", Tools.getFormattedDate(millis), "1000 грн"));
-        storageArrayList.add(new Storage(R.drawable.bb,  4, getResources().getString(R.string.balkon),"", "", Tools.getFormattedDate(millis), "2000 грн"));
-        storageArrayList.add(new Storage(R.drawable.four, 5, getResources().getString(R.string.four),"", "", Tools.getFormattedDate(millis), "3000 грн"));
-        storageArrayList.add(new Storage(R.drawable.deaf, 6, getResources().getString(R.string.deaf),"", "", Tools.getFormattedDate(millis), "1000 грн"));
-        storageArrayList.add(new Storage(R.drawable.bb, 7, getResources().getString(R.string.balkon),"", "", Tools.getFormattedDate(millis), "2000 грн"));
-        storageArrayList.add(new Storage(R.drawable.four, 8, getResources().getString(R.string.four),"", "", Tools.getFormattedDate(millis), "3000 грн"));
-        storageArrayList.add(new Storage(R.drawable.deaf, 9, getResources().getString(R.string.deaf),"", "", Tools.getFormattedDate(millis), "1000 грн"));
-        storageArrayList.add(new Storage(R.drawable.bb, 10, getResources().getString(R.string.balkon),"", "", Tools.getFormattedDate(millis), "2000 грн"));
-        storageArrayList.add(new Storage(R.drawable.four, 11, getResources().getString(R.string.four),"", "", Tools.getFormattedDate(millis), "3000 грн"));
+//       public void dialogDeleteConfirmation() {
+//        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+//        builder.setTitle("Подтвердите удаление");
+//        builder.setMessage(getString(R.string.axor) + getString(R.string.invalid_comment));
+//        builder.setPositiveButton("Да", new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface di, int i) {
+//                di.dismiss();
+//                deleteStorage();
+//                startLoadMoreAdapter();
+//                Snackbar.make(parent_view, "R.string.delete_success", Snackbar.LENGTH_SHORT).show();
+//            }
+//        });
+//        builder.setNegativeButton("R.string.CANCEL", null);
+//        builder.show();
+//    }
 
-        mRecyclerView = findViewById(R.id.recyclerView);
-        mRecyclerView.setHasFixedSize(true);
-        mlayoutManager = new LinearLayoutManager(this);
-        mAdapter = new AdapterStorageCalculations(storageArrayList);
 
-        mRecyclerView.setLayoutManager(mlayoutManager);
-        mRecyclerView.setAdapter(mAdapter);
+    public void deleteStorage() {
+        listItems.clear();
+        Toast toast = Toast.makeText(getApplicationContext(), R.string.text, Toast.LENGTH_LONG);
+        toast.setGravity(Gravity.CENTER, 0, 0);
+        toast.show();
 
     }
 
-    private void InitComponent() {
-
-        image_recycler = findViewById(R.id.image_product);
-        tv_number_calc = findViewById(R.id.tv_calcnumber);
-        tv_name = findViewById(R.id.tv_product_name);
-        tv_address = findViewById(R.id.tv_address);
-        tv_comment = findViewById(R.id.tv_comment);
-        tv_date = findViewById(R.id.tv_date);
-        tv_cost = findViewById(R.id.tv_cost);
-        image_arrow_back = findViewById(R.id.image_arrow_back);
-
-    }
-
-    public void onClickForStorage(View view) {
-
-        switch (view.getId()) {
-
-            case R.id.image_arrow_back:
-                super.onBackPressed();
-
-                break;
-
-        }
+    public List<Storage> getListItems() {
+        return listItems;
     }
 }

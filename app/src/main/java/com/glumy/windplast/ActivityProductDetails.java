@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,17 +22,17 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.glumy.windplast.Cart.Cart;
-import com.glumy.windplast.Cart.OrderResult;
+import com.glumy.windplast.Cart.Order;
 import com.glumy.windplast.data.Constant;
 
 
 public class ActivityProductDetails extends AppCompatActivity {
 
-    private ImageView mainImage;
-
     public ImageView getMainImage() {
         return mainImage;
     }
+
+    private ImageView mainImage;
 
     private TextView textView_main, tv_width_product, tv_height_product, tv_width_sill, tv_length_sill,
             tv_width_weathering, tv_length_weathering, tv_prof_second_part, tv_one_package, tv_two_package;
@@ -49,6 +50,9 @@ public class ActivityProductDetails extends AppCompatActivity {
     private LinearLayout llWindowSillSizes, llWeathering, llDelivery, ll_furnit;
     private Button btnCalculation;
     private EditText et_amount, et_delivery;
+    private String str_width_product = "";
+    private String str_height_product = "";
+    private String str_amount = "";
     private String str_furniture = "Roto";
     private String str_profile = "Rehau";
     private String str_glass = "4/16/4";
@@ -56,8 +60,11 @@ public class ActivityProductDetails extends AppCompatActivity {
     private String str_manufacturer_sill = "Без подоконника";
     private String str_manufacturer_weathering = "Без отлива";
     private String str_quantity_glasses = "1 камер. ";
-    private String mounting = "350 грн.";//эта сумма, сумма монтажа в Настройках и передается и добавляется к сумме Изделия в ActivityOrderResult
-    private String strDelivery = " Доставка в пределах города";
+    private String str_mounting = "350 грн.";//эта сумма, сумма монтажа в Настройках и передается и добавляется к сумме Изделия в ActivityOrderResult
+    private String str_delivery = " Доставка в пределах города";
+    private int cost;
+    private String str_name = "";
+    private int image;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,32 +79,36 @@ public class ActivityProductDetails extends AppCompatActivity {
     private void initComponent() {
 
         //Передался экземпляр класса
-        Bundle recivedData = getIntent().getExtras();
+        Bundle recivedMain = getIntent().getExtras();
         final Cart setActivity;
-        if (recivedData != null) {
-            setActivity = (Cart) recivedData.getSerializable(Cart.class.getSimpleName());
+        if (recivedMain != null) {
+            setActivity = (Cart) recivedMain.getSerializable(Cart.class.getSimpleName());
             assert setActivity != null;
 
             textView_main = findViewById(R.id.textView);
             textView_main.setText(setActivity.getName());
 
-            String name = setActivity.getName();
+            str_name = setActivity.getName();
             String strDeaf = getResources().getString(R.string.deaf);
             String strDeaf2 = getResources().getString(R.string.two_deaf);
-            if (name.equals(strDeaf)|name.equals(strDeaf2)) {
+            if (str_name.equals(strDeaf)|str_name.equals(strDeaf2)) {
                 ll_furnit = findViewById(R.id.ll_furnit);
                 ll_furnit.setVisibility(View.GONE);//может какое-то другое поведение сделать????
                 str_furniture = "Без фурнитуры";
             }
 
             mainImage = findViewById(R.id.imageView);
+
             mainImage.setImageResource(setActivity.getImage());
+            image = setActivity.getImage();
 
             tv_width_product = findViewById(R.id.tv_width_product);
             tv_width_product.setText(setActivity.getWidth() + "");
+            str_width_product = tv_width_product.getText().toString();
 
             tv_height_product = findViewById(R.id.tv_height_product);
             tv_height_product.setText(setActivity.getHeight() + "");
+            str_height_product = tv_height_product.getText().toString();
 
             tv_width_sill = findViewById(R.id.tv_width_sill);
             tv_width_sill.setText(setActivity.getWidthSill() + "");
@@ -113,6 +124,7 @@ public class ActivityProductDetails extends AppCompatActivity {
 
             et_amount = findViewById(R.id.et_amount);
             et_amount.setText(setActivity.getAmount() + "");
+            str_amount = et_amount.getText().toString();
 
             et_delivery = findViewById(R.id.et_delivery);
 
@@ -175,7 +187,7 @@ public class ActivityProductDetails extends AppCompatActivity {
             llDelivery = findViewById(R.id.ll_delivery);
 
             btnCalculation = findViewById(R.id.btn_calculation);
-
+            cost = setActivity.getPrice();
         }
     }
 
@@ -356,16 +368,16 @@ public class ActivityProductDetails extends AppCompatActivity {
 
             case R.id.chbx_mounting:
                 if (checkBoxMounting.isChecked()) {//а он включен
-                    mounting = " 350 грн.";//это если его выключали и опять включили
+                    str_mounting = " 350 грн.";//это если его выключали и опять включили
                 } else {
-                    mounting = " Без монтажа";
+                    str_mounting = " Без монтажа";
                 }
                 break;
 
             case R.id.chbx_delivery:
 //                if (checkBoxDelivery.isChecked()) {
                 llDelivery.setVisibility(View.VISIBLE);
-                strDelivery = et_delivery.getText().toString();//нет подтверждения ввода?
+                str_delivery = et_delivery.getText().toString();//нет подтверждения ввода?
 //                } else {
 //
 //                    llDelivery.setVisibility(View.GONE);
@@ -402,12 +414,18 @@ public class ActivityProductDetails extends AppCompatActivity {
                 break;
 
             case R.id.btn_calculation:
-                Intent i = new Intent(this, ActivityOrderResult.class);
 
-                OrderResult orderResult = new OrderResult(tv_width_product.getText().toString(), tv_height_product.getText().toString(),
-                        et_amount.getText().toString(), str_profile, str_profile2part, str_furniture, str_quantity_glasses, str_glass,
-                        str_manufacturer_sill, str_manufacturer_weathering, mounting, strDelivery);
-                i.putExtra(OrderResult.class.getSimpleName(), orderResult);
+                Order reciveOrder = new Order(str_name, image, str_width_product, str_height_product, str_amount,
+                        str_profile, str_profile2part, str_furniture, str_quantity_glasses, str_glass,
+                        str_manufacturer_sill, str_manufacturer_weathering, str_mounting, str_delivery, cost);
+
+                Intent i = new Intent(this, ActivityOrderResult.class);
+                i.putExtra(Order.class.getSimpleName(), reciveOrder);
+// -----------------------------------------------------------------------------------------------------------
+//                Order reciveOrder = new Order(textView_main.getText().toString(), R.drawable.bb, str_width_product, str_height_product, str_amount,
+//                        str_profile, str_profile2part, str_furniture, str_quantity_glasses, str_glass,
+//                        str_manufacturer_sill, str_manufacturer_weathering, str_mounting, str_delivery, cost);
+//                i.putExtra(Order.class.getSimpleName(), reciveOrder);
                 startActivity(i);
 
                 break;

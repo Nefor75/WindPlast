@@ -1,6 +1,5 @@
 package com.glumy.windplast.util;
 
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -18,8 +17,10 @@ public class Tools {
         return result + " м. кв.";
     }
 
-    public static String getFormattedDate(Long dateTime) {
-        SimpleDateFormat newFormat = new SimpleDateFormat("dd MMMM, yyyy");
-        return newFormat.format(new Date(dateTime));
+    public static String getFormattedDateSimple(String date) {
+        SimpleDateFormat newFormat = new SimpleDateFormat("MMM dd, yyyy");
+        return newFormat.format(new Date(date));
     }
+
+
 }

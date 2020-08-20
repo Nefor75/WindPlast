@@ -8,15 +8,15 @@
         android:id="@+id/image_arrow_back"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:src="@drawable/arrow_back_foreground"
-        android:onClick="onClickForStorage"/>
+        android:focusable="true"
+        android:src="@drawable/arrow_back_foreground" />
 
     <TextView
+        style="@style/TextAppearance.AppCompat.Title"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/myCalc"
         android:gravity="center_vertical|center_horizontal"
-        style="@style/TextAppearance.AppCompat.Title"/>
+        android:text="@string/myCalc" />
 
 </androidx.appcompat.widget.Toolbar>
 

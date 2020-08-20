@@ -1,20 +1,18 @@
 package com.glumy.windplast.Cart;
 
 
-public class Storage {
+import java.io.Serializable;
+
+public class Storage implements Serializable {
 
     private int image;
-    private int numbercalc;
     private String name;
     private String address;
     private String comment;
     private String date;
-    private String cost;
+    private int cost;
 
-
-    public Storage(int image, int numbercalc, String name, String address, String comment, String date, String cost) {
-        this.image = image;
-        this.numbercalc = numbercalc;
+    public Storage(String name, String address, String comment, int cost) {
         this.name = name;
         this.address = address;
         this.comment = comment;
@@ -22,15 +20,31 @@ public class Storage {
         this.cost = cost;
     }
 
+    public Storage(int image, String name, String address, String comment, String date, int cost) {
+        this.image = image;
+        this.name = name;
+        this.address = address;
+        this.comment = comment;
+        this.date = date;
+        this.cost = cost;
+    }
+
+    public Storage(int image, String name, String address, String comment, int cost) {
+        this.image = image;
+        this.name = name;
+        this.address = address;
+        this.comment = comment;
+        this.cost = cost;
+
+    }
+
     public int getImage() {
         return image;
     }
 
-    public int getNumbercalc() {
-        return numbercalc;
+    public String getName() {
+        return name;
     }
-
-    public String getName() { return name; }
 
     public String getAddress() {
         return address;
@@ -44,7 +58,9 @@ public class Storage {
         return date;
     }
 
-    public String getCost() {
+    public int getCost() {
         return cost;
     }
+
+
 }

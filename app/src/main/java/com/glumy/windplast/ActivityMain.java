@@ -132,113 +132,113 @@ public class ActivityMain extends AppCompatActivity implements AdapterView.OnIte
     //onClick
     public void onClick(View view) {
         Intent i;
-        Cart recived;
+        Cart recivedMain;
 
         switch (view.getId()) {
 
             case R.id.set1_iv_up_left:
-                recived = new Cart(R.drawable.img_200x130, "Две секции с одной створкой",
+                recivedMain = new Cart(R.drawable.img_200x130, "Две секции с одной створкой",
                         1350, 1400, 250, 1450, 160, 1350,
                         1, 1000);
                 break;
 
             case R.id.set1_iv_up_right:
-                recived = new Cart(R.drawable.bb, "Балконный блок",
+                recivedMain = new Cart(R.drawable.bb, "Балконный блок",
                         2100, 2100, 250, 2200, 160, 2100,
                         1, 3000);
                 break;
 
             case R.id.set1_iv_mid_left:
 
-                recived = new Cart(R.drawable.one_po, "Одна секция - створка",
+                recivedMain = new Cart(R.drawable.one_po, "Одна секция - створка",
                         900, 1300, 250, 1000, 160, 900,
                         1, 1000);
                 break;
 
             case R.id.set1_iv_mid_right:
-                recived = new Cart(R.drawable.deaf, "Глухое",
+                recivedMain = new Cart(R.drawable.deaf, "Глухое",
                         1000, 1000, 250, 1100, 160, 1000,
                         1, 500);
                 break;
 
             case R.id.set1_iv_bottom_left:
-                recived = new Cart(R.drawable.four, "Четыре секции с двумя створками",
+                recivedMain = new Cart(R.drawable.four, "Четыре секции с двумя створками",
                         3000, 1300, 250, 3100, 160, 3000,
                         1, 3000);
                 break;
 
             case R.id.set1_iv_bottom_right:
-                recived = new Cart(R.drawable.triple, "Три секции с одной створкой",
+                recivedMain = new Cart(R.drawable.triple, "Три секции с одной створкой",
                         2000, 1300, 250, 2100, 160, 2000,
                         1, 2000);
                 break;
 
             case R.id.set1_iv_bottom_left2:
-                recived = new Cart(R.drawable.two_po, "Две секции с двумя створками",
+                recivedMain = new Cart(R.drawable.two_po, "Две секции с двумя створками",
                         1400, 1300, 250, 1500, 160, 1400,
                         1, 3000);
                 break;
 
             case R.id.set1_iv_bottom_right2:
-                recived = new Cart(R.drawable.two_gluh, "Две глухих секции",
+                recivedMain = new Cart(R.drawable.two_gluh, "Две глухих секции",
                         1400, 1300, 250, 1500, 160, 1400,
-                        1, 1000);
+                        1, 6000);
                 break;
 
             case R.id.set2_iv_up_left:
-                recived = new Cart(R.drawable.img_200x130, "Две секции с одной створкой",
+                recivedMain = new Cart(R.drawable.img_200x130, "Две секции с одной створкой",
                         1350, 1400, 400, 1550, 200, 1350,
                         1, 1000);
                 break;
 
             case R.id.set2_iv_up_right:
-                recived = new Cart(R.drawable.bb, "Балконный блок",
+                recivedMain = new Cart(R.drawable.bb, "Балконный блок",
                         2100, 2100, 400, 2200, 200, 2100,
                         1, 3000);
                 break;
 
             case R.id.set2_iv_mid_left:
 
-                recived = new Cart(R.drawable.one_po, "Одна секция - створка",
+                recivedMain = new Cart(R.drawable.one_po, "Одна секция - створка",
                         900, 1300, 400, 1000, 200, 900,
                         1, 1000);
                 break;
 
             case R.id.set2_iv_mid_right:
-                recived = new Cart(R.drawable.deaf, "Глухое",
+                recivedMain = new Cart(R.drawable.deaf, "Глухое",
                         1000, 1000, 400, 1100, 200, 1000,
                         1, 500);
                 break;
 
             case R.id.set2_iv_bottom_left:
-                recived = new Cart(R.drawable.four, "Четыре секции с двумя створками",
+                recivedMain = new Cart(R.drawable.four, "Четыре секции с двумя створками",
                         3000, 1300, 400, 3100, 200, 3000,
                         1, 3000);
                 break;
 
             case R.id.set2_iv_bottom_right:
-                recived = new Cart(R.drawable.triple, "Три секции с одной створкой",
+                recivedMain = new Cart(R.drawable.triple, "Три секции с одной створкой",
                         2000, 1300, 400, 2100, 200, 2000,
                         1, 2000);
                 break;
 
             case R.id.set2_iv_bottom_left2:
-                recived = new Cart(R.drawable.two_po, "Две секции с двумя створками",
+                recivedMain = new Cart(R.drawable.two_po, "Две секции с двумя створками",
                         1400, 1300, 400, 1500, 200, 1400,
                         1, 3000);
                 break;
 
             case R.id.set2_iv_bottom_right2:
-                recived = new Cart(R.drawable.two_gluh, "Две глухих секции",
+                recivedMain = new Cart(R.drawable.two_gluh, "Две глухих секции",
                         1400, 1300, 400, 1500, 200, 1400,
-                        1, 1000);
+                        1, 6000);
                 break;
 
             default:
                 throw new IllegalStateException("Unexpected value: " + view.getId());
         }
-        i = new Intent(this, ActivityProductDetails.class);
-        i.putExtra(Cart.class.getSimpleName(), recived);
+        i = new Intent(ActivityMain.this, ActivityProductDetails.class);
+        i.putExtra(Cart.class.getSimpleName(), recivedMain);
         startActivity(i);
     }
 

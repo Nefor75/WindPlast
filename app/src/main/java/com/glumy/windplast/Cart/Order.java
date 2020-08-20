@@ -1,9 +1,13 @@
 package com.glumy.windplast.Cart;
 
+import android.widget.ImageView;
+
 import java.io.Serializable;
 
-public class OrderResult implements Serializable {
+public class Order implements Serializable {
 
+    private String name;
+    private int imageTop;
     private String address;
     private String comment;
     private String width_product;
@@ -18,10 +22,12 @@ public class OrderResult implements Serializable {
     private String manufacturer_weathering;
     private String mounting;
     private String delivery;
+    private int cost;
 
-    public OrderResult(String width_product, String height_product, String amount, String profile, String profile2part, String furniture,
-                       String quantity_glasses, String glass, String manufacturer_sill, String manufacturer_weathering, String mounting, String delivery) {
+    public Order(String name, String width_product, String height_product, String amount, String profile, String profile2part, String furniture,
+                 String quantity_glasses, String glass, String manufacturer_sill, String manufacturer_weathering, String mounting, String delivery, int cost) {
 
+        this.name = name;
         this.width_product = width_product;
         this.height_product = height_product;
         this.amount = amount;
@@ -34,17 +40,14 @@ public class OrderResult implements Serializable {
         this.manufacturer_weathering = manufacturer_weathering;
         this.mounting = mounting;
         this.delivery = delivery;
+        this.cost = cost;
     }
 
-    public OrderResult(String address, String comment){
-        this.address = address;
-        this.comment = comment;
-    }
-
-    public OrderResult(String address, String comment, String width_product, String height_product, String amount, String profile, String profile2part, String furniture,
-                       String quantity_glasses, String glass, String manufacturer_sill, String manufacturer_weathering, String mounting, String delivery) {
-        this.address = address;
-        this.comment = comment;
+    public Order(String name, int imageTop, String width_product, String height_product, String amount, String profile, String profile2part,
+                 String furniture, String quantity_glasses, String glass, String manufacturer_sill, String manufacturer_weathering,
+                 String mounting, String delivery, int cost) {
+        this.name = name;
+        this.imageTop = imageTop;
         this.width_product = width_product;
         this.height_product = height_product;
         this.amount = amount;
@@ -57,13 +60,14 @@ public class OrderResult implements Serializable {
         this.manufacturer_weathering = manufacturer_weathering;
         this.mounting = mounting;
         this.delivery = delivery;
+        this.cost = cost;
+    }
+    public String getName() {
+        return name;
     }
 
-    public String getAddress() {
-        return address; }
-
-    public String getComment() {
-        return comment;
+    public int getImageTop() {
+        return imageTop;
     }
 
     public String getWidth_product() {
@@ -112,5 +116,9 @@ public class OrderResult implements Serializable {
 
     public String getDelivery() {
         return delivery;
+    }
+
+    public int getCost() {
+        return cost;
     }
 }

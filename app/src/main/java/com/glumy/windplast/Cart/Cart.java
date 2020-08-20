@@ -6,6 +6,7 @@ public class Cart implements Serializable {
 
     private int width, height, widthSill, lengthSill, widthWeathering, lengthWeathering, amount, price, image;
     private String name;
+
     public Cart() {
     }
 

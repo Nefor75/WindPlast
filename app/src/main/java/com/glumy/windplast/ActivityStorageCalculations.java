@@ -36,19 +36,19 @@ import java.util.List;
 
 public class ActivityStorageCalculations extends AppCompatActivity {
 
-
     private RecyclerView recyclerView;
     private List<Storage> listItems;
     private AdapterStorageCalculations adapter;
     private int image;
+    private ImageView iv_arrow_back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_storage_calculations);
 
+       // recyclerView.getAdapter();
 
-//--------------------------------------------------------------------------------
         Bundle reciveToStorage = getIntent().getExtras();
         final Storage setActivity;
         if (reciveToStorage != null) {
@@ -56,15 +56,17 @@ public class ActivityStorageCalculations extends AppCompatActivity {
             assert setActivity != null;
 
             image = setActivity.getImage();
+            int number = setActivity.getNumber();
             String str_name = setActivity.getName();
             String str_address = setActivity.getAddress();
             String str_comments = setActivity.getComment();
+
             int cost = setActivity.getCost();
             Date date = new Date();
             String str_date = date.toString();
             String str_date2 = Tools.getFormattedDateSimple(str_date);
 
-            ImageView iv_arrow_back = findViewById(R.id.image_arrow_back);
+            iv_arrow_back = findViewById(R.id.image_arrow_back);
             iv_arrow_back.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -73,24 +75,24 @@ public class ActivityStorageCalculations extends AppCompatActivity {
                 }
             });
 
-//-----------------------------------------------------------------------------------
+            listItems = new ArrayList<>();
+           // for (Storage s:listItems)
+           // for (int i = 0; i < 10; i++) {
+
+           // int insertIndex = 1;
+            listItems.add(new Storage(image, number, str_name, str_address, str_comments, str_date2, cost));
+            listItems.add(new Storage(image, number, str_name, str_address, str_comments, str_date2, cost));
+
             recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
             recyclerView.setHasFixedSize(true);
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-            listItems = new ArrayList<>();
-            //Generate sample data
-
-            for (int i = 0; i < 10; i++) {
-                listItems.add(new Storage(image, str_name, str_address, str_comments, str_date2, cost));
-                //оригинал listItems.add(new Storage("Item " + (i + 1), "Welcome to Torisan channel, this is description of item " + (i+1), 1));
-            }
-
-            //Set adapter
             adapter = new AdapterStorageCalculations(listItems, this);
+           // adapter.notifyDataSetChanged();
             recyclerView.setAdapter(adapter);
+                //оригинал listItems.add(new Storage("Item " + (i + 1), "Welcome to Torisan channel, this is description of item " + (i+1), 1));
+          //  }
 
-
+         // adapter.notifyItemInserted(listItems.size()-1);
         }
 
 
@@ -117,7 +119,8 @@ public class ActivityStorageCalculations extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
+        Intent i = new Intent(getApplicationContext(), ActivityMain.class);
+        startActivity(i);
     }
 
 //       public void dialogDeleteConfirmation() {

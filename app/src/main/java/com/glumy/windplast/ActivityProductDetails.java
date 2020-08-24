@@ -421,11 +421,6 @@ public class ActivityProductDetails extends AppCompatActivity {
 
                 Intent i = new Intent(this, ActivityOrderResult.class);
                 i.putExtra(Order.class.getSimpleName(), reciveOrder);
-// -----------------------------------------------------------------------------------------------------------
-//                Order reciveOrder = new Order(textView_main.getText().toString(), R.drawable.bb, str_width_product, str_height_product, str_amount,
-//                        str_profile, str_profile2part, str_furniture, str_quantity_glasses, str_glass,
-//                        str_manufacturer_sill, str_manufacturer_weathering, str_mounting, str_delivery, cost);
-//                i.putExtra(Order.class.getSimpleName(), reciveOrder);
                 startActivity(i);
 
                 break;

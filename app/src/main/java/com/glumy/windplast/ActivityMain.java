@@ -1,7 +1,11 @@
 package com.glumy.windplast;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentTransaction;
@@ -25,6 +30,7 @@ import com.glumy.windplast.data.Constant;
 import com.glumy.windplast.fragment.FragmentSettingsOne;
 import com.glumy.windplast.fragment.FragmentSettingsTwo;
 import com.glumy.windplast.util.NetworkCheck;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.List;
 
@@ -44,7 +50,6 @@ public class ActivityMain extends AppCompatActivity implements AdapterView.OnIte
     private FragmentSettingsTwo frag2;
     private FragmentTransaction trans;
     private ImageView ivStorage;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,6 +92,13 @@ public class ActivityMain extends AppCompatActivity implements AdapterView.OnIte
         spinner_tolbar.setOnItemSelectedListener(this);
         //spinner.setSelection(0);//выбор позиции загрузки item
     }
+
+    @Override
+    public void onBackPressed() {
+       dialogExitConfirmation();
+
+    }
+
 
     //Методы Спиннера
     @Override
@@ -294,7 +306,24 @@ public class ActivityMain extends AppCompatActivity implements AdapterView.OnIte
 
         }
     }
+           public void dialogExitConfirmation() {
+               AlertDialog.Builder builder = new AlertDialog.Builder(this);
+               builder.setTitle("Вы действительно хотите выйти из приложения?");
+               builder.setMessage(getString(R.string.axor) + getString(R.string.invalid_comment));
+               builder.setPositiveButton("Да", new DialogInterface.OnClickListener() {
+                   @Override
+                   public void onClick(DialogInterface di, int i) {
+                       di.dismiss();
+                      // deleteStorage();
+                     //  startLoadMoreAdapter();
+                       finish();
 
+                   }
+               });
+               builder.setNegativeButton("R.string.CANCEL", null);
+               builder.show();
+
+           }
 }
 
 

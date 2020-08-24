@@ -6,6 +6,7 @@ import java.io.Serializable;
 public class Storage implements Serializable {
 
     private int image;
+    private int number;
     private String name;
     private String address;
     private String comment;
@@ -16,11 +17,31 @@ public class Storage implements Serializable {
         this.name = name;
         this.address = address;
         this.comment = comment;
-        this.date = date;
         this.cost = cost;
     }
 
     public Storage(int image, String name, String address, String comment, String date, int cost) {
+
+        this.image = image;
+        this.name = name;
+        this.address = address;
+        this.comment = comment;
+        this.date = date;
+        this.cost = cost;
+    }
+
+    public Storage(int image, int number, String name, String address, String comment, String date, int cost) {
+        this.number = number;
+        this.image = image;
+        this.name = name;
+        this.address = address;
+        this.comment = comment;
+        this.date = date;
+        this.cost = cost;
+    }
+
+    public Storage(int image, int number, String name, String address, String comment, int cost) {
+        this.number = number;
         this.image = image;
         this.name = name;
         this.address = address;
@@ -42,6 +63,9 @@ public class Storage implements Serializable {
         return image;
     }
 
+    public int getNumber() {
+        return number;
+    }
     public String getName() {
         return name;
     }

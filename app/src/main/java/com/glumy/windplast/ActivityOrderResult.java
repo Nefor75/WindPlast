@@ -26,20 +26,22 @@ import com.google.android.material.textfield.TextInputLayout;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.glumy.windplast.data.Constant.listItems;
+
 
 public class ActivityOrderResult extends AppCompatActivity {
 
 
-    int number = 1;
-    private static int counterCalculations = 1;//равен длинне массива просчетов??
+    int number = 100500;//равен длинне массива просчетов??
     private EditText et_address, et_comment;
     private TextInputLayout address_lyt, comment_lyt;
     // private ActivityStorageCalculations asc;
 
     private ArrayList<Storage> storageArrayList;
-    ImageView imageView;
-    TextView tv_name, tv_width_height_or_res, et_amount_or_res, tv_square, tv_profile_or_res, tv_prof_second_part, tv_furniture_or_res,
-            tv_quantity_glasses, tv_glasses_or_res, tv_manufacturer_sill, tv_manufacturer_weathering, tvMounting, tvDelivery, tv_cost;
+    private ImageView imageView;
+    private TextView tv_name, tv_width_height_or_res, et_amount_or_res, tv_square, tv_profile_or_res, tv_prof_second_part, tv_furniture_or_res,
+            tv_quantity_glasses, tv_glasses_or_res, tv_manufacturer_sill, tv_manufacturer_weathering, tvMounting, tvDelivery, tv_cost,
+            tv_number;
     private int image;
 
     @Override
@@ -54,7 +56,8 @@ public class ActivityOrderResult extends AppCompatActivity {
         if (reciveOrder != null) {
             setActivity = (Order) reciveOrder.getSerializable(Order.class.getSimpleName());
             assert setActivity != null;
-
+            tv_number.setText("Расчет № "+ number);
+           // tv_number.setText(storageArrayList.size() + "");
             tv_name.setText(setActivity.getName());
             imageView.setImageResource(setActivity.getImageTop());
             image = setActivity.getImageTop();
@@ -71,7 +74,7 @@ public class ActivityOrderResult extends AppCompatActivity {
             tv_manufacturer_weathering.setText(setActivity.getManufacturer_weathering());
             tvMounting.setText(setActivity.getMounting());
             tvDelivery.setText(setActivity.getDelivery());
-            tv_cost.setText(setActivity.getCost() + "");
+            tv_cost.setText(setActivity.getCost()+"");
 
             ImageButton ib_back = findViewById(R.id.ib_back);
             ib_back.setOnClickListener(new View.OnClickListener() {
@@ -94,9 +97,6 @@ public class ActivityOrderResult extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     submitForm();
-                    // Constant.storageArrayList.add(Storage());
-                    // loadData();
-                    // saveData();
 
                 }
             });
@@ -104,6 +104,7 @@ public class ActivityOrderResult extends AppCompatActivity {
     }
 
     private void iniComponent() {
+        tv_number = findViewById(R.id.tv_number);
         tv_name = findViewById(R.id.text_name);
         et_address = findViewById(R.id.editAddress);
         et_comment = findViewById(R.id.editComment);
@@ -151,11 +152,26 @@ public class ActivityOrderResult extends AppCompatActivity {
             String str_comment = et_comment.getText().toString();
             int cost = Integer.parseInt(tv_cost.getText().toString());
 
-            Storage reciveToStorage = new Storage(image, str_name, str_address, str_comment, cost);
+           // int number = Integer.parseInt(tv_number.getText().toString());
 
+           // Storage reciveToStorage = new Storage(image, number, str_name, str_address, str_comment, cost);
+            //listItems.add(new Storage(image, number, str_name, str_address, str_comment, "str_date2", cost));
+
+            Storage reciveToStorage = new Storage(image, number, str_name, str_address, str_comment, cost);
             Intent i = new Intent(this, ActivityStorageCalculations.class);
             i.putExtra(Storage.class.getSimpleName(), reciveToStorage);
             startActivity(i);
+
+
+//            for (int i = 0; i <100; i++) {
+//                storageArrayList.add(new Order(image, tv_width_product.getText().toString(), tv_height_product.getText().toString(),
+//                        et_amount.getText().toString(), str_profile, str_profile2part, str_furniture, str_quantity_glasses, str_glass,
+//                        str_manufacturer_sill, str_manufacturer_weathering, mounting, strDelivery));
+//            }
+            //                       OrderR recivedOR = new Order(image,tv_width_product.getText().toString(), tv_height_product.getText().toString(),
+            //                   et_amount.getText().toString(), str_profile, str_profile2part, str_furniture, str_quantity_glasses, str_glass,
+            //                   str_manufacturer_sill, str_manufacturer_weathering, mounting, strDelivery);
+//            storageArrayList.add(recivedOR, 1);
         }
     }
     ///////////////////////////////////////////////////////////////////////////////-------------------------------------------------------------------------
@@ -172,7 +188,7 @@ public class ActivityOrderResult extends AppCompatActivity {
 /////////////////////////////////////////////////////////////////////////////////------------------------------------------------------------------------------------
 //            });
 
-    // int image = getResources().getDrawable(imageView);
+
 //            OrderResult recivedOR = new OrderResult(image,tv_width_product.getText().toString(), tv_height_product.getText().toString(),
 //                    et_amount.getText().toString(), str_profile, str_profile2part, str_furniture, str_quantity_glasses, str_glass,
 //                    str_manufacturer_sill, str_manufacturer_weathering, mounting, strDelivery);

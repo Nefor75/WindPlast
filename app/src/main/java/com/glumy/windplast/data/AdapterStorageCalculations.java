@@ -48,6 +48,7 @@ public class AdapterStorageCalculations extends RecyclerView.Adapter<AdapterStor
 
         final Storage itemList = listItems.get(position);
         holder.imageRecicl.setImageResource(itemList.getImage());
+        holder.tv_number.setText(itemList.getNumber()+"");
         holder.tv_name.setText(itemList.getName());
         holder.tv_address.setText(itemList.getAddress());
         holder.tv_comments.setText(itemList.getComment());
@@ -56,15 +57,14 @@ public class AdapterStorageCalculations extends RecyclerView.Adapter<AdapterStor
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //нужно вызвать активность с массивом заказов и сделать гет позиции из массива
                 Toast toast = Toast.makeText(mContext, "Recycle Click" + position, Toast.LENGTH_SHORT);
                 toast.setGravity(Gravity.CENTER, 0, 0);
                 toast.show();
 
             }
         });
-//        holder.tv_date.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
+
         //Display option menu
 
 //                PopupMenu popupMenu = new PopupMenu(mContext, holder.tv_date);
@@ -99,6 +99,7 @@ public class AdapterStorageCalculations extends RecyclerView.Adapter<AdapterStor
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         public ImageView imageRecicl;
+        public TextView tv_number;
         public TextView tv_name;
         public TextView tv_address;
         public TextView tv_comments;
@@ -108,6 +109,7 @@ public class AdapterStorageCalculations extends RecyclerView.Adapter<AdapterStor
         public ViewHolder(View itemView) {
             super(itemView);
             imageRecicl = itemView.findViewById(R.id.image_product);
+            tv_number = itemView.findViewById(R.id.tv_calcnumber);
             tv_name = (TextView) itemView.findViewById(R.id.tv_product_name);
             tv_address = (TextView) itemView.findViewById(R.id.tv_address);
             tv_comments = (TextView) itemView.findViewById(R.id.tv_comment);

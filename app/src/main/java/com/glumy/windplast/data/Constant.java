@@ -6,6 +6,7 @@ import com.glumy.windplast.Cart.Storage;
 import com.glumy.windplast.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Constant {
 
@@ -32,6 +33,6 @@ public class Constant {
     public static String ROTO = "Roto";
     public static String AXOR = "Axor";
 
-    public static int WISHLIST_PAGE = 20;
-    public static int NOTIFICATION_PAGE = 20;
+    public static int STORAGE_COUNTER = 1;
+    public static List<Storage> listItems;
 }

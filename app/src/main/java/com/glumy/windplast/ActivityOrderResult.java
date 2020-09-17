@@ -1,19 +1,15 @@
 package com.glumy.windplast;
 
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
+
 import android.os.Bundle;
-import android.os.Parcelable;
-import android.view.Gravity;
+
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.glumy.windplast.Cart.Order;
@@ -24,25 +20,30 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.ArrayList;
-import java.util.List;
-
-import static com.glumy.windplast.data.Constant.listItems;
+import java.util.Date;
 
 
 public class ActivityOrderResult extends AppCompatActivity {
 
 
-    int number = 100500;//равен длинне массива просчетов??
+    int number = 100;//равен длинне массива просчетов??
     private EditText et_address, et_comment;
     private TextInputLayout address_lyt, comment_lyt;
-    // private ActivityStorageCalculations asc;
-
+    private ActivityStorageCalculations asc;
+    private AdapterStorageCalculations adapter;
+    Storage reciveToStorage;
     private ArrayList<Storage> storageArrayList;
     private ImageView imageView;
     private TextView tv_name, tv_width_height_or_res, et_amount_or_res, tv_square, tv_profile_or_res, tv_prof_second_part, tv_furniture_or_res,
             tv_quantity_glasses, tv_glasses_or_res, tv_manufacturer_sill, tv_manufacturer_weathering, tvMounting, tvDelivery, tv_cost,
             tv_number;
     private int image;
+    String str_date2;
+    String str_name;
+    String str_address;
+    String str_comment;
+    int cost;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,7 +89,7 @@ public class ActivityOrderResult extends AppCompatActivity {
             ib_transfer.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    onBackPressed();
+                  //  loadText();
                 }
             });
 
@@ -100,6 +101,7 @@ public class ActivityOrderResult extends AppCompatActivity {
 
                 }
             });
+
         }
     }
 
@@ -143,60 +145,28 @@ public class ActivityOrderResult extends AppCompatActivity {
             Snackbar.make(findViewById(android.R.id.content), R.string.invalid_comment, Snackbar.LENGTH_LONG).show();
             return;
         } else {
-            Toast toast = Toast.makeText(getApplicationContext(), R.string.text, Toast.LENGTH_LONG);
-            toast.setGravity(Gravity.CENTER, 0, 0);
-            toast.show();
 
-            String str_name = tv_name.getText().toString();
-            String str_address = et_address.getText().toString();
-            String str_comment = et_comment.getText().toString();
-            int cost = Integer.parseInt(tv_cost.getText().toString());
+            str_name = tv_name.getText().toString();
+            str_address = et_address.getText().toString();
+            str_comment = et_comment.getText().toString();
+            cost = Integer.parseInt(tv_cost.getText().toString());
 
-           // int number = Integer.parseInt(tv_number.getText().toString());
+            Date date = new Date();
+            String str_date = date.toString();
+            str_date2 = Tools.getFormattedDateSimple(str_date);
 
-           // Storage reciveToStorage = new Storage(image, number, str_name, str_address, str_comment, cost);
-            //listItems.add(new Storage(image, number, str_name, str_address, str_comment, "str_date2", cost));
-
-            Storage reciveToStorage = new Storage(image, number, str_name, str_address, str_comment, cost);
+            reciveToStorage = new Storage(image, number, str_name, str_address, str_comment, str_date2, cost);
             Intent i = new Intent(this, ActivityStorageCalculations.class);
             i.putExtra(Storage.class.getSimpleName(), reciveToStorage);
             startActivity(i);
 
-
-//            for (int i = 0; i <100; i++) {
 //                storageArrayList.add(new Order(image, tv_width_product.getText().toString(), tv_height_product.getText().toString(),
 //                        et_amount.getText().toString(), str_profile, str_profile2part, str_furniture, str_quantity_glasses, str_glass,
 //                        str_manufacturer_sill, str_manufacturer_weathering, mounting, strDelivery));
-//            }
-            //                       OrderR recivedOR = new Order(image,tv_width_product.getText().toString(), tv_height_product.getText().toString(),
-            //                   et_amount.getText().toString(), str_profile, str_profile2part, str_furniture, str_quantity_glasses, str_glass,
-            //                   str_manufacturer_sill, str_manufacturer_weathering, mounting, strDelivery);
-//            storageArrayList.add(recivedOR, 1);
         }
     }
-    ///////////////////////////////////////////////////////////////////////////////-------------------------------------------------------------------------
-//    public static void navigate(Activity activity, Long id, Boolean from_notif) {
-//        Intent i = navigateBase(activity, id, from_notif);
-//        activity.startActivity(i);
-//    }
-//    public static Intent navigateBase(Context context, Long id, Boolean from_notif) {
-//        Intent i = new Intent(context, ActivityProductDetails.class);
-//        i.putExtra(EXTRA_OBJECT_ID, id);
-//        i.putExtra(EXTRA_FROM_NOTIF, from_notif);
-//        return i;
-//    }
-/////////////////////////////////////////////////////////////////////////////////------------------------------------------------------------------------------------
-//            });
 
-
-//            OrderResult recivedOR = new OrderResult(image,tv_width_product.getText().toString(), tv_height_product.getText().toString(),
-//                    et_amount.getText().toString(), str_profile, str_profile2part, str_furniture, str_quantity_glasses, str_glass,
-//                    str_manufacturer_sill, str_manufacturer_weathering, mounting, strDelivery);
-    //           Intent i = new Intent(this, AdapterStorageCalculations.class);
-    //           i.putExtra(Storage.class.getSimpleName(), reciveToStorage);
-    // startActivity(i);
-
-    private boolean validateAddress() {
+       private boolean validateAddress() {
         String str = et_address.getText().toString().trim();
         if (str.isEmpty()) {
             address_lyt.setError(getString(R.string.invalid_address));
@@ -220,10 +190,6 @@ public class ActivityOrderResult extends AppCompatActivity {
         }
         return true;
 
-    }
-
-    public ArrayList<Storage> getStorageArrayList() {
-        return storageArrayList;
     }
 }
 

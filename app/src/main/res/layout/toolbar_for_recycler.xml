@@ -1,32 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.Toolbar
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/toolbar"
     android:layout_width="match_parent"
     android:layout_height="?attr/actionBarSize"
-    android:theme="@style/Toolbar">
-
-    <ImageView
-        android:id="@+id/image_arrow_back"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:focusable="true"
-        android:src="@drawable/arrow_back_foreground" />
-
-    <TextView
-        style="@style/TextAppearance.AppCompat.Title"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center_vertical|center_horizontal"
-        android:text="@string/myCalc" />
-
-</androidx.appcompat.widget.Toolbar>
-
-
-
-
-
-
-
-
-
-
+    android:background="?attr/colorPrimary"
+    app:paddingEnd="@dimen/spacing_medium"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+    app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
 

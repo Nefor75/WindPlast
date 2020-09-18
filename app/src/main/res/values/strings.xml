@@ -105,4 +105,7 @@
     <string name="invalid_address">Поле адрес не заполнено</string>
     <string name="invalid_comment">Поле комментарий не заполнено</string>
 
+    <string name="title_delete_confirm">Подтвердите удаление</string>
+    <string name="content_delete_confirm">Вы действительно хотите удалить все из хранилища?</string>
+
 </resources>

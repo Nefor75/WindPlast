@@ -11,7 +11,7 @@ import java.util.List;
 public class Constant {
 
     //URL Privatbank (курс)
-    public static String WEB_URL_RATE = "https://api.privatbank.ua/p24api/";
+   // public static String WEB_URL_RATE = "https://api.privatbank.ua/p24api/";
 
     public static String REHAU = "Rehau";
     public static String EURO_DESIGN_60 = "Euro Design 60";
@@ -33,6 +33,6 @@ public class Constant {
     public static String ROTO = "Roto";
     public static String AXOR = "Axor";
 
-    public static int STORAGE_COUNTER = 1;
-    public static List<Storage> listItems;
+    public static int NOTIFICATION_PAGE = 20;
+    public static int WISHLIST_PAGE = 20;
 }

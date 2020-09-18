@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.Menu;
@@ -31,6 +32,7 @@ import com.glumy.windplast.fragment.FragmentSettingsOne;
 import com.glumy.windplast.fragment.FragmentSettingsTwo;
 import com.glumy.windplast.util.NetworkCheck;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.gson.Gson;
 
 import java.util.List;
 
@@ -71,6 +73,13 @@ public class ActivityMain extends AppCompatActivity implements AdapterView.OnIte
         ivStorage = findViewById(R.id.image_storage);
 //        tv_rate = findViewById(R.id.rate_result);
         //requestRate();
+        ivStorage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ActivityMain.this, ActivityStorageCalculations.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void initToolbar() {
@@ -95,7 +104,7 @@ public class ActivityMain extends AppCompatActivity implements AdapterView.OnIte
 
     @Override
     public void onBackPressed() {
-       dialogExitConfirmation();
+        dialogExitConfirmation();
 
     }
 
@@ -295,35 +304,21 @@ public class ActivityMain extends AppCompatActivity implements AdapterView.OnIte
 //            });
 //        }
 //----------------------------------------------------------------------------------------------------------------
-    public void onClickMainMenu(View v) {
 
-        switch (v.getId()) {
+    public void dialogExitConfirmation() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Вы действительно хотите выйти из приложения?");
+        builder.setPositiveButton("Да", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface di, int i) {
+                di.dismiss();
+                finish();
+            }
+        }).setNegativeButton("Нет", null);
+        builder.show();
 
-            case R.id.image_storage:
-                Intent intent = new Intent(this, ActivityStorageCalculations.class);
-                startActivity(intent);
-                break;
-
-        }
     }
-           public void dialogExitConfirmation() {
-               AlertDialog.Builder builder = new AlertDialog.Builder(this);
-               builder.setTitle("Вы действительно хотите выйти из приложения?");
-               builder.setMessage(getString(R.string.axor) + getString(R.string.invalid_comment));
-               builder.setPositiveButton("Да", new DialogInterface.OnClickListener() {
-                   @Override
-                   public void onClick(DialogInterface di, int i) {
-                       di.dismiss();
-                      // deleteStorage();
-                     //  startLoadMoreAdapter();
-                       finish();
 
-                   }
-               });
-               builder.setNegativeButton("R.string.CANCEL", null);
-               builder.show();
-
-           }
 }
 
 

@@ -1,53 +1,62 @@
 package com.glumy.windplast;
 
+import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.database.Cursor;
-import android.os.Bundle;
-import android.os.Handler;
 
-import com.glumy.windplast.Cart.Order;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.Bundle;
+
 import com.glumy.windplast.Cart.Storage;
 
 import com.glumy.windplast.data.AdapterStorageCalculations;
-import com.glumy.windplast.data.Constant;
-import com.glumy.windplast.util.Tools;
-import com.google.android.material.snackbar.Snackbar;
+
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.appcompat.widget.Toolbar;
 
 import android.view.Gravity;
+
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+
 import android.widget.Toast;
 
+import java.lang.reflect.Type;
+
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 
 public class ActivityStorageCalculations extends AppCompatActivity {
 
     private RecyclerView recyclerView;
-    private List<Storage> listItems;
-    private AdapterStorageCalculations adapter;
+    AdapterStorageCalculations adapter;
+
+    private List<Storage> items = new ArrayList<>();
     private int image;
-    private ImageView iv_arrow_back;
+    int number, cost;
+    String str_name;
+    String str_address;
+    String str_comments;
+    String str_date2;
+
+    private SharedPreferences prefs;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_storage_calculations);
 
-       // recyclerView.getAdapter();
+        initToolbar();
 
         Bundle reciveToStorage = getIntent().getExtras();
         final Storage setActivity;
@@ -56,100 +65,134 @@ public class ActivityStorageCalculations extends AppCompatActivity {
             assert setActivity != null;
 
             image = setActivity.getImage();
-            int number = setActivity.getNumber();
-            String str_name = setActivity.getName();
-            String str_address = setActivity.getAddress();
-            String str_comments = setActivity.getComment();
-
-            int cost = setActivity.getCost();
-            Date date = new Date();
-            String str_date = date.toString();
-            String str_date2 = Tools.getFormattedDateSimple(str_date);
-
-            iv_arrow_back = findViewById(R.id.image_arrow_back);
-            iv_arrow_back.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent i = new Intent(getApplicationContext(), ActivityMain.class);
-                    startActivity(i);
-                }
-            });
-
-            listItems = new ArrayList<>();
-           // for (Storage s:listItems)
-           // for (int i = 0; i < 10; i++) {
-
-           // int insertIndex = 1;
-            listItems.add(new Storage(image, number, str_name, str_address, str_comments, str_date2, cost));
-            listItems.add(new Storage(image, number, str_name, str_address, str_comments, str_date2, cost));
+            number = setActivity.getNumber();
+            str_name = setActivity.getName();
+            str_address = setActivity.getAddress();
+            str_comments = setActivity.getComment();
+            str_date2 = setActivity.getDate();
+            cost = setActivity.getCost();
 
             recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
             recyclerView.setHasFixedSize(true);
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
-            adapter = new AdapterStorageCalculations(listItems, this);
-           // adapter.notifyDataSetChanged();
+
+            items = getListFromLocal("SaveStorage");
+
+            adapter = new AdapterStorageCalculations(this, items);
             recyclerView.setAdapter(adapter);
-                //оригинал listItems.add(new Storage("Item " + (i + 1), "Welcome to Torisan channel, this is description of item " + (i+1), 1));
-          //  }
 
-         // adapter.notifyItemInserted(listItems.size()-1);
+            items.add(new Storage(image, number, str_name, str_address, str_comments, str_date2, cost));
+
+            saveListInLocal(items, "SaveStorage");
+
+            //adapter.notifyDataSetChanged();
+
         }
+    }
 
+    private void initToolbar() {
+        ActionBar actionBar;
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setHomeButtonEnabled(true);
+        actionBar.setTitle(R.string.myCalc);
 
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        getMenuInflater().inflate(R.menu.menu_activity_storage_calculations, menu);
-//        return true;
-//    }
+    }
 
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        int item_id = item.getItemId();
-//        if (item_id == android.R.id.im) {
-//            super.onBackPressed();
-////        } else if (item_id == R.id.action_delete) {
-////            if (adapter.getItemCount() == 0) {
-////                Snackbar.make(parent_view, "Нет прощетов", Snackbar.LENGTH_SHORT).show();
-////                return true;
-//           }
-//          //  dialogDeleteConfirmation();
-////        }
-//        return super.onOptionsItemSelected(item);
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_activity_storage_calculations, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int item_id = item.getItemId();
+        if (item_id == android.R.id.home) {
+
+            Intent i = new Intent(this, ActivityMain.class);
+            startActivity(i);
+            //super.onBackPressed();
+        } else if (item_id == R.id.action_delete) {
+            if (items.size() == 0) {
+                Toast toast = Toast.makeText(getApplicationContext(), "Здесь и так ничего нет", Toast.LENGTH_LONG);
+                toast.setGravity(Gravity.CENTER, 0, 0);
+                toast.show();
+            } else {
+                dialogDeleteConfirmation();
+            }
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
     public void onBackPressed() {
-        Intent i = new Intent(getApplicationContext(), ActivityMain.class);
-        startActivity(i);
+        super.onBackPressed();
     }
 
-//       public void dialogDeleteConfirmation() {
-//        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-//        builder.setTitle("Подтвердите удаление");
-//        builder.setMessage(getString(R.string.axor) + getString(R.string.invalid_comment));
-//        builder.setPositiveButton("Да", new DialogInterface.OnClickListener() {
-//            @Override
-//            public void onClick(DialogInterface di, int i) {
-//                di.dismiss();
-//                deleteStorage();
-//                startLoadMoreAdapter();
-//                Snackbar.make(parent_view, "R.string.delete_success", Snackbar.LENGTH_SHORT).show();
-//            }
-//        });
-//        builder.setNegativeButton("R.string.CANCEL", null);
-//        builder.show();
-//    }
-
-
-    public void deleteStorage() {
-        listItems.clear();
-        Toast toast = Toast.makeText(getApplicationContext(), R.string.text, Toast.LENGTH_LONG);
-        toast.setGravity(Gravity.CENTER, 0, 0);
-        toast.show();
-
+    private void showNoItemView() {
+        View lyt_no_item = (View) findViewById(R.id.lyt_no_item);
+        if (items.size() == 0) {
+            Toast toast = Toast.makeText(getApplicationContext(), "Расчетов нет", Toast.LENGTH_LONG);
+            toast.setGravity(Gravity.CENTER, 0, 0);
+            toast.show();
+            lyt_no_item.setVisibility(View.VISIBLE);
+        } else {
+            lyt_no_item.setVisibility(View.GONE);
+        }
     }
 
-    public List<Storage> getListItems() {
-        return listItems;
+    public void dialogDeleteConfirmation() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(R.string.title_delete_confirm);
+        builder.setMessage(getString(R.string.content_delete_confirm));
+        builder.setPositiveButton("Да", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface di, int i) {
+                di.dismiss();
+                resetListData();
+                showNoItemView();
+
+            }
+        });
+        builder.setNegativeButton("Нет", null);
+        builder.show();
+    }
+
+    public void saveListInLocal(List<Storage> list, String key) {
+        prefs = getSharedPreferences(key, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        Gson gson = new Gson();
+        String json = gson.toJson(list);
+        editor.putString(key, json);
+        editor.apply();
+        Toast.makeText(this, "Данные сохранены", Toast.LENGTH_SHORT).show();
+    }
+
+    public List<Storage> getListFromLocal(String key) {
+        prefs = getSharedPreferences(key, Context.MODE_PRIVATE);
+        Gson gson = new Gson();
+        String json = prefs.getString(key, null);
+        if (json != null) {
+            Type type = new TypeToken<List<Storage>>() {
+            }.getType();
+            Toast.makeText(this, "Данные загружены", Toast.LENGTH_SHORT).show();
+            return gson.fromJson(json, type);
+        } else {
+            return new ArrayList<>();
+        }
+    }
+
+    public void resetListData() {
+        prefs = getSharedPreferences("SaveStorage", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.clear();
+        editor.apply();
+
+        items.clear();
+        adapter.notifyDataSetChanged();
+
     }
 }

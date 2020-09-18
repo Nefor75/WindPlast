@@ -1,40 +1,31 @@
 package com.glumy.windplast.data;
 
-import android.content.Context;
-
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.view.Gravity;
+import android.content.Context;
+
 import android.view.LayoutInflater;
-import android.view.MenuItem;
+
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.PopupMenu;
-import android.widget.ProgressBar;
+
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.glumy.windplast.Cart.Storage;
 import com.glumy.windplast.R;
-import com.glumy.windplast.data.Constant;
-import com.glumy.windplast.util.Tools;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
 public class AdapterStorageCalculations extends RecyclerView.Adapter<AdapterStorageCalculations.ViewHolder> {
 
-    private List<Storage> listItems;
-    private Context mContext;
+    private LayoutInflater inflater;
+    private List<Storage> items;
 
-    public AdapterStorageCalculations(List<Storage> listItems, Context mContext) {
-        this.listItems = listItems;
-        this.mContext = mContext;
+    public AdapterStorageCalculations(Context context, List<Storage> items) {
+        this.items = items;
+        this.inflater = LayoutInflater.from(context);
     }
 
     @Override
@@ -46,65 +37,36 @@ public class AdapterStorageCalculations extends RecyclerView.Adapter<AdapterStor
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
 
-        final Storage itemList = listItems.get(position);
+        Storage itemList = items.get(position);
         holder.imageRecicl.setImageResource(itemList.getImage());
-        holder.tv_number.setText(itemList.getNumber()+"");
+        holder.tv_number.setText(itemList.getNumber() + "");
         holder.tv_name.setText(itemList.getName());
         holder.tv_address.setText(itemList.getAddress());
         holder.tv_comments.setText(itemList.getComment());
         holder.tv_date.setText(itemList.getDate());
         holder.tv_cost.setText(itemList.getCost() + "");
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //нужно вызвать активность с массивом заказов и сделать гет позиции из массива
-                Toast toast = Toast.makeText(mContext, "Recycle Click" + position, Toast.LENGTH_SHORT);
-                toast.setGravity(Gravity.CENTER, 0, 0);
-                toast.show();
 
-            }
-        });
-
-        //Display option menu
-
-//                PopupMenu popupMenu = new PopupMenu(mContext, holder.tv_date);
-//                popupMenu.inflate(R.menu.menu_activity_storage_calculations);
-//                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-//                    @Override
-//                    public boolean onMenuItemClick(MenuItem item) {
+//        holder.itemView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                //нужно вызвать активность с массивом заказов и сделать гет позиции из массива
+////                Toast toast = Toast.makeText(context, "Recycle Click" + position, Toast.LENGTH_SHORT);
+////                toast.setGravity(Gravity.CENTER, 0, 0);
+////                toast.show();
 //
-//                        switch (item.getItemId()) {
-//                            case R.id.action_delete:
-//                                //Delete item
-//                                listItems.remove(position);
-//                                notifyDataSetChanged();
-//                                Toast.makeText(mContext, "Deleted", Toast.LENGTH_LONG).show();
-//                                break;
-//                            default:
-//                                break;
-//                        }
-//                        return false;
-        //                   }
-//                });
-//                popupMenu.show();
-        //           }
+//            }
 //        });
-    }
-
-    @Override
-    public int getItemCount() {
-        return listItems.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        public ImageView imageRecicl;
-        public TextView tv_number;
-        public TextView tv_name;
-        public TextView tv_address;
-        public TextView tv_comments;
-        public TextView tv_date;
-        public TextView tv_cost;
+        final ImageView imageRecicl;
+        final TextView tv_number;
+        final TextView tv_name;
+        final TextView tv_address;
+        final TextView tv_comments;
+        final TextView tv_date;
+        final TextView tv_cost;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -116,5 +78,10 @@ public class AdapterStorageCalculations extends RecyclerView.Adapter<AdapterStor
             tv_date = itemView.findViewById(R.id.tv_date);
             tv_cost = (TextView) itemView.findViewById(R.id.tv_cost);
         }
+    }
+
+    @Override
+    public int getItemCount() {
+        return items.size();
     }
 }

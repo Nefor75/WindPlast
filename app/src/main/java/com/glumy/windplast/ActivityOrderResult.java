@@ -57,6 +57,7 @@ public class ActivityOrderResult extends AppCompatActivity {
         if (reciveOrder != null) {
             setActivity = (Order) reciveOrder.getSerializable(Order.class.getSimpleName());
             assert setActivity != null;
+
             tv_number.setText("Расчет № "+ number);
            // tv_number.setText(storageArrayList.size() + "");
             tv_name.setText(setActivity.getName());
@@ -192,4 +193,3 @@ public class ActivityOrderResult extends AppCompatActivity {
 
     }
 }
-

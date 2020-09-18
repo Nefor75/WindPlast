@@ -13,23 +13,6 @@ public class Storage implements Serializable {
     private String date;
     private int cost;
 
-    public Storage(String name, String address, String comment, int cost) {
-        this.name = name;
-        this.address = address;
-        this.comment = comment;
-        this.cost = cost;
-    }
-
-    public Storage(int image, String name, String address, String comment, String date, int cost) {
-
-        this.image = image;
-        this.name = name;
-        this.address = address;
-        this.comment = comment;
-        this.date = date;
-        this.cost = cost;
-    }
-
     public Storage(int image, int number, String name, String address, String comment, String date, int cost) {
         this.number = number;
         this.image = image;
@@ -38,25 +21,6 @@ public class Storage implements Serializable {
         this.comment = comment;
         this.date = date;
         this.cost = cost;
-    }
-
-    public Storage(int image, int number, String name, String address, String comment, int cost) {
-        this.number = number;
-        this.image = image;
-        this.name = name;
-        this.address = address;
-        this.comment = comment;
-        this.date = date;
-        this.cost = cost;
-    }
-
-    public Storage(int image, String name, String address, String comment, int cost) {
-        this.image = image;
-        this.name = name;
-        this.address = address;
-        this.comment = comment;
-        this.cost = cost;
-
     }
 
     public int getImage() {

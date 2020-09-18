@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="@color/grey_5"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:theme="@android:style/Theme.DeviceDefault.Light">
 
     <include layout="@layout/toolbar_for_recycler" />
 
@@ -12,6 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="4dp"
         android:elevation="4dp">
+
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -26,5 +28,14 @@
                 android:scrollingCache="true" />
 
         </RelativeLayout>
+
     </androidx.cardview.widget.CardView>
+
+    <View
+        android:id="@+id/lyt_no_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/splashbackground"
+        android:visibility="invisible"/>
+
 </LinearLayout>

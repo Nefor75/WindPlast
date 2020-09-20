@@ -11,6 +11,7 @@ import com.glumy.windplast.Cart.Storage;
 
 import com.glumy.windplast.data.AdapterStorageCalculations;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -42,14 +43,13 @@ public class ActivityStorageCalculations extends AppCompatActivity {
 
     private List<Storage> items = new ArrayList<>();
     private int image;
-    int number, cost;
-    String str_name;
-    String str_address;
-    String str_comments;
-    String str_date2;
-
+    private int number;
+    private int cost;
+    private String str_name;
+    private String str_address;
+    private String str_comments;
+    private String str_date2;
     private SharedPreferences prefs;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +65,7 @@ public class ActivityStorageCalculations extends AppCompatActivity {
             assert setActivity != null;
 
             image = setActivity.getImage();
-            number = setActivity.getNumber();
+            // number = setActivity.getNumber();
             str_name = setActivity.getName();
             str_address = setActivity.getAddress();
             str_comments = setActivity.getComment();
@@ -77,6 +77,7 @@ public class ActivityStorageCalculations extends AppCompatActivity {
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
             items = getListFromLocal("SaveStorage");
+            number = items.size() + 1;
 
             adapter = new AdapterStorageCalculations(this, items);
             recyclerView.setAdapter(adapter);
@@ -85,8 +86,17 @@ public class ActivityStorageCalculations extends AppCompatActivity {
 
             saveListInLocal(items, "SaveStorage");
 
-            //adapter.notifyDataSetChanged();
-
+        }else {
+            recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+            recyclerView.setHasFixedSize(true);
+            recyclerView.setLayoutManager(new LinearLayoutManager(this));
+            items = getListFromLocal("SaveStorage");
+            if (items.size()!=0) {
+                adapter = new AdapterStorageCalculations(this, items);
+                recyclerView.setAdapter(adapter);
+            }else {
+                showNoItemView();
+            }
         }
     }
 
@@ -168,7 +178,7 @@ public class ActivityStorageCalculations extends AppCompatActivity {
         String json = gson.toJson(list);
         editor.putString(key, json);
         editor.apply();
-        Toast.makeText(this, "Данные сохранены", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "Данные сохранены", Toast.LENGTH_SHORT).show();
     }
 
     public List<Storage> getListFromLocal(String key) {
@@ -178,7 +188,9 @@ public class ActivityStorageCalculations extends AppCompatActivity {
         if (json != null) {
             Type type = new TypeToken<List<Storage>>() {
             }.getType();
-            Toast.makeText(this, "Данные загружены", Toast.LENGTH_SHORT).show();
+            Snackbar.make(findViewById(android.R.id.content), "Данные загружены", Snackbar.LENGTH_LONG).show();
+            //Toast.makeText(this, "Данные загружены", Toast.LENGTH_LONG).show();
+
             return gson.fromJson(json, type);
         } else {
             return new ArrayList<>();

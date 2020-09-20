@@ -4,6 +4,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 
+import android.content.Intent;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 
 import android.view.View;
@@ -11,9 +13,12 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.glumy.windplast.ActivityOrderResult;
 import com.glumy.windplast.Cart.Storage;
 import com.glumy.windplast.R;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.List;
 
@@ -39,23 +44,23 @@ public class AdapterStorageCalculations extends RecyclerView.Adapter<AdapterStor
 
         Storage itemList = items.get(position);
         holder.imageRecicl.setImageResource(itemList.getImage());
-        holder.tv_number.setText(itemList.getNumber() + "");
+        holder.tv_number.setText("Расчет № "+itemList.getNumber());
         holder.tv_name.setText(itemList.getName());
         holder.tv_address.setText(itemList.getAddress());
         holder.tv_comments.setText(itemList.getComment());
         holder.tv_date.setText(itemList.getDate());
-        holder.tv_cost.setText(itemList.getCost() + "");
+        holder.tv_cost.setText(itemList.getCost() + " грн.");
 
-//        holder.itemView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                //нужно вызвать активность с массивом заказов и сделать гет позиции из массива
-////                Toast toast = Toast.makeText(context, "Recycle Click" + position, Toast.LENGTH_SHORT);
-////                toast.setGravity(Gravity.CENTER, 0, 0);
-////                toast.show();
-//
-//            }
-//        });
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Snackbar.make(v, "Позиция расчета " + position, Snackbar.LENGTH_LONG).show();
+          //  Intent intent = new Intent(getApplicationContext(), ActivityOrderResult.class);
+          //      startActivity(intent);
+
+
+            }
+        });
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

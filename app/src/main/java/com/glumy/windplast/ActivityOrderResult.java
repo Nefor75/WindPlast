@@ -10,11 +10,12 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.glumy.windplast.Cart.Order;
 import com.glumy.windplast.Cart.Storage;
-import com.glumy.windplast.data.AdapterStorageCalculations;
+
 import com.glumy.windplast.util.Tools;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputLayout;
@@ -30,7 +31,6 @@ public class ActivityOrderResult extends AppCompatActivity {
     private EditText et_address, et_comment;
     private TextInputLayout address_lyt, comment_lyt;
     private ActivityStorageCalculations asc;
-    private AdapterStorageCalculations adapter;
     Storage reciveToStorage;
     private ArrayList<Storage> storageArrayList;
     private ImageView imageView;
@@ -58,8 +58,7 @@ public class ActivityOrderResult extends AppCompatActivity {
             setActivity = (Order) reciveOrder.getSerializable(Order.class.getSimpleName());
             assert setActivity != null;
 
-            tv_number.setText("Расчет № "+ number);
-           // tv_number.setText(storageArrayList.size() + "");
+            tv_number.setText("Расчет № " + number);
             tv_name.setText(setActivity.getName());
             imageView.setImageResource(setActivity.getImageTop());
             image = setActivity.getImageTop();
@@ -76,7 +75,7 @@ public class ActivityOrderResult extends AppCompatActivity {
             tv_manufacturer_weathering.setText(setActivity.getManufacturer_weathering());
             tvMounting.setText(setActivity.getMounting());
             tvDelivery.setText(setActivity.getDelivery());
-            tv_cost.setText(setActivity.getCost()+"");
+            tv_cost.setText(setActivity.getCost() + "");
 
             ImageButton ib_back = findViewById(R.id.ib_back);
             ib_back.setOnClickListener(new View.OnClickListener() {
@@ -90,7 +89,7 @@ public class ActivityOrderResult extends AppCompatActivity {
             ib_transfer.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                  //  loadText();
+                    mChooser();
                 }
             });
 
@@ -167,7 +166,7 @@ public class ActivityOrderResult extends AppCompatActivity {
         }
     }
 
-       private boolean validateAddress() {
+    private boolean validateAddress() {
         String str = et_address.getText().toString().trim();
         if (str.isEmpty()) {
             address_lyt.setError(getString(R.string.invalid_address));
@@ -191,5 +190,18 @@ public class ActivityOrderResult extends AppCompatActivity {
         }
         return true;
 
+    }
+
+    private void mChooser() {
+        Intent sendIntent = new Intent(Intent.ACTION_SEND);
+
+        String title = getResources().getString(R.string.app_name);
+
+        Intent chooser = Intent.createChooser(sendIntent, title);
+
+// Verify the original intent will resolve to at least one activity
+        if (sendIntent.resolveActivity(getPackageManager()) != null) {
+            startActivity(chooser);
+        }
     }
 }

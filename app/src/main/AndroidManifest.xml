@@ -28,10 +28,9 @@
         <activity
             android:name=".ActivityProductDetails"
             android:theme="@style/Main" />
+        <activity android:name=".ActivityOrderResult" />
         <activity android:name=".ActivityStorageCalculations" />
-        <activity android:name=".ActivityOrderResult">
 
-        </activity>
     </application>
 
 </manifest>

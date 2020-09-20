@@ -24,6 +24,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.glumy.windplast.Cart.Cart;
+import com.glumy.windplast.Cart.Storage;
 import com.glumy.windplast.connection.JsonPlaceHolderApi;
 import com.glumy.windplast.connection.Post;
 import com.glumy.windplast.data.AdapterStorageCalculations;
@@ -53,6 +54,7 @@ public class ActivityMain extends AppCompatActivity implements AdapterView.OnIte
     private FragmentTransaction trans;
     private ImageView ivStorage;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,8 +78,19 @@ public class ActivityMain extends AppCompatActivity implements AdapterView.OnIte
         ivStorage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ActivityMain.this, ActivityStorageCalculations.class);
-                startActivity(intent);
+
+  //              Bundle reciveToStorage = getIntent().getExtras();
+               // final Storage setActivity;
+  //              if (reciveToStorage != null) {
+//                    setActivity = (Storage) reciveToStorage.getSerializable(Storage.class.getSimpleName());
+//                    assert setActivity != null;
+                    Intent intent = new Intent(ActivityMain.this, ActivityStorageCalculations.class);
+                  //  intent.putExtra(Storage.class.getSimpleName(), reciveToStorage);
+
+
+
+                    startActivity(intent);
+              //  }
             }
         });
     }
@@ -269,7 +282,7 @@ public class ActivityMain extends AppCompatActivity implements AdapterView.OnIte
     }
 
     //-----------------------------------------------------------------
-    //метод для извлечения курса валют (api PrivatBank)
+    //метод для получения курса валют (api PrivatBank)
 //    private void requestRate() {
 //        if (!NetworkCheck.isConnect(this)) {
 //            content = "Нет соединения с интернетом";

@@ -1,7 +1,9 @@
 package com.glumy.windplast;
 
+import android.content.Context;
 import android.content.Intent;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import android.view.View;
@@ -19,20 +21,23 @@ import com.glumy.windplast.Cart.Storage;
 import com.glumy.windplast.util.Tools;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 
 public class ActivityOrderResult extends AppCompatActivity {
 
 
-    int number = 100;//равен длинне массива просчетов??
+    int number = 1;
     private EditText et_address, et_comment;
     private TextInputLayout address_lyt, comment_lyt;
-    private ActivityStorageCalculations asc;
     Storage reciveToStorage;
-    private ArrayList<Storage> storageArrayList;
+    private List<Order> itemsOR = new ArrayList<>();
     private ImageView imageView;
     private TextView tv_name, tv_width_height_or_res, et_amount_or_res, tv_square, tv_profile_or_res, tv_prof_second_part, tv_furniture_or_res,
             tv_quantity_glasses, tv_glasses_or_res, tv_manufacturer_sill, tv_manufacturer_weathering, tvMounting, tvDelivery, tv_cost,
@@ -43,7 +48,7 @@ public class ActivityOrderResult extends AppCompatActivity {
     String str_address;
     String str_comment;
     int cost;
-
+    private SharedPreferences prefs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,13 +57,19 @@ public class ActivityOrderResult extends AppCompatActivity {
 
         iniComponent();
 
+        Intent i = getIntent();
+        int position = i.getIntExtra("position", 0);
+       // Order orderFromStor = getDataToOR(position);
+
+
         Bundle reciveOrder = getIntent().getExtras();
         final Order setActivity;
         if (reciveOrder != null) {
             setActivity = (Order) reciveOrder.getSerializable(Order.class.getSimpleName());
             assert setActivity != null;
+            number = getNumberStor("SaveStorage");
 
-            tv_number.setText("Расчет № " + number);
+            tv_number.setText("Расчет № " + number + "");
             tv_name.setText(setActivity.getName());
             imageView.setImageResource(setActivity.getImageTop());
             image = setActivity.getImageTop();
@@ -105,6 +116,25 @@ public class ActivityOrderResult extends AppCompatActivity {
         }
     }
 
+    public Order getDataToOR(int x) {
+        prefs = getSharedPreferences("saveDataOR", Context.MODE_PRIVATE);
+        Gson gson = new Gson();
+        String json = prefs.getString("saveDataOR", null);
+        if (json != null) {
+            Type type = new TypeToken<List<Order>>() {
+            }.getType();
+
+            List<Order> temp = gson.fromJson(json, type);
+
+            return temp.get(x);
+        }
+//        Type type = new TypeToken<List<Order>>() {
+//        }.getType();
+//        List<Order> temp = gson.fromJson(json, type);
+//        return temp.get(0);
+        return null;
+    }
+
     private void iniComponent() {
         tv_number = findViewById(R.id.tv_number);
         tv_name = findViewById(R.id.text_name);
@@ -149,20 +179,42 @@ public class ActivityOrderResult extends AppCompatActivity {
             str_name = tv_name.getText().toString();
             str_address = et_address.getText().toString();
             str_comment = et_comment.getText().toString();
+            String str_sizes = tv_width_height_or_res.getText().toString();
+            String str_amount = et_amount_or_res.getText().toString();
+            String str_square = tv_square.getText().toString();
+            String str_profile1 = tv_profile_or_res.getText().toString();
+            String str_profile2 = tv_prof_second_part.getText().toString();
+            String str_furniture = tv_furniture_or_res.getText().toString();
+            String str_quantity_glasses = tv_quantity_glasses.getText().toString();
+            String str_glasses_or_res = tv_glasses_or_res.getText().toString();
+            String str_manufacturer_sill = tv_manufacturer_sill.getText().toString();
+            String str_manufacturer_weathering = tv_manufacturer_weathering.getText().toString();
+            String delivery = "500";
+            String mounting = et_amount_or_res.getText().toString();
             cost = Integer.parseInt(tv_cost.getText().toString());
 
             Date date = new Date();
             String str_date = date.toString();
             str_date2 = Tools.getFormattedDateSimple(str_date);
 
-            reciveToStorage = new Storage(image, number, str_name, str_address, str_comment, str_date2, cost);
+            reciveToStorage = new Storage(image, str_name, str_address, str_comment, str_date2, cost);
+//            Storage reciveToStorage = new Storage(number, image, str_name, str_address, str_comment, str_sizes, str_amount,
+//                    str_square, str_profile1, str_profile2, str_furniture, str_quantity_glasses, str_glasses_or_res,
+//                    str_manufacturer_sill, str_manufacturer_weathering, mounting, delivery, str_date2, cost);
             Intent i = new Intent(this, ActivityStorageCalculations.class);
             i.putExtra(Storage.class.getSimpleName(), reciveToStorage);
             startActivity(i);
 
-//                storageArrayList.add(new Order(image, tv_width_product.getText().toString(), tv_height_product.getText().toString(),
-//                        et_amount.getText().toString(), str_profile, str_profile2part, str_furniture, str_quantity_glasses, str_glass,
-//                        str_manufacturer_sill, str_manufacturer_weathering, mounting, strDelivery));
+            //         itemsOR.add(reciveToStorage);
+//              itemsOR.add(new Storage(number, image, str_name, str_address, str_comment, str_sizes, str_amount,
+//                         str_square, str_profile1, str_profile2, str_furniture, str_quantity_glasses, str_glasses_or_res,
+//                         str_manufacturer_sill, str_manufacturer_weathering, mounting, delivery, cost));
+
+            itemsOR.add(new Order(number, image, str_name, str_address, str_comment, str_sizes, str_amount,
+                    str_square, str_profile1, str_profile2, str_furniture, str_quantity_glasses, str_glasses_or_res,
+                    str_manufacturer_sill, str_manufacturer_weathering, mounting, delivery, cost));
+
+            saveDataOR(itemsOR, "saveDataOR");
         }
     }
 
@@ -204,4 +256,30 @@ public class ActivityOrderResult extends AppCompatActivity {
             startActivity(chooser);
         }
     }
+
+    public void saveDataOR(List<Order> list, String key) {
+        prefs = getSharedPreferences(key, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        Gson gson = new Gson();
+        String json = gson.toJson(list);
+        editor.putString(key, json);
+        editor.apply();
+
+    }
+
+    public int getNumberStor(String key) {
+        prefs = getSharedPreferences(key, Context.MODE_PRIVATE);
+        Gson gson = new Gson();
+        String json = prefs.getString(key, null);
+        if (json != null) {
+            Type type = new TypeToken<List<Storage>>() {
+            }.getType();
+            List<Storage> temp = gson.fromJson(json, type);
+            return temp.size() + 1;
+        }
+        return number;
+
+    }
+
 }
+

@@ -2,97 +2,97 @@
 <resources>
     <string-array name="one_camera_usual">
         <item>4/16/4</item>
-        <item>4/16/4i</item>
+        <item>4/16/4</item>
         <item>6/16/4</item>
-        <item>Мурка</item>
-        <item>Васька</item>
-        <item>Томасина</item>
-        <item>Кристина</item>
-        <item>Пушок</item>
-        <item>Дымка</item>
-        <item>Кузя</item>
-        <item>Китти</item>
-        <item>Масяня</item>
-        <item>Симба</item>
+        <item>4/16/4</item>
+        <item>4/16/4</item>
+        <item>4/16/4</item>
+        <item>4/16/4</item>
+        <item>4/16/4</item>
+        <item>4/16/4</item>
+        <item>4/16/4</item>
+        <item>4/16/4</item>
+        <item>4/16/4</item>
+        <item>4/16/4</item>
     </string-array>
 
     <string-array name="one_camera_func">
-        <item>4/12/4/8/4</item>
-        <item>4/12/4/8/4i</item>
-        <item>4i/12/4/8/4i</item>
-        <item>Мурка</item>
-        <item>Васька</item>
-        <item>Томасина</item>
-        <item>Кристина</item>
-        <item>Пушок</item>
-        <item>Дымка</item>
-        <item>Кузя</item>
-        <item>Китти</item>
-        <item>Масяня</item>
-        <item>Симба</item>
+        <item>4/16/4i</item>
+        <item>4/16/4i</item>
+        <item>4/16/4i</item>
+        <item>4/16/4i</item>
+        <item>4/16/4i</item>
+        <item>4/16/4i</item>
+        <item>4/16/4i</item>
+        <item>4/16/4i</item>
+        <item>4/16/4i</item>
+        <item>4/16/4i</item>
+        <item>4/16/4i</item>
+        <item>4/16/4i</item>
+        <item>4/16/4i</item>
     </string-array>
 
     <string-array name="one_camera_tint">
-        <item>4/12/4/8/4</item>
-        <item>4/12/4/8/4i</item>
-        <item>4i/12/4/8/4i</item>
-        <item>Мурка</item>
-        <item>Васька</item>
-        <item>Томасина</item>
-        <item>Кристина</item>
-        <item>Пушок</item>
-        <item>Дымка</item>
-        <item>Кузя</item>
-        <item>Китти</item>
-        <item>Масяня</item>
-        <item>Симба</item>
+        <item>4T/16/4i</item>
+        <item>4T/16/4i</item>
+        <item>4T/16/4i</item>
+        <item>4T/16/4i</item>
+        <item>4T/16/4i</item>
+        <item>4T/16/4i</item>
+        <item>4T/16/4i</item>
+        <item>4T/16/4i</item>
+        <item>4T/16/4i</item>
+        <item>4T/16/4i</item>
+        <item>4T/16/4i</item>
+        <item>4T/16/4i</item>
+        <item>4T/16/4i</item>
     </string-array>
 
     <string-array name="two_camera_usual">
-        <item>4/16/4</item>
-        <item>4/16/4i</item>
-        <item>6/16/4</item>
-        <item>Мурка</item>
-        <item>Васька</item>
-        <item>Томасина</item>
-        <item>Кристина</item>
-        <item>Пушок</item>
-        <item>Дымка</item>
-        <item>Кузя</item>
-        <item>Китти</item>
-        <item>Масяня</item>
-        <item>Симба</item>
+        <item>4/12/4/8/4</item>
+        <item>4/12/4/8/4</item>
+        <item>4/12/4/8/4</item>
+        <item>4/12/4/8/4</item>
+        <item>4/12/4/8/4</item>
+        <item>4/12/4/8/4</item>
+        <item>4/12/4/8/4</item>
+        <item>4/12/4/8/4</item>
+        <item>4/12/4/8/4</item>
+        <item>4/12/4/8/4</item>
+        <item>4/12/4/8/4</item>
+        <item>4/12/4/8/4</item>
+        <item>4/12/4/8/4</item>
     </string-array>
 
     <string-array name="two_camera_func">
-        <item>4/12/4/8/4</item>
+        <item>4/12/4/8/4i</item>
         <item>4/12/4/8/4i</item>
         <item>4i/12/4/8/4i</item>
-        <item>Мурка</item>
-        <item>Васька</item>
-        <item>Томасина</item>
-        <item>Кристина</item>
-        <item>Пушок</item>
-        <item>Дымка</item>
-        <item>Кузя</item>
-        <item>Китти</item>
-        <item>Масяня</item>
-        <item>Симба</item>
+        <item>4/12/4/8/4i</item>
+        <item>4/12/4/8/4i</item>
+        <item>4/12/4/8/4i</item>
+        <item>4/12/4/8/4i</item>
+        <item>4/12/4/8/4i</item>
+        <item>4/12/4/8/4i</item>
+        <item>4/12/4/8/4i</item>
+        <item>4/12/4/8/4i</item>
+        <item>4/12/4/8/4i</item>
+        <item>4/12/4/8/4i</item>
     </string-array>
 
     <string-array name="two_camera_tint">
-        <item>4/12/4/8/4</item>
-        <item>4/12/4/8/4i</item>
-        <item>4i/12/4/8/4i</item>
-        <item>Мурка</item>
-        <item>Васька</item>
-        <item>Томасина</item>
-        <item>Кристина</item>
-        <item>Пушок</item>
-        <item>Дымка</item>
-        <item>Кузя</item>
-        <item>Китти</item>
-        <item>Масяня</item>
-        <item>Симба</item>
+        <item>4T/12/4/8/4</item>
+        <item>4T/12/4/8/4</item>
+        <item>4T/12/4/8/4</item>
+        <item>4T/12/4/8/4</item>
+        <item>4T/12/4/8/4</item>
+        <item>4T/12/4/8/4</item>
+        <item>4T/12/4/8/4</item>
+        <item>4T/12/4/8/4</item>
+        <item>4T/12/4/8/4</item>
+        <item>4T/12/4/8/4</item>
+        <item>4T/12/4/8/4</item>
+        <item>4T/12/4/8/4</item>
+        <item>4T/12/4/8/4</item>
     </string-array>
 </resources>

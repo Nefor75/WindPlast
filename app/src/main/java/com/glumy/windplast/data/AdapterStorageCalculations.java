@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Context;
 
 import android.content.Intent;
+
 import android.view.Gravity;
 import android.view.LayoutInflater;
 
@@ -16,21 +17,22 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.glumy.windplast.ActivityOrderResult;
+
 import com.glumy.windplast.Cart.Storage;
 import com.glumy.windplast.R;
-import com.google.android.material.snackbar.Snackbar;
 
 import java.util.List;
 
 
 public class AdapterStorageCalculations extends RecyclerView.Adapter<AdapterStorageCalculations.ViewHolder> {
 
-    private LayoutInflater inflater;
     private List<Storage> items;
 
-    public AdapterStorageCalculations(Context context, List<Storage> items) {
+
+    public AdapterStorageCalculations(List<Storage> items) {
         this.items = items;
-        this.inflater = LayoutInflater.from(context);
+       // LayoutInflater inflater = LayoutInflater.from(context);
+
     }
 
     @Override
@@ -42,9 +44,9 @@ public class AdapterStorageCalculations extends RecyclerView.Adapter<AdapterStor
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
 
-        Storage itemList = items.get(position);
-        holder.imageRecicl.setImageResource(itemList.getImage());
-        holder.tv_number.setText("Расчет № "+itemList.getNumber());
+        final Storage itemList = items.get(position);
+        holder.imageRecycl.setImageResource(itemList.getImage());
+        holder.tv_number.setText("Расчет № " + itemList.getNumber());
         holder.tv_name.setText(itemList.getName());
         holder.tv_address.setText(itemList.getAddress());
         holder.tv_comments.setText(itemList.getComment());
@@ -54,10 +56,15 @@ public class AdapterStorageCalculations extends RecyclerView.Adapter<AdapterStor
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Snackbar.make(v, "Позиция расчета " + position, Snackbar.LENGTH_LONG).show();
-          //  Intent intent = new Intent(getApplicationContext(), ActivityOrderResult.class);
-          //      startActivity(intent);
 
+                 Intent intent = new Intent(v.getContext(), ActivityOrderResult.class);
+
+                Toast toast = Toast.makeText(v.getContext(), "Позиция № "+position, Toast.LENGTH_LONG);
+                toast.setGravity(Gravity.CENTER, 0, 0);
+                toast.show();
+
+             // intent.putExtra("position", position);
+                 v.getContext().startActivity(intent);
 
             }
         });
@@ -65,7 +72,7 @@ public class AdapterStorageCalculations extends RecyclerView.Adapter<AdapterStor
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        final ImageView imageRecicl;
+        final ImageView imageRecycl;
         final TextView tv_number;
         final TextView tv_name;
         final TextView tv_address;
@@ -75,13 +82,14 @@ public class AdapterStorageCalculations extends RecyclerView.Adapter<AdapterStor
 
         public ViewHolder(View itemView) {
             super(itemView);
-            imageRecicl = itemView.findViewById(R.id.image_product);
+            imageRecycl = itemView.findViewById(R.id.image_product);
             tv_number = itemView.findViewById(R.id.tv_calcnumber);
             tv_name = (TextView) itemView.findViewById(R.id.tv_product_name);
             tv_address = (TextView) itemView.findViewById(R.id.tv_address);
             tv_comments = (TextView) itemView.findViewById(R.id.tv_comment);
             tv_date = itemView.findViewById(R.id.tv_date);
             tv_cost = (TextView) itemView.findViewById(R.id.tv_cost);
+
         }
     }
 
@@ -90,3 +98,6 @@ public class AdapterStorageCalculations extends RecyclerView.Adapter<AdapterStor
         return items.size();
     }
 }
+
+
+

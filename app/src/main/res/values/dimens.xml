@@ -22,5 +22,7 @@
     <!--Text-Size-->
     <dimen name="twenty">20sp</dimen>
     <dimen name="titletext">16sp</dimen>
+    <dimen name="titletextmidl">14sp</dimen>
+    <dimen name="titletextsmall">12sp</dimen>
 
 </resources>

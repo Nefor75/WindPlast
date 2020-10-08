@@ -78,19 +78,8 @@ public class ActivityMain extends AppCompatActivity implements AdapterView.OnIte
         ivStorage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-  //              Bundle reciveToStorage = getIntent().getExtras();
-               // final Storage setActivity;
-  //              if (reciveToStorage != null) {
-//                    setActivity = (Storage) reciveToStorage.getSerializable(Storage.class.getSimpleName());
-//                    assert setActivity != null;
-                    Intent intent = new Intent(ActivityMain.this, ActivityStorageCalculations.class);
-                  //  intent.putExtra(Storage.class.getSimpleName(), reciveToStorage);
-
-
-
-                    startActivity(intent);
-              //  }
+                Intent intent = new Intent(ActivityMain.this, ActivityStorageCalculations.class);
+                startActivity(intent);
             }
         });
     }
@@ -325,7 +314,7 @@ public class ActivityMain extends AppCompatActivity implements AdapterView.OnIte
             @Override
             public void onClick(DialogInterface di, int i) {
                 di.dismiss();
-                finish();
+                finishAffinity();
             }
         }).setNegativeButton("Нет", null);
         builder.show();

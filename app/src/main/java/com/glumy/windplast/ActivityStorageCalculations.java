@@ -43,7 +43,7 @@ public class ActivityStorageCalculations extends AppCompatActivity {
 
     private List<Storage> items = new ArrayList<>();
     private int image;
-    private int number;
+    private int numberItems;
     private int cost;
     private String str_name;
     private String str_address;
@@ -65,7 +65,6 @@ public class ActivityStorageCalculations extends AppCompatActivity {
             assert setActivity != null;
 
             image = setActivity.getImage();
-            // number = setActivity.getNumber();
             str_name = setActivity.getName();
             str_address = setActivity.getAddress();
             str_comments = setActivity.getComment();
@@ -75,26 +74,35 @@ public class ActivityStorageCalculations extends AppCompatActivity {
             recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
             recyclerView.setHasFixedSize(true);
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
+            recyclerView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+//                Toast.makeText(getApplicationContext(), "Recycler", Toast.LENGTH_SHORT).show();
+//                    Intent intent = new Intent(v.getContext(), ActivityOrderResult.class);
+//                    v.getContext().startActivity(intent);
+                }
+            });
 
-            items = getListFromLocal("SaveStorage");
-            number = items.size() + 1;
+            items = getListFromList("SaveStorage");
+            numberItems = items.size() + 1;
 
-            adapter = new AdapterStorageCalculations(this, items);
+            adapter = new AdapterStorageCalculations(items);
             recyclerView.setAdapter(adapter);
 
-            items.add(new Storage(image, number, str_name, str_address, str_comments, str_date2, cost));
+            items.add(new Storage(image, numberItems, str_name, str_address, str_comments, str_date2, cost));
 
-            saveListInLocal(items, "SaveStorage");
+            saveItemForAdapter(items, "SaveStorage");
 
-        }else {
+        } else {
             recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
             recyclerView.setHasFixedSize(true);
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
-            items = getListFromLocal("SaveStorage");
-            if (items.size()!=0) {
-                adapter = new AdapterStorageCalculations(this, items);
+
+            items = getListFromList("SaveStorage");
+            if (items.size() != 0) {
+                adapter = new AdapterStorageCalculations(items);
                 recyclerView.setAdapter(adapter);
-            }else {
+            } else {
                 showNoItemView();
             }
         }
@@ -121,15 +129,12 @@ public class ActivityStorageCalculations extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int item_id = item.getItemId();
         if (item_id == android.R.id.home) {
-
-            Intent i = new Intent(this, ActivityMain.class);
-            startActivity(i);
-            //super.onBackPressed();
+            onBackPressed();
         } else if (item_id == R.id.action_delete) {
             if (items.size() == 0) {
-                Toast toast = Toast.makeText(getApplicationContext(), "Здесь и так ничего нет", Toast.LENGTH_LONG);
-                toast.setGravity(Gravity.CENTER, 0, 0);
-                toast.show();
+//                Toast toast = Toast.makeText(getApplicationContext(), "Здесь и так ничего нет", Toast.LENGTH_LONG);
+//                toast.setGravity(Gravity.CENTER, 0, 0);
+//                toast.show();
             } else {
                 dialogDeleteConfirmation();
             }
@@ -139,7 +144,9 @@ public class ActivityStorageCalculations extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
+        Intent i = new Intent(this, ActivityMain.class);
+        startActivity(i);
+
     }
 
     private void showNoItemView() {
@@ -171,7 +178,7 @@ public class ActivityStorageCalculations extends AppCompatActivity {
         builder.show();
     }
 
-    public void saveListInLocal(List<Storage> list, String key) {
+    public void saveItemForAdapter(List<Storage> list, String key) {
         prefs = getSharedPreferences(key, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
         Gson gson = new Gson();
@@ -181,15 +188,15 @@ public class ActivityStorageCalculations extends AppCompatActivity {
         //Toast.makeText(this, "Данные сохранены", Toast.LENGTH_SHORT).show();
     }
 
-    public List<Storage> getListFromLocal(String key) {
+    public List<Storage> getListFromList(String key) {
         prefs = getSharedPreferences(key, Context.MODE_PRIVATE);
         Gson gson = new Gson();
         String json = prefs.getString(key, null);
         if (json != null) {
             Type type = new TypeToken<List<Storage>>() {
             }.getType();
-            Snackbar.make(findViewById(android.R.id.content), "Данные загружены", Snackbar.LENGTH_LONG).show();
-            //Toast.makeText(this, "Данные загружены", Toast.LENGTH_LONG).show();
+            //Snackbar.make(findViewById(android.R.id.content), "Данные загружены", Snackbar.LENGTH_LONG).show();
+            Toast.makeText(this, "Данные загружены", Toast.LENGTH_SHORT).show();
 
             return gson.fromJson(json, type);
         } else {

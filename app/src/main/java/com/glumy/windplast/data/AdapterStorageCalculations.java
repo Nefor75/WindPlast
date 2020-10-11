@@ -1,9 +1,12 @@
 package com.glumy.windplast.data;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Dialog;
 import android.content.Context;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 
 import android.view.Gravity;
@@ -18,6 +21,8 @@ import android.widget.Toast;
 
 import com.glumy.windplast.ActivityOrderResult;
 
+import com.glumy.windplast.ActivityStorageCalculations;
+import com.glumy.windplast.Cart.Order;
 import com.glumy.windplast.Cart.Storage;
 import com.glumy.windplast.R;
 
@@ -27,11 +32,18 @@ import java.util.List;
 public class AdapterStorageCalculations extends RecyclerView.Adapter<AdapterStorageCalculations.ViewHolder> {
 
     private List<Storage> items;
+    private OnItemClickListener onItemClickListener;
 
+    public interface OnItemClickListener {
+        void onItemClick(int position);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
+        this.onItemClickListener = onItemClickListener;
+    }
 
     public AdapterStorageCalculations(List<Storage> items) {
         this.items = items;
-       // LayoutInflater inflater = LayoutInflater.from(context);
 
     }
 
@@ -56,15 +68,19 @@ public class AdapterStorageCalculations extends RecyclerView.Adapter<AdapterStor
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                int position = holder.getAdapterPosition();
+                if (onItemClickListener != null) {
+                    onItemClickListener.onItemClick(position);
+                }
 
-                 Intent intent = new Intent(v.getContext(), ActivityOrderResult.class);
-
-                Toast toast = Toast.makeText(v.getContext(), "Позиция № "+position, Toast.LENGTH_LONG);
-                toast.setGravity(Gravity.CENTER, 0, 0);
-                toast.show();
-
-             // intent.putExtra("position", position);
-                 v.getContext().startActivity(intent);
+//                 Intent intent = new Intent(v.getContext(), ActivityOrderResult.class);
+//
+//                Toast toast = Toast.makeText(v.getContext(), "Позиция № "+position, Toast.LENGTH_LONG);
+//                toast.setGravity(Gravity.CENTER, 0, 0);
+//                toast.show();
+//
+//             // intent.putExtra("position", position);
+//                 v.getContext().startActivity(intent);
 
             }
         });
@@ -97,6 +113,7 @@ public class AdapterStorageCalculations extends RecyclerView.Adapter<AdapterStor
     public int getItemCount() {
         return items.size();
     }
+
 }
 
 

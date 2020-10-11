@@ -1,5 +1,6 @@
 package com.glumy.windplast;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 
@@ -28,12 +29,15 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import java.lang.reflect.Type;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 
 public class ActivityStorageCalculations extends AppCompatActivity {
@@ -106,6 +110,15 @@ public class ActivityStorageCalculations extends AppCompatActivity {
                 showNoItemView();
             }
         }
+        adapter.setOnItemClickListener(new AdapterStorageCalculations.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+                dialogLoadStorage();
+//                Toast toast = Toast.makeText(getApplicationContext(), "Здесь и так ничего нет"+position, Toast.LENGTH_LONG);
+//                toast.setGravity(Gravity.CENTER, 0, 0);
+//                toast.show();
+            }
+        });
     }
 
     private void initToolbar() {
@@ -213,5 +226,20 @@ public class ActivityStorageCalculations extends AppCompatActivity {
         items.clear();
         adapter.notifyDataSetChanged();
 
+    }
+
+    private void dialogLoadStorage (){
+
+        final Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE); // before
+        dialog.setContentView(R.layout.dialog_load_storage);
+
+        WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+        lp.copyFrom(Objects.requireNonNull(dialog.getWindow()).getAttributes());
+        lp.width = WindowManager.LayoutParams.MATCH_PARENT;
+        lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
+
+        dialog.show();
+        dialog.getWindow().setAttributes(lp);
     }
 }

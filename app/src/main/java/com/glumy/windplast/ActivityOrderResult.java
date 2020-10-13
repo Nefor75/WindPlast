@@ -57,11 +57,6 @@ public class ActivityOrderResult extends AppCompatActivity {
 
         iniComponent();
 
-        Intent i = getIntent();
-        int position = i.getIntExtra("position", 0);
-       // Order orderFromStor = getDataToOR(position);
-
-
         Bundle reciveOrder = getIntent().getExtras();
         final Order setActivity;
         if (reciveOrder != null) {
@@ -92,15 +87,8 @@ public class ActivityOrderResult extends AppCompatActivity {
             ib_back.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    resetItemsOR();
                     onBackPressed();
-                }
-            });
-
-            ImageButton ib_transfer = findViewById(R.id.ib_transfer);
-            ib_transfer.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    mChooser();
                 }
             });
 
@@ -114,25 +102,6 @@ public class ActivityOrderResult extends AppCompatActivity {
             });
 
         }
-    }
-
-    public Order getDataToOR(int x) {
-        prefs = getSharedPreferences("saveDataOR", Context.MODE_PRIVATE);
-        Gson gson = new Gson();
-        String json = prefs.getString("saveDataOR", null);
-        if (json != null) {
-            Type type = new TypeToken<List<Order>>() {
-            }.getType();
-
-            List<Order> temp = gson.fromJson(json, type);
-
-            return temp.get(x);
-        }
-//        Type type = new TypeToken<List<Order>>() {
-//        }.getType();
-//        List<Order> temp = gson.fromJson(json, type);
-//        return temp.get(0);
-        return null;
     }
 
     private void iniComponent() {
@@ -214,7 +183,7 @@ public class ActivityOrderResult extends AppCompatActivity {
                     str_square, str_profile1, str_profile2, str_furniture, str_quantity_glasses, str_glasses_or_res,
                     str_manufacturer_sill, str_manufacturer_weathering, mounting, delivery, cost));
 
-            saveDataOR(itemsOR, "saveDataOR");
+            saveDataOR(itemsOR);
         }
     }
 
@@ -244,25 +213,12 @@ public class ActivityOrderResult extends AppCompatActivity {
 
     }
 
-    private void mChooser() {
-        Intent sendIntent = new Intent(Intent.ACTION_SEND);
-
-        String title = getResources().getString(R.string.app_name);
-
-        Intent chooser = Intent.createChooser(sendIntent, title);
-
-// Verify the original intent will resolve to at least one activity
-        if (sendIntent.resolveActivity(getPackageManager()) != null) {
-            startActivity(chooser);
-        }
-    }
-
-    public void saveDataOR(List<Order> list, String key) {
-        prefs = getSharedPreferences(key, Context.MODE_PRIVATE);
+    private void saveDataOR(List<Order> list) {
+        prefs = getSharedPreferences("saveDataOR", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
         Gson gson = new Gson();
         String json = gson.toJson(list);
-        editor.putString(key, json);
+        editor.putString("saveDataOR", json);
         editor.apply();
 
     }
@@ -279,6 +235,10 @@ public class ActivityOrderResult extends AppCompatActivity {
         }
         return number;
 
+    }
+
+    private void resetItemsOR (){
+        itemsOR.clear();
     }
 
 }

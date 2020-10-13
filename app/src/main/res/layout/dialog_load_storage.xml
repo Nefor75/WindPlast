@@ -45,40 +45,21 @@
         android:orientation="vertical"
         android:padding="@dimen/margin">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/address_lyt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColorHint="@color/grey_40">
-
-            <EditText
-                android:id="@+id/editAddress"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:cursorVisible="true"
-                android:gravity="start"
-                android:hint="@string/address"
-                android:maxLength="28"
-                android:textColor="#000000" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/comment_lyt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColorHint="@color/grey_40">
-
-            <EditText
-                android:id="@+id/editComment"
+            <TextView
+                android:id="@+id/tv_address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="start"
-                android:hint="@string/comments"
                 android:maxLength="28"
                 android:textColor="#000000" />
 
-        </com.google.android.material.textfield.TextInputLayout>
+            <TextView
+                android:id="@+id/tv_comment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:maxLength="28"
+                android:textColor="#000000" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -372,19 +353,6 @@
             android:background="@color/orange"
             android:src="@mipmap/share_white" />
 
-        <View
-            android:layout_width="3dp"
-            android:layout_height="match_parent"
-            android:background="@color/green" />
-
-        <ImageButton
-            android:id="@+id/ib_save"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:background="@color/orange"
-            android:src="@mipmap/save_white" />
     </LinearLayout>
 
 </LinearLayout>

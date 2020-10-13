@@ -35,7 +35,7 @@ public class AdapterStorageCalculations extends RecyclerView.Adapter<AdapterStor
     private OnItemClickListener onItemClickListener;
 
     public interface OnItemClickListener {
-        void onItemClick(int position);
+        void onItemClick(View view, int position);
     }
 
     public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
@@ -70,7 +70,7 @@ public class AdapterStorageCalculations extends RecyclerView.Adapter<AdapterStor
             public void onClick(View v) {
                 int position = holder.getAdapterPosition();
                 if (onItemClickListener != null) {
-                    onItemClickListener.onItemClick(position);
+                    onItemClickListener.onItemClick(v, position);
                 }
 
 //                 Intent intent = new Intent(v.getContext(), ActivityOrderResult.class);
@@ -112,6 +112,7 @@ public class AdapterStorageCalculations extends RecyclerView.Adapter<AdapterStor
     @Override
     public int getItemCount() {
         return items.size();
+
     }
 
 }

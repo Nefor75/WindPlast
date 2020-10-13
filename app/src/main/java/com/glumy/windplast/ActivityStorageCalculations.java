@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import com.glumy.windplast.Cart.Order;
 import com.glumy.windplast.Cart.Storage;
 
 import com.glumy.windplast.data.AdapterStorageCalculations;
@@ -31,6 +32,9 @@ import android.view.View;
 
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.lang.reflect.Type;
@@ -112,7 +116,7 @@ public class ActivityStorageCalculations extends AppCompatActivity {
         }
         adapter.setOnItemClickListener(new AdapterStorageCalculations.OnItemClickListener() {
             @Override
-            public void onItemClick(int position) {
+            public void onItemClick(View view, int position) {
                 dialogLoadStorage();
 //                Toast toast = Toast.makeText(getApplicationContext(), "Здесь и так ничего нет"+position, Toast.LENGTH_LONG);
 //                toast.setGravity(Gravity.CENTER, 0, 0);
@@ -228,7 +232,7 @@ public class ActivityStorageCalculations extends AppCompatActivity {
 
     }
 
-    private void dialogLoadStorage (){
+    private void dialogLoadStorage() {
 
         final Dialog dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE); // before
@@ -239,7 +243,122 @@ public class ActivityStorageCalculations extends AppCompatActivity {
         lp.width = WindowManager.LayoutParams.MATCH_PARENT;
         lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
 
-        dialog.show();
-        dialog.getWindow().setAttributes(lp);
+        // Order or = getDataToOR(position);
+        prefs = getSharedPreferences("saveDataOR", Context.MODE_PRIVATE);
+        Gson gson = new Gson();
+        String json = prefs.getString("saveDataOR", null);
+        if (json != null) {
+            Type type = new TypeToken<List<Order>>() {
+            }.getType();
+
+            List<Order> temp = gson.fromJson(json, type);
+            final Order or = temp.get(0);
+
+            ImageView iv_image = dialog.findViewById(R.id.image_top);
+            iv_image.setImageResource(or.getImage());
+
+            TextView tv_number = dialog.findViewById(R.id.tv_number);
+            tv_number.setText("Расчет № " + or.getNumber());
+
+            TextView tv_name = dialog.findViewById(R.id.text_name);
+            tv_name.setText(or.getName());
+
+            TextView tv_address = dialog.findViewById(R.id.tv_address);
+            tv_address.setText(or.getAddress());
+
+            TextView tv_comment = dialog.findViewById(R.id.tv_comment);
+            tv_comment.setText(or.getComment());
+
+            TextView tv_size = dialog.findViewById(R.id.tv_width_height_or_res);
+            tv_size.setText(or.getSizes());
+
+            TextView tv_amont = dialog.findViewById(R.id.tv_amount_or_res);
+            tv_amont.setText(or.getAmount());
+
+            TextView tv_square = dialog.findViewById(R.id.tv_square);
+            tv_square.setText(or.getSquare());
+
+            TextView tv_profile = dialog.findViewById(R.id.tv_profile_or_res);
+            tv_profile.setText(or.getProfile());
+
+            TextView tv_profile2 = dialog.findViewById(R.id.tv_prof_second_part);
+            tv_profile2.setText(or.getProfile2part());
+
+            TextView tv_furnit = dialog.findViewById(R.id.tv_furniture_or_res);
+            tv_furnit.setText(or.getFurniture());
+
+            TextView tv_qwantity_glasses = dialog.findViewById(R.id.tv_qwantity_glasses);
+            tv_qwantity_glasses.setText(or.getQuantity_glasses());
+
+            TextView tv_glasses_or_res = dialog.findViewById(R.id.tv_glasses_or_res);
+            tv_glasses_or_res.setText(or.getGlass());
+
+            TextView tv_manufacturer_sill = dialog.findViewById(R.id.tv_manufacturer_sill);
+            tv_manufacturer_sill.setText(or.getManufacturer_sill());
+
+            TextView tv_manufacturer_weathering = dialog.findViewById(R.id.tv_manufacturer_weathering);
+            tv_manufacturer_weathering.setText(or.getManufacturer_weathering());
+
+            TextView tv_mounting = dialog.findViewById(R.id.tv_mounting);
+            tv_mounting.setText(or.getMounting());
+
+            TextView tv_delivery = dialog.findViewById(R.id.tv_delivery);
+            tv_delivery.setText(or.getDelivery());
+
+            TextView tv_cost = dialog.findViewById(R.id.price_or_res);
+            tv_cost.setText(or.getCost()+"");
+        }
+            ImageButton ib_back = dialog.findViewById(R.id.ib_back);
+            ib_back.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dialog.dismiss();
+                    // onBackPressed();
+                }
+            });
+
+            ImageButton ib_transfer = dialog.findViewById(R.id.ib_transfer);
+            ib_transfer.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(getApplicationContext(), "Запускается mChooser", Toast.LENGTH_SHORT).show();
+                    //  mChooser();
+                }
+            });
+
+            dialog.show();
+            dialog.getWindow().setAttributes(lp);
+        }
+
+//    public Order getDataToOR(int x) {
+//        prefs = getSharedPreferences("saveDataOR", Context.MODE_PRIVATE);
+//        Gson gson = new Gson();
+//        String json = prefs.getString("saveDataOR", null);
+//        if (json != null) {
+//            Type type = new TypeToken<List<Order>>() {
+//            }.getType();
+//
+//            List<Order> temp = gson.fromJson(json, type);
+//
+//            return temp.get(x);
+//        }
+//        Type type = new TypeToken<List<Order>>() {
+//        }.getType();
+//        List<Order> temp = gson.fromJson(json, type);
+//        return temp.get(0);
+// //       return null;
+//    }
+
+    private void mChooser() {
+        Intent sendIntent = new Intent(Intent.ACTION_SEND);
+
+        String title = getResources().getString(R.string.app_name);
+
+        Intent chooser = Intent.createChooser(sendIntent, title);
+
+// Verify the original intent will resolve to at least one activity
+        if (sendIntent.resolveActivity(getPackageManager()) != null) {
+            startActivity(chooser);
+        }
     }
 }

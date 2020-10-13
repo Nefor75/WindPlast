@@ -364,20 +364,6 @@
             android:background="@color/green" />
 
         <ImageButton
-            android:id="@+id/ib_transfer"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:background="@color/orange"
-            android:src="@mipmap/share_white" />
-
-        <View
-            android:layout_width="3dp"
-            android:layout_height="match_parent"
-            android:background="@color/green" />
-
-        <ImageButton
             android:id="@+id/ib_save"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

@@ -82,14 +82,6 @@ public class ActivityStorageCalculations extends AppCompatActivity {
             recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
             recyclerView.setHasFixedSize(true);
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
-            recyclerView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-//                Toast.makeText(getApplicationContext(), "Recycler", Toast.LENGTH_SHORT).show();
-//                    Intent intent = new Intent(v.getContext(), ActivityOrderResult.class);
-//                    v.getContext().startActivity(intent);
-                }
-            });
 
             items = getListFromList("SaveStorage");
             numberItems = items.size() + 1;
@@ -110,19 +102,22 @@ public class ActivityStorageCalculations extends AppCompatActivity {
             if (items.size() != 0) {
                 adapter = new AdapterStorageCalculations(items);
                 recyclerView.setAdapter(adapter);
+
+                adapter.setOnItemClickListener(new AdapterStorageCalculations.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(View view, int position) {
+                        dialogLoadStorage();
+//                        Toast toast = Toast.makeText(getApplicationContext(), "Здесь и так ничего нет"+position, Toast.LENGTH_LONG);
+//                        toast.setGravity(Gravity.CENTER, 0, 0);
+//                        toast.show();
+                    }
+                });
             } else {
+                // items = new ArrayList<>();
                 showNoItemView();
             }
         }
-        adapter.setOnItemClickListener(new AdapterStorageCalculations.OnItemClickListener() {
-            @Override
-            public void onItemClick(View view, int position) {
-                dialogLoadStorage();
-//                Toast toast = Toast.makeText(getApplicationContext(), "Здесь и так ничего нет"+position, Toast.LENGTH_LONG);
-//                toast.setGravity(Gravity.CENTER, 0, 0);
-//                toast.show();
-            }
-        });
+
     }
 
     private void initToolbar() {
@@ -188,7 +183,6 @@ public class ActivityStorageCalculations extends AppCompatActivity {
                 di.dismiss();
                 resetListData();
                 showNoItemView();
-
             }
         });
         builder.setNegativeButton("Нет", null);
@@ -202,7 +196,7 @@ public class ActivityStorageCalculations extends AppCompatActivity {
         String json = gson.toJson(list);
         editor.putString(key, json);
         editor.apply();
-        //Toast.makeText(this, "Данные сохранены", Toast.LENGTH_SHORT).show();
+
     }
 
     public List<Storage> getListFromList(String key) {
@@ -212,8 +206,6 @@ public class ActivityStorageCalculations extends AppCompatActivity {
         if (json != null) {
             Type type = new TypeToken<List<Storage>>() {
             }.getType();
-            //Snackbar.make(findViewById(android.R.id.content), "Данные загружены", Snackbar.LENGTH_LONG).show();
-            Toast.makeText(this, "Данные загружены", Toast.LENGTH_SHORT).show();
 
             return gson.fromJson(json, type);
         } else {
@@ -248,11 +240,11 @@ public class ActivityStorageCalculations extends AppCompatActivity {
         Gson gson = new Gson();
         String json = prefs.getString("saveDataOR", null);
         if (json != null) {
-            Type type = new TypeToken<List<Order>>() {
+            Type type = new TypeToken<List<Storage>>() {
             }.getType();
 
-            List<Order> temp = gson.fromJson(json, type);
-            final Order or = temp.get(0);
+            List<Storage> temp = gson.fromJson(json, type);
+            final Storage or = temp.get(0);
 
             ImageView iv_image = dialog.findViewById(R.id.image_top);
             iv_image.setImageResource(or.getImage());
@@ -306,48 +298,29 @@ public class ActivityStorageCalculations extends AppCompatActivity {
             tv_delivery.setText(or.getDelivery());
 
             TextView tv_cost = dialog.findViewById(R.id.price_or_res);
-            tv_cost.setText(or.getCost()+"");
+            tv_cost.setText(or.getCost() + "");
         }
-            ImageButton ib_back = dialog.findViewById(R.id.ib_back);
-            ib_back.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    dialog.dismiss();
-                    // onBackPressed();
-                }
-            });
+        ImageButton ib_back = dialog.findViewById(R.id.ib_back);
+        ib_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+                // onBackPressed();
+            }
+        });
 
-            ImageButton ib_transfer = dialog.findViewById(R.id.ib_transfer);
-            ib_transfer.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Toast.makeText(getApplicationContext(), "Запускается mChooser", Toast.LENGTH_SHORT).show();
-                    //  mChooser();
-                }
-            });
+        ImageButton ib_transfer = dialog.findViewById(R.id.ib_transfer);
+        ib_transfer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "Запускается mChooser", Toast.LENGTH_SHORT).show();
+                //  mChooser();
+            }
+        });
 
-            dialog.show();
-            dialog.getWindow().setAttributes(lp);
-        }
-
-//    public Order getDataToOR(int x) {
-//        prefs = getSharedPreferences("saveDataOR", Context.MODE_PRIVATE);
-//        Gson gson = new Gson();
-//        String json = prefs.getString("saveDataOR", null);
-//        if (json != null) {
-//            Type type = new TypeToken<List<Order>>() {
-//            }.getType();
-//
-//            List<Order> temp = gson.fromJson(json, type);
-//
-//            return temp.get(x);
-//        }
-//        Type type = new TypeToken<List<Order>>() {
-//        }.getType();
-//        List<Order> temp = gson.fromJson(json, type);
-//        return temp.get(0);
-// //       return null;
-//    }
+        dialog.show();
+        dialog.getWindow().setAttributes(lp);
+    }
 
     private void mChooser() {
         Intent sendIntent = new Intent(Intent.ACTION_SEND);

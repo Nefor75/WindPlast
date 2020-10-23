@@ -32,12 +32,11 @@ import java.util.List;
 
 public class ActivityOrderResult extends AppCompatActivity {
 
-
     int number = 1;
     private EditText et_address, et_comment;
     private TextInputLayout address_lyt, comment_lyt;
     Storage reciveToStorage;
-    private List<Order> itemsOR = new ArrayList<>();
+    private List<Storage> itemsOR = new ArrayList<>();
     private ImageView imageView;
     private TextView tv_name, tv_width_height_or_res, et_amount_or_res, tv_square, tv_profile_or_res, tv_prof_second_part, tv_furniture_or_res,
             tv_quantity_glasses, tv_glasses_or_res, tv_manufacturer_sill, tv_manufacturer_weathering, tvMounting, tvDelivery, tv_cost,
@@ -166,10 +165,10 @@ public class ActivityOrderResult extends AppCompatActivity {
             String str_date = date.toString();
             str_date2 = Tools.getFormattedDateSimple(str_date);
 
-            reciveToStorage = new Storage(image, str_name, str_address, str_comment, str_date2, cost);
-//            Storage reciveToStorage = new Storage(number, image, str_name, str_address, str_comment, str_sizes, str_amount,
-//                    str_square, str_profile1, str_profile2, str_furniture, str_quantity_glasses, str_glasses_or_res,
-//                    str_manufacturer_sill, str_manufacturer_weathering, mounting, delivery, str_date2, cost);
+         //   reciveToStorage = new Storage(image, str_name, str_address, str_comment, str_date2, cost);
+ reciveToStorage = new Storage(number, image, str_name, str_address, str_comment, str_sizes, str_amount,
+                    str_square, str_profile1, str_profile2, str_furniture, str_quantity_glasses, str_glasses_or_res,
+                    str_manufacturer_sill, str_manufacturer_weathering, mounting, delivery, str_date2, cost);
             Intent i = new Intent(this, ActivityStorageCalculations.class);
             i.putExtra(Storage.class.getSimpleName(), reciveToStorage);
             startActivity(i);
@@ -179,7 +178,7 @@ public class ActivityOrderResult extends AppCompatActivity {
 //                         str_square, str_profile1, str_profile2, str_furniture, str_quantity_glasses, str_glasses_or_res,
 //                         str_manufacturer_sill, str_manufacturer_weathering, mounting, delivery, cost));
 
-            itemsOR.add(new Order(number, image, str_name, str_address, str_comment, str_sizes, str_amount,
+            itemsOR.add(new Storage(number, image, str_name, str_address, str_comment, str_sizes, str_amount,
                     str_square, str_profile1, str_profile2, str_furniture, str_quantity_glasses, str_glasses_or_res,
                     str_manufacturer_sill, str_manufacturer_weathering, mounting, delivery, cost));
 
@@ -213,7 +212,7 @@ public class ActivityOrderResult extends AppCompatActivity {
 
     }
 
-    private void saveDataOR(List<Order> list) {
+    private void saveDataOR(List<Storage> list) {
         prefs = getSharedPreferences("saveDataOR", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
         Gson gson = new Gson();

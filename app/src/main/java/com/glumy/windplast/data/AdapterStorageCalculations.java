@@ -9,6 +9,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 
@@ -21,30 +23,37 @@ import android.widget.Toast;
 
 import com.glumy.windplast.ActivityOrderResult;
 
-import com.glumy.windplast.ActivityStorageCalculations;
 import com.glumy.windplast.Cart.Order;
 import com.glumy.windplast.Cart.Storage;
 import com.glumy.windplast.R;
 import com.google.android.material.snackbar.Snackbar;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 
 public class AdapterStorageCalculations extends RecyclerView.Adapter<AdapterStorageCalculations.ViewHolder> {
 
-    private List<Storage> items;
-    private OnItemClickListener onItemClickListener;
+    Context mContext;
+    Cursor mCursor;
+    SQLiteDatabase dbAdapter;
 
-    public interface OnItemClickListener {
-        void onItemClick(View view, int position);
-    }
+   // private List<Storage> items;
+   // private OnItemClickListener onItemClickListener;
 
-    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
-        this.onItemClickListener = onItemClickListener;
-    }
+//    public interface OnItemClickListener {
+//        void onItemClick(View view, int position);
+//    }
+//
+//    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
+//        this.onItemClickListener = onItemClickListener;
+//    }
 
-    public AdapterStorageCalculations(List<Storage> items) {
-        this.items = items;
+    public AdapterStorageCalculations(Context context, Cursor cursor) {
+        mContext = context;
+        mCursor = cursor;
 
     }
 
@@ -56,67 +65,68 @@ public class AdapterStorageCalculations extends RecyclerView.Adapter<AdapterStor
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
+        mCursor.moveToPosition(position);
+        holder.bindCursor(mCursor);
 
-        final Storage itemList = items.get(position);
-        holder.imageRecycl.setImageResource(itemList.getImage());
-        holder.tv_number.setText("Расчет № " + itemList.getNumber());
-        holder.tv_name.setText(itemList.getName());
-        holder.tv_address.setText(itemList.getAddress());
-        holder.tv_comments.setText(itemList.getComment());
-        holder.tv_date.setText(itemList.getDate());
-        holder.tv_cost.setText(itemList.getCost() + " грн.");
+//        holder.itemView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Cursor del=dbAdapter.execSQL("delete from TABLE_STORAGE where Id="+v.get(position).getId());
+//                v.remove(position);
+//                notifyDataSetChanged();
+//            }
+//        });
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int position = holder.getAdapterPosition();
-                if (onItemClickListener != null) {
-                    onItemClickListener.onItemClick(v, position);
-                }
-
-//                 Intent intent = new Intent(v.getContext(), ActivityOrderResult.class);
-//
-//                Toast toast = Toast.makeText(v.getContext(), "Позиция № "+position, Toast.LENGTH_LONG);
-//                toast.setGravity(Gravity.CENTER, 0, 0);
-//                toast.show();
-//
-//             // intent.putExtra("position", position);
-//                 v.getContext().startActivity(intent);
-
-            }
-        });
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
 
-        final ImageView imageRecycl;
-        final TextView tv_number;
-        final TextView tv_name;
-        final TextView tv_address;
-        final TextView tv_comments;
-        final TextView tv_date;
-        final TextView tv_cost;
+        //        final ImageView imageRecycl;
+        public TextView tv_number;
+        public TextView tv_name;
+        public TextView tv_address;
+        public TextView tv_comments;
+        public TextView tv_date;
+        public TextView tv_cost;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            imageRecycl = itemView.findViewById(R.id.image_product);
+            //            imageRecycl = itemView.findViewById(R.id.image_product);
             tv_number = itemView.findViewById(R.id.tv_calcnumber);
             tv_name = (TextView) itemView.findViewById(R.id.tv_product_name);
             tv_address = (TextView) itemView.findViewById(R.id.tv_address);
             tv_comments = (TextView) itemView.findViewById(R.id.tv_comment);
             tv_date = itemView.findViewById(R.id.tv_date);
             tv_cost = (TextView) itemView.findViewById(R.id.tv_cost);
+        }
 
+        public void bindCursor(Cursor cursor) {
+            tv_number.setText("Расчет № " + String.valueOf(cursor.getInt(
+                    cursor.getColumnIndexOrThrow(DBHelper.KEY_ID)
+            )));
+            tv_name.setText(cursor.getString(
+                    cursor.getColumnIndexOrThrow(DBHelper.KEY_NAME)
+            ));
+            tv_address.setText(cursor.getString(
+                    cursor.getColumnIndexOrThrow(DBHelper.KEY_ADDRESS)
+            ));
+            tv_comments.setText(cursor.getString(
+                    cursor.getColumnIndexOrThrow(DBHelper.KEY_COMMENT)
+            ));
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTimeInMillis(cursor.getLong(
+                    cursor.getColumnIndexOrThrow(DBHelper.KEY_DATE)));
+            tv_date.setText(new SimpleDateFormat("dd/MM/yyyy").format(calendar.getTime()));
+            tv_cost.setText(cursor.getString(
+                    cursor.getColumnIndexOrThrow(DBHelper.KEY_COST)
+            ));
         }
     }
 
     @Override
     public int getItemCount() {
-        return items.size();
+            return mCursor.getCount();
 
     }
 
 }
-
-
-

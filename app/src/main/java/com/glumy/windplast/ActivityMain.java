@@ -46,7 +46,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ActivityMain extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
-    public String content = "";
     private ActionBar actionBar;
     private Toolbar toolbar;
     private FragmentSettingsOne frag1;
@@ -78,6 +77,7 @@ public class ActivityMain extends AppCompatActivity implements AdapterView.OnIte
         ivStorage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent intent = new Intent(ActivityMain.this, ActivityStorageCalculations.class);
                 startActivity(intent);
             }

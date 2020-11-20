@@ -1,8 +1,11 @@
 package com.glumy.windplast.util;
 
+
 import java.text.SimpleDateFormat;
+
 import java.util.Date;
 import java.util.Locale;
+
 
 public class Tools {
 
@@ -22,6 +25,5 @@ public class Tools {
         SimpleDateFormat newFormat = new SimpleDateFormat("MMM dd, yyyy", Locale.getDefault());
         return newFormat.format(new Date(date));
     }
-
 
 }

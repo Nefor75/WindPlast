@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:background="@color/grey_20"
     android:orientation="vertical" >
 
     <include layout="@layout/toolbar_for_recycler" />
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="4dp"
-        android:elevation="4dp">
-
+        android:elevation="4dp"
+        android:visibility="visible" >
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -30,11 +31,11 @@
 
     </androidx.cardview.widget.CardView>
 
-    <View
+    <include
         android:id="@+id/lyt_no_item"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/splashbackground"
-        android:visibility="invisible"/>
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        layout="@layout/include_no_item"
+        android:visibility="gone" />
 
 </LinearLayout>
